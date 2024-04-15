@@ -81,6 +81,49 @@ Hotfix分支：基于Master的修复分支
 
 ![image-20240414163002417](https://raw.githubusercontent.com/levi33Y/pictures/main/image-20240414163002417.png)
 
+### gitHub Desktop+gitHub
+
+**一、新建项目**
+
+**二、新建里程碑**
+
+1、issues/Milestones（1.0.0）
+
+**三、新建issue**
+
+1、输入issue名称首字母大写）
+2、关联角色Assignees，关联里程碑Milestone（
+
+**四、新建分支，记录开发**
+
+**五、gitHub Destop使用**
+
+**六、合并pull requests**
+
+### sourcetree+gitLab
+
+**一、新建项目**
+
+**二、新建里程碑**
+
+1、issues/Milestones（1.0.0）
+
+**三、新建issue，并且关联里程碑**
+
+1、issues/list（首字母大写英文）
+
+**四、新建分支，记录开发**
+
+Repository/Branches
+
+**五、sourcetree使用**
+
+1、新建，克隆远程仓库（操作和其余图形化工具差不多）
+
+**四、合并分支**
+
+1、Requirements/
+
 ## 学习DevOps
 
 敏捷开发模式下的开发思想，结合开发与运维
