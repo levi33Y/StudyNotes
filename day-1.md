@@ -87,18 +87,20 @@ Hotfix分支：基于Master的修复分支
 
 **二、新建里程碑**
 
-1、issues/Milestones（1.0.0）
+1、issues/Milestones，里程碑以1.0.0类似的方式命名
 
 **三、新建issue**
 
-1、输入issue名称首字母大写）
-2、关联角色Assignees，关联里程碑Milestone（
+1、输入issue名称，首字母大写全英文
+2、关联角色Assignees，关联里程碑Milestone
 
-**四、新建分支，记录开发**
+**四、本地新建分支，推送到github**
 
 **五、gitHub Destop使用**
 
-**六、合并pull requests**
+**六、发起pr，fixed团队comment**
+1、新建pr，首字母大写全英文，尽量和issue名称一致
+2、关联角色Assignees，关联里程碑Milestone，补充描述并在末尾Close # 关联issues
 
 ### sourcetree+gitLab
 
@@ -112,15 +114,15 @@ Hotfix分支：基于Master的修复分支
 
 1、issues/list（首字母大写英文）
 
-**四、新建分支，记录开发**
+**四、远程新建分支，sourcetree拉取代码**
 
-Repository/Branches
+1、Repository/Branches
 
 **五、sourcetree使用**
 
 1、新建，克隆远程仓库（操作和其余图形化工具差不多）
 
-**四、合并分支**
+**四、发起pr，fixed团队comment**
 
 1、Requirements/
 
