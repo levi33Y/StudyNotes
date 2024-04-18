@@ -2,7 +2,7 @@
 
 第 4 天
 
-2024/4/17
+2024/4/18
 
 ## 目录
 
@@ -89,7 +89,7 @@
 
 - ### CSS规范
 
-  1. 不做标准值处理，html；统一使用rem使得页面根据浏览器变化
+  1. html font-size 不做标准值处理；统一使用rem使得页面根据浏览器变化
 
 ## React Router继续学习
 
@@ -101,11 +101,13 @@
 
 - Routes与Routes：
 
-  Routes，标签内包含Routes，不能使用引入的组件，引入的组件的类型时Element类型，不符合commpent<Routes>,控制台报错：
+  Routes：
+
+  标签内包含Routes，不能使用引入的组件，引入的组件的类型时Element类型，不符合commpent<Routes>类型；控制台报错：
 
   ![image-20240418200836197](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418200836197.png)
 
-  Routes
+  Routes：
 
   应该将组件作为“元素”传递，如：
 
@@ -115,7 +117,7 @@
 
 - useRoutes：
 
-  [接受js对象，功能与Routes一致](https://www.reactrouter.cn/docs/api#useroutes)
+  [接收js对象，功能与Routes一致](https://www.reactrouter.cn/docs/api#useroutes)
 
   
 
