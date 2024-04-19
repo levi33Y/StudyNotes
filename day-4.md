@@ -6,28 +6,26 @@
 
 ## 目录
 
-- 处理pr#3
-- toute V6继续学习
+- 处理 pr#3 的 comment
+- React Router 继续学习
 
-## pr#3总结
+## pr#3 总结
 
 ![image-20240418165038655](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418165038655.png)
 
 - ### gitflow
 
-  1. 无用的代码与文件夹无需commit，影响pr的完整
+  1. 无用的代码与文件夹无需 commit，影响 pr 的完整
 
-- ### TS规范
+- ### TS 规范
 
   1. 定义类型借口
 
-     在组件根目录新建 props.ts文件，声明接口类型
+     在组件根目录新建 props.ts 文件，声明接口类型
 
      ![image-20240418192057267](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418192057267.png)
 
      在使用处直接导入文件路径
-
-     
 
   2. 需要标注类型
 
@@ -37,38 +35,36 @@
 
 - ### 路由规范
 
-  1. 路由重定向：路由重定向用Route代码实现
+  1. 路由重定向：路由重定向用 Route 代码实现
 
      ![image-20240418155835284](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418155835284.png)
 
   2. 路由表设计: 统一使用路由表编写路由规则
 
-     router/index.tsx文件：
+     router/index.tsx 文件：
 
   ![image-20240418155934580](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418155934580.png)
 
-  3. 路由文件导出，App直接引入调用
+  3. 路由文件导出，App 直接引入调用
 
-     router/index.tsx使用map渲染路由列表，最后导出整个路由表
+     router/index.tsx 使用 map 渲染路由列表，最后导出整个路由表
 
      ![image-20240418190841234](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418190841234.png)
 
-     在App.tsx文件中引入组件
+     在 App.tsx 文件中引入组件
 
      ![image-20240418191042551](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418191042551.png)
 
-     
-
 - ### 组件规范
 
-  1. 逻辑块的换行，且数据放在组件根目录hook处理
+  1. 逻辑块的换行，且数据放在组件根目录 hook 处理
   2. 去掉多余的<></>
 
-- ### JS规范
+- ### JS 规范
 
   1. 多余的嵌套，箭头函数能简化函数的长度
 
-  多余的return：
+  多余的 return：
 
   ![image-20240418162948038](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418162948038.png)
 
@@ -76,10 +72,10 @@
 
   ![image-20240418162931160](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418162931160.png)
 
-  2. 当三元表达式else为null时，用&&代替
-  3. concat的性能最好，...本质是对concat的封装
+  2. 当三元表达式 else 为 null 时，用&&代替
+  3. concat 的性能最好，...本质是对 concat 的封装
 
-- ### SASS书写规范
+- ### SASS 书写规范
 
   1. 类的名称使用小驼峰
 
@@ -87,23 +83,23 @@
 
      ![image-20240418193300794](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418193300794.png)
 
-- ### CSS规范
+- ### CSS 规范
 
-  1. html font-size 不做标准值处理；统一使用rem使得页面根据浏览器变化
+  1. html font-size 不做标准值处理；统一使用 rem 使得页面根据浏览器变化
 
-## React Router继续学习
+## React Router 继续学习
 
-- Link：为一个元素，通常用于ui开发中，实现路由的跳转
+- Link：为一个元素，通常用于 ui 开发中，实现路由的跳转
 
-​	使用link编写一个tabbar
+​ 使用 link 编写一个 tabbar
 
-​	![image-20240418200223604](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418200223604.png)
+​ ![image-20240418200223604](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418200223604.png)
 
-- Routes与Routes：
+- Routes 与 Routes：
 
   Routes：
 
-  标签内包含Routes，不能使用引入的组件，引入的组件的类型时Element类型，不符合commpent<Routes>类型；控制台报错：
+  标签内包含 Routes，不能使用引入的组件，引入的组件的类型时 Element 类型，不符合 commpent<Routes>类型；控制台报错：
 
   ![image-20240418200836197](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418200836197.png)
 
@@ -117,11 +113,4 @@
 
 - useRoutes：
 
-  [接收js对象，功能与Routes一致](https://www.reactrouter.cn/docs/api#useroutes)
-
-  
-
-
-
-
-
+  [接收 js 对象，功能与 Routes 一致](https://www.reactrouter.cn/docs/api#useroutes)
