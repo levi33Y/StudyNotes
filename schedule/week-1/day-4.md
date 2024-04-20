@@ -91,9 +91,9 @@
 
 - Link：为一个元素，通常用于 ui 开发中，实现路由的跳转
 
-​ 使用 link 编写一个 tabbar
+ 使用 link 编写一个 tabbar
 
-​ ![image-20240418200223604](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418200223604.png)
+ ![image-20240418200223604](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240418200223604.png)
 
 - Routes 与 Routes：
 
@@ -114,3 +114,30 @@
 - useRoutes：
 
   [接收 js 对象，功能与 Routes 一致](https://www.reactrouter.cn/docs/api#useroutes)
+
+
+
+## 每日总结
+
+2024/4/18 UPDATE:
+今日总结：
+
+1. 处理考核项目pr的comment。
+2. 学习React Router，Link是实现ui跳转页面的元素，Routes和Route是路由渲染方式，Routes接收component<Route>；组件作为元素传递给Route。useRoutes使用js对象实现与Routes一样的功能。
+3. 学习了团队开发规范，react开发中声明路由表管理路由；组件的接口、hook样式等要声明在组件根目录中；TS接口类型在prop.ts中定义，在变量、函数以及循环结构中标注ts类型；JS语法尽量简洁，使用&&取代else为null的三元表达式，concat在性能方面最优，箭头函数声明最短的函数。
+
+明天计划：
+
+2. 处理comment并且继续开发考核项目
+3. 继续学习react框架
+
+笔记：
+https://github.com/levi33Y/StudyNotes/blob/main/day-4.md
+
+卡位：
+
+1.  暂无
+
+考核项目：
+完成底部Tabbar开发：https://gitlab.sjfood.us/solar/practiseforlevi/-/merge_requests/3（处理comment中）
+

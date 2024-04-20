@@ -224,6 +224,33 @@ import New1 from "./view/new1";
 
 
 
+## 每日总结
+
+## 要做的事
+
+1. 开发环境
+1.node v
+2.devtol v
+3.picgo v
+4.Typro v
+
+2. 考核项目搭建
+1.搭建项目，创建pr v
+2、学习react v
+
+3. devops
+1、学习devops概念，并且总结 v
+团队：git gitflow cicd git
+代码管理-一个严格遵循的gitflow或流程
+技术风险-技术难度
+风险控制
+总结：
+整体流程就是代码写完后，提交到git，然后使用自动化部署工具打包项目，整个流程通常由vcs、选择gitflow或githubflow，做好每一个pr，使用ci/cd
+
+4. 新人资料 v
+1、新人资料视频学习v
+2、计划表完成 v
+
 
 
 
