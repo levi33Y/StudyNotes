@@ -4,8 +4,24 @@
 
 2024/x/x
 
+# todo
+
+## yesterday
+
+1. [] xxx
+2. [] xxx
+
+## today
+
+1. [] xxx
+2. [] xxx
+
 ## 目录
 
 - xx
 
-## xx
+## xxx
+
+## 每日总结
+
+## 每周总结
