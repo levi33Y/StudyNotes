@@ -75,6 +75,38 @@ Props将信息传递给JSX标签，是组件的唯一参数（Object)
    
    ```
 
+3. 只读性
+
+   props 是不可变的，修改props的操作本质是响父组件传递不同的props（新对象）
+
+   >props 是 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)（一个计算机科学术语，意思是“不可改变”）。当一个组件需要改变它的 props（例如，响应用户交互或新数据）时，它不得不“请求”它的父组件传递 **不同的 props** —— 一个新对象！它的旧 props 将被丢弃，最终 JavaScript 引擎将回收它们占用的内存。
+
+   ```tsx
+   function Child({ id, name }: { id: string; name: string }) {
+     id = "102";
+     name = "李四";
+     return (
+       <div>
+         id：{id}，name：{name}
+       </div>
+     );
+   }
+   
+   export const Parent = () => {
+     const [text, setText] = useState("张三");
+     return (
+       <div>
+         Mr.{text}
+         <Child id="1" name={text}></Child>
+       </div>
+     );
+   };
+   ```
+
+   运行结果：
+
+   ![image-20240423102838918](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240423102838918.png)
+
 ### #
 
 
