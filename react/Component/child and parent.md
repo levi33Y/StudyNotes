@@ -283,58 +283,78 @@ export const Grocery = () => {
 
 ### #
 
+1. Parent下面有两个，他们为兄弟节点，将Child的state提升为props
+
+   ```tsx
+   const Parent = ({value,onSquareClick,}) => {
+     return (
+       <button onClick={onSquareClick}>
+         {value}
+       </button>
+     );
+   };
+   ```
+
+2. Parent中声明state初始化为数组，数据项分别为Child的props
+
+   ```tsx
+   const [text, setText] = useState(Array(2).fill(null));
+   
+   <Child value={squares[0]} />
+   <Child value={squares[1]} />
+   ```
+
+3. 通过子传父形式，在父组件处理通信数据，然后同步至所有子组件中，实现兄弟组件通信
+
+   ```tsx
+     function handleClick(i: number) {
+       setText(i === 0 ? ["X", "X"] : ["V", "V"]);
+     }
+   ```
+
 1. 完整代码
 
    ```tsx
    import { useState } from "react";
    
-   const Square = ({
-     value,
-     onSquareClick,
-   }: {
-     value: string;
-     onSquareClick: () => void;
-   }) => {
-     return (
-       <button className="square" onClick={onSquareClick}>
-         {value}
-       </button>
-     );
-   };
-   
-   export const Grocery = () => {
-     const [squares, setSquares] = useState(Array(9).fill(null));
-   
-     function handleClick(i: number) {
-       const nextSquares = squares.slice();
-       nextSquares[i] = "X";
-       setSquares(nextSquares);
-     }
-   
+   const Child1 = ({ value, onChildClick }) => {
      return (
        <>
-         <div className="board-row">
-           <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-           <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-           <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-         </div>
-         <div className="board-row">
-           <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-           <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-           <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-         </div>
-         <div className="board-row">
-           <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-           <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-           <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-         </div>
+         <div>{value}</div>
+         <button onClick={onChildClick}>全部选</button>
+       </>
+     );
+   };
+   const Child2 = ({ value, onChildClick }) => {
+     return (
+       <>
+         <div>{value}</div>
+         <button onClick={onChildClick}>全不选</button>
        </>
      );
    };
    
-   ```
-
+   export const Parent = () => {
+     const [text, setText] = useState(Array(2).fill("null"));
    
+     function handleClick(i: number) {
+       setText(i === 0 ? ["X", "X"] : ["V", "V"]);
+     }
+   
+     return (
+       <>
+         <Child1 value={text[0]} onChildClick={() => handleClick(0)} />
+         <Child2 value={text[1]} onChildClick={() => handleClick(1)} />
+       </>
+     );
+   };
+   
+   
+   ```
+   
+   运行结果如下：
+   
+   ![image-20240423200044577](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240423200044577.png)
 
 ## 将jsx作为子组件传递
 

@@ -8,24 +8,23 @@
 
 ## yesterday
 
-1. [❓] 计划文档 - 补充为完成
+1. [❓] 计划文档 - 正在->完成
 2. [❓] useEffect - 笔记
 3. [❓] 接口（interface）- 笔记
-5. [❓]父子组件传值 - 笔记
+4. [✅]父子组件传值 - 笔记
 
 ## today
 
-1. [] 处理pr的comment
-1. [] 优化 account page index文件
+1. [] 处理 pr 的 comment
+1. [] 优化 account page index 文件
 1. [] useState - 笔记
+1. [] 考核项目 - 笔记
 
 ## 目录
 
 - xx
 
 ## xxx
-
-
 
 ## 每日总结
 
