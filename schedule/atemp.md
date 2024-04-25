@@ -4,12 +4,12 @@
 
 2024/x/x
 
-# todo
+## Todo
 
 ## yesterday
 
-1. [] xxx
-2. [] xxx
+1. [✅] xxx
+2. [❌] xxx
 
 ## today
 

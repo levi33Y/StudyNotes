@@ -4,7 +4,7 @@ Props将信息传递给JSX标签，是组件的唯一参数（Object)
 
 ## Props
 
-### #
+### `#`
 
 1. 建议的props传递方式
 
@@ -107,19 +107,19 @@ Props将信息传递给JSX标签，是组件的唯一参数（Object)
 
    ![image-20240423102838918](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240423102838918.png)
 
-### #
+### `#`
 
 
 
 ## 父子组件通信
 
-Parent.js
+Parent.tsx
 
 ```tsx
 import React from 'react'
 import Child from './Child';
 
-export default function Parent() {
+export const Parent = () => {
   return (
     <div>
       <Child/>
@@ -133,7 +133,7 @@ Child.js
 ```tsx
 import React from 'react'
 
-export default function Child() {
+export const Child = () => {
   return (
       <div>
 
@@ -142,7 +142,7 @@ export default function Child() {
 }
 ```
 
-### #
+### `#`
 
 1. 父传子：父组件通过props将信息传递给子组件，子组件通过结构对应参数来获取信息
 
@@ -152,12 +152,14 @@ export default function Child() {
 
 3. 子传父：更新函数应该是使用箭头函数包装，否则将在函数将立即执行
 
+### `#`
+
 **Parent 传递给 Child**
 
 1. 将props传递给子组件
 
-```
-export default function Parent() {
+```tsx
+export const Parent = () => {
   return (
     <div>
       <Child
@@ -171,7 +173,7 @@ export default function Parent() {
 
 2. 子组件接收props
 
-```
+```tsx
 export const Grocery = () => {
   return (
     <div>
@@ -277,11 +279,11 @@ export const Grocery = () => {
 
 ## 兄弟组件通信
 
-### #
+### `#`
 
-1. 最好的办法：声明一个公共的父组件，将state存储在父组件中，声明共享 state。
+1. 最好的办法：使用变量提升，声明一个公共的父组件，将state存储在父组件中，声明共享 state。
 
-### #
+### `#`
 
 1. Parent下面有两个，他们为兄弟节点，将Child的state提升为props
 
@@ -358,7 +360,7 @@ export const Grocery = () => {
 
 ## 将jsx作为子组件传递
 
-### #
+### `#`
 
 1. children prop接受传递的所有jsx标签内的内容
 2. 通过组件嵌套的方式，来填充Parent的内容，实现更多复杂的功能，这种功能类似于插槽（引用官方的一张图）
@@ -379,7 +381,7 @@ export const Grocery = () => {
 
 ​	注意的是，对于函数要显现地返回结果
 
-### #
+### `#`
 
 1. 定义Parent接受children prop并渲染
 
