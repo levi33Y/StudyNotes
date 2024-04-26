@@ -11,19 +11,18 @@
 1. [✅] xxx
 2. [❌] xxx
 3. [❓] xxx
-4. [❓❌] 计划文档 - 正在->完成
-5. [❓❌] useEffect - 笔记
-6. [❓❌] 接口（interface）- 笔记
-7. [❓❌] useState - 笔记
-8. [❓❌] 考核项目 - 笔记
+4. [❓] 计划文档 - 正在->完成
+5. [❓] useEffect - 笔记
+6. [❓] 接口（interface）- 笔记
+7. [❓] useState - 笔记
+8. [❓] 考核项目 - 笔记
+9. [❓]useRef() hook
+10. [❓]ts type and interface
+11. [❓]useImperaiveHandle hook
 
 ## today
 
-1. [✅] 处理 pr 的 comment
-2. [✅]阅读ant-moblie list组件
-3. [❌]useRef() hook
-4. [❌]ts type and interface
-5. [❌]useImperaiveHandle hook
+1. []处理pr的comment
 
 ## xxx
 
