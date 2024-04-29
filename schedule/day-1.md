@@ -29,11 +29,11 @@
 
 ## 每日总结
 
-2024/4/29 UPDATE:
+2024/4/229 UPDATE:
 今日总结：
 
 1. 处理考核项目pr的comment。
-2. 学习useContext钩子并写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/useCallback.md
+2. 学习useContext钩子并写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/useContext.md
 
 明天计划：
 

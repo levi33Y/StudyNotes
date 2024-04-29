@@ -80,12 +80,12 @@ export const Grocery = () => {
 
 
 
-### ##
+### `#`
 
 1. 不能在组件内使用createContext，在任意组件外调用 createContext创建一个上下文
 2. 在组件的最顶级调用 useContext 来读取和订阅 context
 
-### ##
+### `#`
 
 1. Grocery定义上下文，并设置上下文的值
 
@@ -113,13 +113,13 @@ export const Grocery = () => {
 
 博客系统的个人主页。标题组件为同一个组件，根据在个人介绍，我的发布，帖子内容显示不同的标题大小。
 
-### ##
+### `#`
 
 1. useContext返回传递给树中调用组件上方最近的 SomeContext.Provider的 value
 2. createContext创建的 context，只代表着信息类型不是信息，createContext里面的参数只是为context指定了默认值
 3. 从 provider 接收到不同的 value 开始，会重新渲染此组件下所有子组件
 
-### ##
+### `#`
 
 ```tsx
 import { createContext, useContext } from "react";
@@ -278,12 +278,12 @@ export const Grocery = () => {
 
 
 
-### ##
+### `#`
 
 1. props是指传递props使用组件的props属性，这样传递参数有明确的数据流，但是组件距离较远层级太多时，就会出现逐层传递，导致一些不需要用到值的中间组件也要声明props来接收属性值
 1. children是指props中的children属性，children属性是指自定义组件标签内的jsx内容，通过children形式能够将组件抽象出来，即是将要数据的组件以children形式传递给中间组件组件，省去中间组件显性声明props，减少层级。
 
-### ##
+### `#`
 
 **使用context重构**
 
