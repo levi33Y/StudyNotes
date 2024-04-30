@@ -4,7 +4,7 @@
 
 ## 目录
 
-- hokk规范
+- hook规范
 - 自定义hook共享逻辑状态
 - 面向特定场景或功能自定义hook
 - 第三方React Hooks库
@@ -14,14 +14,15 @@
 ## hook规范
 
 1. 自定义hook
-   1. 组件顶层声明，为组件声明获取组件的状态的函数
-   2. 以use开头，命名为小驼峰
-
+   - 组件顶层声明，为组件声明获取组件的状态的函数
+   
+   - 以use开头，命名为小驼峰
+   
 2. ReactHook
 
-   1. 组件内顶层使用
+   - 组件内顶层使用
 
-   1. 不能嵌套在if等条件语句以及其他函数中
+   - 不能嵌套在if等条件语句以及其他函数中
 
 
 
@@ -40,7 +41,7 @@ export const useAction = (initialValue: any) => {
 
 ```
 
-Count1与Count2
+Count1与Count2组件使用自定义hook
 
 ```tsx
 import { useAction } from "./hook";
