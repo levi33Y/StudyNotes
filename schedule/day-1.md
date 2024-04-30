@@ -29,15 +29,17 @@
 
 ## 每日总结
 
-2024/4/229 UPDATE:
+2024/4/29 UPDATE:
 今日总结：
 
 1. 处理考核项目pr的comment。
 2. 学习useContext钩子并写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/useContext.md
+3. 学习useReducer钩子，useReducer与useState都可以管理状态，useReducer通常用来管理复杂的状态数据。使用dispatch唯一方法来修改reducer，此时会使用最新的状态通知UI重新渲染。
 
 明天计划：
 
-1. 重点学习react hook并写学习笔记。
+1. 使用useReducer写demo来实践，并写学习笔记。
+1. 学习react框架其他内容。
 
 卡位：
 
