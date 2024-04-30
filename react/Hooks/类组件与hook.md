@@ -71,7 +71,7 @@ F：函数式组件，纯粹的 JavaScript 函数，函数定义的无状态组�
 ### `#`
 
 1. 在构造函数中，不应包含任何存在副作用或者事件监听相关的代码
-1. 一个组件的生命周期大致为，挂载（生产期）、更新（存在期，组件在页面上依赖可能会发生更新，组件重新渲染）、卸载（销毁期）
+1. 一个组件的生命周期大致为，挂载（生成期）、更新（存在期，组件在页面上依赖可能会发生更新，组件重新渲染）、卸载（销毁期）
 
 ### `#`
 
@@ -119,7 +119,7 @@ F：函数式组件，纯粹的 JavaScript 函数，函数定义的无状态组�
   ```tsx
   //使用useState声明组件的状态
   const [age, setAge] = useState(0);
-
+  
   return (
     <>
       <button
@@ -167,7 +167,7 @@ F：函数式组件，纯粹的 JavaScript 函数，函数定义的无状态组�
     // setup函数，建立连接
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
-
+  
     //清理函数（cleanup），退出连接
     return () => {
       connection.disconnect();
