@@ -1,52 +1,96 @@
 # 学习笔记
 
-第 1天
+第 1 天
 
-2024/4/29
+2024/5/2
 
 ## todo
-
-## yesterday
 
 1. [✅] xxx
 2. [❌] xxx
 3. [❓] xxx
-4. [❓] 计划文档 - 正在->完成
-5. [❓] 接口（interface）- 笔记
-6. [❓] 考核项目 - 笔记
-7. [❓]ts type and interface
-8. [❓]useImperaiveHandle hook
+
+## yesterday
+
+1. [❓] 考核项目 - 笔记
+2. [❓]useState、useEffect、useRef、useImperaiveHandle等hook笔记
+3. [❓]reouter 6 笔记
+4. [❓]react 事件处理、react-dom 笔记
+5. [❓]ts 笔记
+6. [❓] recoil 笔记
+7. [❓] html body 标签
+8. [❓] 需求：解决rem和适口单位的混乱
+9. [❓] 滚动条开发笔记
 
 ## today
 
-1. [✅]个人业务execl
-2. [[✅]]useContext
-3. []useReducer
-4. []自定义hook
-5. []useState、useEffect、useRef笔记
+1. []grocery page ui 下拉刷新
 
-## xxx
+## 目录
+
+下拉刷新
+
+dom结构与结构选择伪类
+
+### 下拉刷新
+
+数据请求
+
+api
+
+|--model
+
+​	|--index.tsx
+
+|--http-client.tsx
+
+下拉刷新
+
+1. 滚动条件
+2. 刷新函数
+
+初始化刷新
+
+1. 发起请求，获取第一页
+
+逻辑
+
+初始化刷新->
+
+数据是否超过clientHeight？：显示tips->
+
+下拉刷新->
+
+发起请求->
+
+是否有数据？：显示tip->
+
+改变list数组->下
+
+拉刷新-发起请求->......
 
 ## 每日总结
 
-2024/4/29 UPDATE:
+2024/5/6 UPDATE:
 今日总结：
 
-1. 处理考核项目pr的comment。
-2. 学习useContext钩子并写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/useContext.md
-3. 学习useReducer钩子，useReducer与useState都可以管理状态，useReducer通常用来管理复杂的状态数据。使用dispatch唯一方法来修改reducer，此时会使用最新的状态通知UI重新渲染。
+1. 
 
-明天计划：
+   
 
-1. 使用useReducer写demo来实践，并写学习笔记。
-1. 学习react框架其他内容。
+
+明一计划：
+
+1. 开发考核项目grocery page 的 delivery页面下拉刷新功能和pickup页面。
+1. 继续学习react框架
 
 卡位：
 
 1.  暂无
 
 考核项目：
-https://gitlab.sjfood.us/solar/practiseforlevi/-/merge_requests/5（处理comment中）
+
+grocery page ui：https://gitlab.sjfood.us/solar/practiseforlevi/-/merge_requests/6（开发中）
 
 ## 每周总结
 

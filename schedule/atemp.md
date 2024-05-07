@@ -6,16 +6,17 @@
 
 ## Todo
 
-## yesterday
-
 1. [✅] xxx
 2. [❌] xxx
 3. [❓] xxx
 
+## yesterday
+
+1. [?] xxx
+
 ## today
 
 1. [] xxx
-2. [] xxx
 
 ## 目录
 
