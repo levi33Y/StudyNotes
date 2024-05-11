@@ -17,14 +17,14 @@
 3. [❓]reouter 6 笔记
 4. [❓]react 事件处理、react-dom 笔记
 5. [❓]ts 笔记
+6. [❓] recoil 笔记
+7. [❓] html body 标签
+8. [❓] 需求：解决rem和适口单位的混乱
+9. [❓] 滚动条开发笔记
 
 ## today
 
-1. [❌]grocery page ui 长列表开发
-2. [❓] recoil 笔记
-3. [] html body 标签
-4. [] 需求：解决rem和适口单位的混乱
-5. [] 滚动条开发笔记
+1. []grocery page ui 
 
 ## 目录
 

@@ -1,8 +1,6 @@
 # 学习笔记
 
-第 1 天
-
-2024/5/2
+2024/5/7
 
 ## todo
 
@@ -24,7 +22,9 @@
 
 ## today
 
-1. []grocery page ui 下拉刷新
+1. [✅]grocery page ui delivery 长列表开发
+2. [✅]grocery page ui pickup 
+3. [✅] enum
 
 ## 目录
 
@@ -71,18 +71,20 @@ api
 
 ## 每日总结
 
-2024/5/6 UPDATE:
+2024/5/7 UPDATE:
 今日总结：
 
-1. 
+1. 完成grocery page ui delivery页面下拉刷新功能和pickup页面，期间遇到frist-list失效问题，原因是使用结构伪类父节点下的兄弟节点元素要一致，解决：使用first-of-type指定兄弟组或者修改dom结构。
+
+1. 学习enum，eumn在ts中可以作为类型和值，在编译成对象而不会被移除。学习基本的语法。用enum重构switch、unio逻辑代码块。
 
    
 
 
-明一计划：
+明天计划：
 
-1. 开发考核项目grocery page 的 delivery页面下拉刷新功能和pickup页面。
-1. 继续学习react框架
+1. 开发考核项目grocery page ui接口配置和grocery page 接口对接。
+1. 跟进AI 识别文件的权限管理页面ui 。
 
 卡位：
 
