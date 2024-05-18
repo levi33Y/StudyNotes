@@ -1,14 +1,35 @@
-## Object
+# 学习笔记
 
+2024/5/7
 
+## todo
 
-## Is.()
+1. [✅] xxx
+2. [❌] xxx
+3. [❓] xxx
 
-Object.is()、===、== 对于基本数据类型,比较值，而对于对象会判断是否是一个引用，使用Object.is([],[])为false。===会对
+## yesterday
 
-### #is()与===、==区别
+1. [❓] 考核项目 - 笔记
+2. [❓]useState、useEffect、useRef、useImperaiveHandle 等 hook 笔记
+3. [❓]reouter 6 笔记
+4. [❓]react 事件处理、react-dom 笔记
+5. [❓] recoil 笔记
+6. [❓] html body 标签
+7. [❓] 需求：解决 rem 和适口单位的混乱
+8. [❓] 滚动条开发笔记
+9. [❓]ts 笔记
+10. []css module
 
-## 环形对象
+## today
+
+1. [✅]处理AI 识别文件pr comment。
+1. [✅]处理AI 识别文件pr comment
+1. [❌]学习router V6 与 状态保存，并写文章
+
+## 发掘
+
+环形对象
 
 ~~~js
 const person = { name: 'kalory', age:18}
@@ -17,7 +38,7 @@ person.onwer = person
 
 
 
-`#`
+### `#`
 
 1. **JSON**.**stringfy**
 
@@ -59,7 +80,7 @@ person.onwer = person
 
    普通对比值，引用对象对比引用
 
-`#`
+### `#`
 
 递归 和 ===
 
@@ -132,3 +153,38 @@ const existCircular(obj) = () => {
   }
 }
 ~~~
+
+
+
+## 每日总结
+
+2024/5/16 UPDATE:
+今日总结：
+
+1. JSON.stringfy序列化环形对象会报错，可以根据JSON.stringfy方法抛出异常tryCatch或通过===判断引用来检测对象是否是环形对象。
+1. writing-mode可以改变页面流，在vertical-lr下，英文字符可以翻转让其竖直，中文等标点符号需要平移实现“基线对齐”。
+1. 分析采購貨品質量識別平臺需求报价，分析了项目需求与原型，梳理功能的流程，对功能上的ui、组件封住、逻辑设计、接口对接等进行拆解与并报价，基本的需求都过了一遍，但是发现分析的不够清楚，页面上模块的拆分不够好，明天继续参照AI智能对话的报价来完善这部分。
+
+
+
+
+明日计划：
+
+1. 继续完善采購貨品質量識別平臺报价
+1. 跟进AI 识别文件
+1. 跟进考核项目 grocery页面
+
+卡位：
+
+1.  暂无
+
+识别文件pr https://github.com/sj-distributor/AiRecognitionFile.Web/pull/12
+
+考核项目prhttps://gitlab.sjfood.us/solar/practiseforlevi/-/merge_requests/6
+
+## 每周总结
+
+## 目录
+
+
+
