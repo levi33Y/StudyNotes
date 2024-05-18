@@ -35,6 +35,10 @@
 1. 处理考核项目pr的comment。
 2. 学习useContext钩子并写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/useContext.md
 3. 学习useReducer钩子，useReducer与useState都可以管理状态，useReducer通常用来管理复杂的状态数据。使用dispatch唯一方法来修改reducer，此时会使用最新的状态通知UI重新渲染。
+4. 写dome实践useReducer并写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/useReducer.md。
+5. 处理考核项目comment。隐藏account page页面移动端的右侧滚动条。在底层内容盒子套一层中间盒子，然后扩大中间盒子右边padding让它超过外层盒子的宽度，在最外层盒子用overflow裁剪掉多余的的内容隐藏滚动条，底层盒子设置overflow-y覆盖属性恢复滑动效果。
+6. 学习自定义hook并写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/%E8%87%AA%E5%AE%9A%E4%B9%89hook.md。
+7. 学习类组件生命周期并与hooks进行对比，写学习笔记https://github.com/levi33Y/StudyNotes/blob/main/react/Hooks/%E7%B1%BB%E7%BB%84%E4%BB%B6%E4%B8%8Ehook.md。
 
 明天计划：
 
