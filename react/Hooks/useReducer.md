@@ -175,7 +175,7 @@ export const Grocery = () => {
 };
 ```
 
-## `#`
+### `#`
 
 1. 功能的实现可以使用 useState 或 useReducer，它们都可以用来管理状态
 
@@ -183,7 +183,7 @@ export const Grocery = () => {
 1. reducer 函数集中管理 actions 处理行为
 1. reducer 为纯函数，在组件外定义
 
-## `#`
+### `#`
 
 1. 声明 dispatch 方法，每个 dispatch 都接收一个 action
 
@@ -398,3 +398,4 @@ export const Grocery = () => {
      );
    };
    ```
+
