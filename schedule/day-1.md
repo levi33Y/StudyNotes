@@ -23,9 +23,9 @@
 
 ## today
 
-1. []学习router V6 与 状态保存，并写文章
-1. []scroll總結
-1. []useReduer解析
+1. [❌]学习router V6 与 状态保存，并写文章
+1. [❌]scroll總結
+1. [❌]useReduer解析
 
 ## 发掘
 
@@ -87,16 +87,17 @@ setTime隊列與Hz造成的閃屏
 
 ## 每日总结
 
-2024/5/18 UPDATE:
+2024/5/20 UPDATE:
 今日总结：
 
+1. 学习react开发中中长列表的处理方式。前端可以直接渲染、使用时间分片和虚拟列表来处理长列表，时间分片有值得了解的两个方法，requestAnimationFrame动画帧相对于setTime更优，能够适应屏幕刷新率执行，有效解决可能存在的闪屏问题。
+2. 学习了浏览器GUI与事件循环。在整个EventLoop中，setTime是会进入浏览器队列中，而js处理任务实在浏览器GUI之后，可以使用setTime(()=>{},0)来打印浏览器渲染的时间，值得注意setTime似宏任务，在浏览器为任务队列。
 
 
+明日计划：
 
-周一计划：
-
-1. 跟进AI 识别文件
-1. 跟进考核项目 grocery页面
+1. 跟进AI 识别文件。
+1. 跟进考核项目 grocery页面，学习cicd发布部署。
 
 卡位：
 
@@ -107,22 +108,6 @@ setTime隊列與Hz造成的閃屏
 考核项目prhttps://gitlab.sjfood.us/solar/practiseforlevi/-/merge_requests/6
 
 ## 每周总结
-
-- 完成考核项目grocery page ui 和接口配置并处理 pr comment，优化项目dom结构，自适应等问题。
-
-- 了解css moduel 与 webpack对sass解析原理。
-
-- 处理AI 识别文件 pr comment，完成自适应功能处理。
-
-- 学习ant Design组件静态方法与组件hooks的使用。
-
-- 学习组件状态缓存，学会react-activation在项目中应用。
-
-- 跟进与完成采購貨品質量識別平臺需求报价。
-
-- 对比type在interface的不同，了解项目开发中类型定义的使用。
-
-
 
 周一计划
 
