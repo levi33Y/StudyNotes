@@ -136,19 +136,19 @@ c: x * 2 / (1+1+2)
 
 ## flex-shrink
 
+>负值是不被允许的
+>
+>只要 `flex-shrink` 有正值，元素就会收缩以至于它们不会溢出容器。
+
 收缩因子，在负分配空间中，相对于其他flex元素的收缩程度
 
-默认行为：none
+**默认行为**：none
 
 **习题：**
 
-1. >
-   >
-   >只要 `flex-shrink` 有正值，元素就会收缩以至于它们不会溢出容器。
+1. 0: 元素不允许收缩，即使溢出盒子
 
-2. 0: 元素不允许收缩，即使溢出盒子
-
-3. 1: 等比收缩
+2. 1: 等比收缩
 
 **抢占：**
 
@@ -156,11 +156,11 @@ c: x * 2 / (1+1+2)
 <div class="box">
   <div class="one">One</div>
   <div class="two">Two</div>
-  <div class="three">Three Three Three Three</div>
+  <div class="three">Three</div>
 </div>
 ```
 
-1. 
+1. 正分配空间下，flex-shrink不生效
 
 ~~~css
 .box {
@@ -170,11 +170,9 @@ c: x * 2 / (1+1+2)
 .one {
   flex: 2 1 100px;
 }
-
 .two {
   flex: 2 1 100px;
 }
-
 .three {
   flex: 2 1 100px;
 }
@@ -206,11 +204,9 @@ three的宽度：
 .one {
   flex: 1 1 150px;
 }
-
 .two {
   flex: 1 2 100px;
 }
-
 .three {
   flex: 1 3 50px;
 }
@@ -226,9 +222,23 @@ two的高度：100 - 100 * 2/5 ～ 60
 
 three的高度：50 - 50 * 3/5 ～ 20
 
+运行效果：
+
+可以看出three并不等于20，因为min-content
+
+继续分配42.41-20
+
+A: basic : 120 sherik 1 加权比例 120 * 1 / (120*1 + 60 * 2)
+
+B: basic : 60 shrik 2
 
 
-3.
+
+
+
+
+
+3. padding等对basic的影响
 
 ```
 .box {
@@ -260,11 +270,9 @@ three的高度：50 - 50 * 3/5 ～ 20
 .one {
   flex: 1 1 150px;
 }
-
 .two {
   flex: 1 2 100px;
 }
-
 .three {
   flex: 1 3 50px;
 }
@@ -281,4 +289,26 @@ three的高度：50 - 50 * 3/5 ～ 20
 >
 >
 >在 CSS 中还有 [`min-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/min-content) 和 [`max-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/max-content) 这两个概念；这两个关键字可以用来代替[长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)。
+
+width
+
+padding等
+
+基本的属性
+
+
+
+## 参考：
+
+https://www.cnblogs.com/liyan-web/p/11217330.html
+
+https://segmentfault.com/a/1190000039964970
+
+[离不开钱的flex](https://juejin.cn/post/7339042131467747368?utm_source=gold_browser_extension#heading-0)
+
+[flex 元素上的属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox#flex_元素上的属性)
+
+[flex-shrink 属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis#flex-shrink_属性)
+
+[flex shrink factor](https://drafts.csswg.org/css-flexbox/#flex-flex-shrink-factor)
 

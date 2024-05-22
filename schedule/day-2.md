@@ -41,16 +41,17 @@ flex-basis:
 
 ## 二、每日总结
 
-2024/5/20 UPDATE:
+2024/5/21 UPDATE:
 今日总结：
 
-1. 
+1. 处理考核项目 pr comment。引入ahook库，使用useDebounceFn优化页面中的防抖功能，处理项目自适应问题。条件渲染容易改变dom结构，使用伪类选择器选择位置容易出现错误，此时应该用类名选择器防止出错。
+1. 学习了flexbox，学习了flex-basis、flex-grow和flex-shrink属性的含义，正分负分配空间时元素的分配规则。了解了width的值有min-content 与 max-content关键字。
 
 
 明日计划：
 
 1. 跟进AI 识别文件。
-1. 跟进考核项目 grocery页面，学习cicd发布部署。
+1. 跟进考核项目 grocery页面。
 
 卡位：
 
