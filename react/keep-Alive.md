@@ -54,3 +54,9 @@ css 屬性實現保存組件
 
 ## 使用react-activation
 
+
+
+## 参考
+
+[React状态保存（Keep-Alive）实现方式概览](https://juejin.cn/post/7154309586671894542)
+
