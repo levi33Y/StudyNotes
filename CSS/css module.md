@@ -2,6 +2,8 @@
 
 
 
+## 文件約束
+
 `<link src="./index.css"/>`
 
 
@@ -91,3 +93,8 @@ module.exports = {
 };
 ```
 
+## 全局規則 :global()
+
+`#`
+
+`#`

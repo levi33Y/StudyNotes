@@ -19,28 +19,85 @@
 7. [❓] 需求：解决 rem 和适口单位的混乱
 8. [❓] 滚动条开发笔记
 9. [❓]ts 笔记
+10. [❓]css module
 
 ## today
 
-1. [✅]开发考核项目 grocery page ui 接口配置和 grocery page 接口对接。
-1. [❓]处理AI 识别文件pr comment
+1. [❌]学习router V6 与 状态保存，并写文章
+1. [❌]scroll總結
+1. [❌]useReduer解析
+
+## 发掘
+
+長列表
+
+### 長列表
+
+https://juejin.cn/post/7354940230301057033?utm_source=gold_browser_extension
+
+https://juejin.cn/post/6844903938894872589
+
+
+
+#V8執行代碼、頁面渲染、同步、宏、微
+
+https://juejin.cn/post/7020328988715270157
+
+js引擎與瀏覽器UI概念
+
+前端中同步與異布任務
+
+EventLoop流程
+
+異步任務優先級
+
+異步任務的宏任務與微任務之分
+
+EventLoop執行微任務和宏任務流程
+
+瀏覽器事件循環流程
+
+
+
+#promise題目
+
+https://juejin.cn/post/6844904077537574919#heading-56
+
+
+
+#setTime 0 與 遞歸
+
+setTime隊列與Hz造成的閃屏
+
+
+
+#requestAnimationFrame + fragment时间分片
+
+任务队列
+
+优化动画的API？ 動畫楨率？
+
+
+
+#虚拟列表
+
+窗口
+
+
 
 ## 每日总结
 
-2024/5/13 UPDATE:
+2024/5/20 UPDATE:
 今日总结：
 
-1. 完成考核项目grocery page ui 和接口配置并发pr，src下，新建appsettings封装fetch，AppHook用于应用渲染时获取配置，新建services文件夹，新services/api/http-client.tsx封装post和get方法，/services/api/grocery为业务模块封装方法调用请求数据。期间遇到../appsetting.json获取不到配置文件，原因是编译后应用内的浏览器请求的本地资源要放在pubilc文件夹下。请求发生跨域，原因是代理端口是8080，新建.env文件让项目在要求端口下运行。
-1. 使用import 'index.moduel.scss' 类名選擇器失效，原因是css moduel下，css-loader匹配/\.module\.scss$/i使用local对类名运行哈希算法，此时并不能在页面用类名匹配scss文件作用域下类名。解决办法是改为index.scss或者.css，这样即使import loader也会把文件当作普通的css，或者使用:global声明全局规则。值的注意的是:local()是显式表达，等于直接写类名。
-
+1. 学习react开发中中长列表的处理方式。前端可以直接渲染、使用时间分片和虚拟列表来处理长列表，时间分片有值得了解的两个方法，requestAnimationFrame动画帧相对于setTime更优，能够适应屏幕刷新率执行，有效解决可能存在的闪屏问题。
+2. 学习了浏览器GUI与事件循环。在整个EventLoop中，setTime是会进入浏览器队列中，而js处理任务实在浏览器GUI之后，可以使用setTime(()=>{},0)来打印浏览器渲染的时间，值得注意setTime似宏任务，在浏览器为任务队列。
 
 
 明日计划：
 
-1. 处理AI 识别文件pr comment
-1. 处理 考核项目 pr comment
-
-
+1. 跟进AI 识别文件。
+1. 跟进考核项目 grocery页面，学习cicd发布部署。
 
 卡位：
 
@@ -52,32 +109,15 @@
 
 ## 每周总结
 
+周一计划
+
+- 跟进AI 识别文件
+
+- 跟进考核项目 grocery页面
+
+- 学习cicd发布部署
+
 ## 目录
 
-无插件：接口配置
-
-自定义hook是干嘛的，一个组件内的小分页、数据请求要在组件的hook里吗
-
-public文件夹
-
-跨域
-
-import css 與sass cssmodel使類選擇棄全局變量失效
-
-### 接口配置
-
-1. 配置文件
-2. 接口封装
-3. 业务请求
-4. 使用
-
-### 自定义hook
-
-1. use开头的，可以获取特定组件功能
-   1. 在useAction可以获取请求/分页状态
-   2. 组件tsx实例化，调用方法/改变数据
-
-### Css moduel
-
-使用import 'index.moduel.scss' 類名選擇器失效，原因是css moduel下，css-loader匹配/\.module\.scss$/i使用local對类名运行哈希算法，此时并不能在页面用类名匹配scss文件作用域下类名。解决办法是改为index.scss或者.css，这样即使import loader也会把文件当作普通的css，或者使用:global声明全局规则。值的注意的是:local()是显式表达，等于直接写类名。
+### 需求报价
 

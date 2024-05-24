@@ -19,31 +19,39 @@
 7. [❓] 需求：解决 rem 和适口单位的混乱
 8. [❓] 滚动条开发笔记
 9. [❓]ts 笔记
-10. []css module
+10. [❓]css module
+11. [❓]学习router V6 与 状态保存，并写文章
+12. [❓]scroll總結
+13. [❓]useReduer解析
 
 ## today
 
-1. []处理AI 识别文件pr comment。
-1. []处理AI 识别文件pr comment
+1. []step 1
+1. 
 
-## 每日总结
+## 一、发掘
 
-2024/5/14 UPDATE:
+### flex: 1
+
+flex-grow:
+
+flex-shrink:
+
+flex-basis: 
+
+## 二、每日总结
+
+2024/5/21 UPDATE:
 今日总结：
 
-1. 处理AI 识别文件 pr comment，完成删除的二次确认ui，根据代码规范修改代码结构和删除代码中多余的方法。
-
-2. 处理考核项目pr comment。
-3. 在ant Design中静态方法使用对话框，出现Static function can not consume context错误，原因是此方法是创建一个新的react实例，获取不到应用的context，而且在app中全局配置也是不会生效。根据需求，在业务组件使用modal的hook，然后在return组件的时候注入Context节点。
-
+1. 处理考核项目 pr comment。引入ahook库，使用useDebounceFn优化页面中的防抖功能，处理项目自适应问题。条件渲染容易改变dom结构，使用伪类选择器选择位置容易出现错误，此时应该用类名选择器防止出错。
+1. 学习了flexbox，学习了flex-basis、flex-grow和flex-shrink属性的含义，正分负分配空间时元素的分配规则。了解了width的值有min-content 与 max-content关键字。
 
 
 明日计划：
 
-1. 处理AI 识别文件 自适应
-1. 处理 考核项目 pr comment
-
-
+1. 跟进AI 识别文件。
+1. 跟进考核项目 grocery页面。
 
 卡位：
 
@@ -53,15 +61,7 @@
 
 考核项目prhttps://gitlab.sjfood.us/solar/practiseforlevi/-/merge_requests/6
 
-## 每周总结
+## 三、每周总结
 
-## 目录
-
-Static function can not consume context like dynamic theme. Please use 'App' component instead
-
-
-
-静态方法 动态主题 上下文content
-
-
+## 四、目录
 
