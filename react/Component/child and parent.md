@@ -2,7 +2,11 @@
 
 Props将信息传递给JSX标签，是组件的唯一参数（Object)
 
+
+
 ## Props
+
+
 
 ### `#`
 
@@ -277,6 +281,8 @@ export const Grocery = () => {
 
    ![image-20240423092546704](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240423092546704.png)
 
+
+
 ## 兄弟组件通信
 
 ### `#`
@@ -357,6 +363,8 @@ export const Grocery = () => {
    运行结果如下：
    
    ![image-20240423200044577](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240423200044577.png)
+
+
 
 ## 将jsx作为子组件传递
 
