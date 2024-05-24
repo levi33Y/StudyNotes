@@ -1,4 +1,4 @@
-# [list](https://github.com/ant-design/ant-design-mobile/tree/master/src/components/list)
+# [list列表组件](https://github.com/ant-design/ant-design-mobile/tree/master/src/components/list)
 
 >Demo
 >
