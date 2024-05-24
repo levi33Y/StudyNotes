@@ -31,17 +31,15 @@
 
 ## 一、发掘
 
-
-
-[react 17](https://github.com/7kms/react-illustration-series)
+1. step
+2. 
 
 ## 二、每日总结
 
 2024/5/24 UPDATE:
 今日总结：
 
-1. 处理考核项目pr 并approved。
-1. 学习团队cicd流程并发布自己的项目，并域名访问成功。学习gitlab打tag包并且更新自己的项目版本。回顾了整个cicd的全过程https://github.com/levi33Y/StudyNotes/blob/main/cicd/Practise.md
+1. 
 
 
 明日计划：
@@ -54,9 +52,17 @@
 
 识别文件pr https://github.com/sj-distributor/AiRecognitionFile.Web/pull/12
 
-考核项目prhttps://gitlab.sjfood.us/solar/practiseforlevi/-/merge_requests/6
-
 ## 三、每周总结
+
+1. 学习项目开发中学习react开发中使用时间分片和虚拟列表处理长列表的方式。
+1. 学习了浏览器GUI与事件循环概念。
+1. 处理考核项目 pr comment并引入使用ahook、编写全局hook组件为grocery页面做位置缓存、approve pr。
+1. 学习flexbox并深入理解了flex-basis、flex-grow和flex-shrink变化原理。
+1. 学习本地测试和ci配置并发布自己的考核项目tag版本包。
+
+
+
+1. 跟进AI 识别文件。
 
 ## 四、目录
 
