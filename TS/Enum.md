@@ -2,9 +2,13 @@
 
 Enum类型，TS的Enum值
 
-## 目录
+*内容很多，继续学习补充......*
+
+
 
 ## 基本语法
+
+### `#`
 
 **不能同名**
 
@@ -18,7 +22,7 @@ Enum类型，TS的Enum值
 
 **Enum 名字在作用域为同一个值**
 
-很多很多...
+### `#`
 
 
 
@@ -93,13 +97,11 @@ function move(where: "Up" | "Down" | "Left" | "Right") {
 }
 ```
 
-
-
 ### `#`
 
 ### `#`
 
-使用联合类型
+**使用联合类型**
 
 ```ts
 enum Where {
@@ -116,7 +118,7 @@ function move(where: Where) {
 
 
 
-获取Eumn的类型值
+**获取Eumn的类型值**
 
 ```tsx
 enum Where {
