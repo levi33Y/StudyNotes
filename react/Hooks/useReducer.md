@@ -2,6 +2,8 @@
 
 集中进行状态管理，降低通过 useState 方式管理状态的复杂度
 
+
+
 ## **目录**
 
 - state
@@ -12,17 +14,23 @@
 
 - To Do List 功能
 
+
+
 ## state
 
 状态
 
 1. 与 useState 获取的 state 一样，是**不变的**,只能通过唯一的 dispatch 来更新状态
 
+
+
 ## action
 
 单一的交互行为，即使会引发很多数据的更新
 
 1. {type:string}
+
+
 
 ## dispatch
 
@@ -33,6 +41,8 @@
    - dispatch 是为了下次渲染更新 state
    - 对**与当前 state 相同值**的行为跳过重新渲染
 
+
+
 ## reducer
 
 纯函数
@@ -41,6 +51,8 @@
    - 传入的参数必须有 state 和 aciton
    - 返回值必须是 state
 
+
+
 ## useReducer
 
 react hook
@@ -48,6 +60,8 @@ react hook
 1. const [state, dispatch] = useReducer(reducer, initialArg, init?)
    - initialArg 表示 state 的初始值
    - init，计算初始值的函数，当传入值初始值为 init(initiArg)
+
+
 
 ## To Do List 功能
 

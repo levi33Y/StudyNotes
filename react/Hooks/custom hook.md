@@ -2,6 +2,8 @@
 
  use开头的utlis
 
+*知识很多，续继续学习补充.....*
+
 ## 目录
 
 - hook规范
@@ -9,7 +11,7 @@
 - 面向特定场景或功能自定义hook
 - 第三方React Hooks库
 
-知识很多，续继续学习补充.....
+
 
 ## hook规范
 
@@ -68,9 +70,7 @@ export const Grocery = () => {
 
 
 
-## 面向特定场景或功能自定义hook
-
-### input双向绑定hook
+## 面向特定场景或功能自定义hook：input双向绑定hook
 
 hook.ts
 

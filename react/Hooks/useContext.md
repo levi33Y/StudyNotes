@@ -2,13 +2,13 @@
 
 useContext订阅， createContext发布，实现上下级通信
 
-**目录**
+## **目录**
 
-- 概念
+- **概念**
   - context
   - createContext
   - useContext
-- 实践
+- **实践**
   - 远亲组件传值
   - 创建动态组件
   - props、children、context
@@ -19,33 +19,42 @@ useContext订阅， createContext发布，实现上下级通信
 
 createContext的返回值，发布的信息对象
 
-1. `<SomeContext.Provider value={arg}></SomeContext.Provider>`
-   - 使用标签包裹‘订阅者’
-   - SomeContext为createContext返回的一个上下文对象
-   - value是固定的传参形式，用`value={xxx}`来决定发布的信息
-2. 覆盖：子组件包裹到一个提供不同值的 context provider 中，来覆盖来自原先上层的context
-3. 使用场景
-   - 繁琐的props数据流
-   - 组件过于庞大，抽象出来直接传递props困难
+- `<SomeContext.Provider value={arg}></SomeContext.Provider>`
+  1. 使用标签包裹‘订阅者’
+  2. SomeContext为createContext返回的一个上下文对象
+  3. value是固定的传参形式，用`value={xxx}`来决定发布的信息
+
+- 覆盖：子组件包裹到一个提供不同值的 context provider 中，来覆盖来自原先上层的context
+
+- 使用场景
+  1. 繁琐的props数据流
+  2. 组件过于庞大，抽象出来直接传递props困难
+
+
 
 ## createContext
 
 React.createContext()，创建上下文对象
 
-1. const SomeContext = createContext(defaultValue)
-   - 在组件外使用
-   - SomeContext为自定义变量，createContext返回的一个上下文对象
-   - 当使用useContext获取不到SomeContext.Provider的值是，会返回defaultValue默认值
-2. 添加状态
+- const SomeContext = createContext(defaultValue)
+  1. 在组件外使用
+  2. SomeContext为自定义变量，createContext返回的一个上下文对象
+  3. 当使用useContext获取不到SomeContext.Provider的值是，会返回defaultValue默认值
+
+- 添加状态
+
+
 
 ## useContext
 
 react hooks
 
-1. const value = useContext(SomeContext)。
-   - 在组件的顶层使用
-   - value为自定义的变量，组件上方最近的 SomeContext.Provider 的 `value`
-   - someContext，用createContext创建的context
+- const value = useContext(SomeContext)。
+  1. 在组件的顶层使用
+  2. value为自定义的变量，组件上方最近的 SomeContext.Provider 的 `value`
+  3. someContext，用createContext创建的context
+
+
 
 ## 远亲组件传值
 
@@ -208,6 +217,8 @@ export const Grocery = () => {
 运行结果：
 
 ![image-20240429135207225](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240429135207225.png)
+
+
 
 ## props、children、context
 
