@@ -26,7 +26,9 @@ Enum类型，TS的Enum值
 
 
 
-## 变量名就是值,用Enum写switch
+## 变量名就是值
+
+用Enum写switch
 
 ### `#`
 
