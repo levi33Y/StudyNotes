@@ -1,3 +1,5 @@
+# gitflow
+
 ## **Git Flow常见分支**
 
 - Master分支：生产环境代码
@@ -36,3 +38,43 @@
 - dev （Development environment） ： 开发环境，外部用户无法访问，开发人员使用，版本变动很大。
 
 - fat (Feature Acceptance Test environment) : 功能验收测试环境，用于软件测试者测试使用
+
+## Github 提交流程
+
+环境：github账号、github desktop
+
+新建仓库
+
+新建里程杯
+
+新建issue
+
+新建分支
+
+发pr
+
+comment
+
+approved
+
+## GitLab 提交流程
+
+环境：gitLab、scorceTree
+
+新建仓库
+
+新建里程杯
+
+新建issue
+
+新建分支
+
+发pr
+
+comment
+
+approved
+
+发tag
+
+新建里程杯
