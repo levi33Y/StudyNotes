@@ -1,6 +1,6 @@
 # StudyNotes
 
->: 
+>
 >
 >**Don't do it.**
 >
