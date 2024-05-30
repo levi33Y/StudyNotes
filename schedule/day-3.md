@@ -26,7 +26,7 @@
 
 ## Today
 
-1. 初始化
+1. [✅]初始化
 
 ## 一、发掘
 
@@ -35,7 +35,7 @@
 2024/5/29 UPDATE:
 今日总结：
 
-1. 初始化报表中心项目，完成相关配置和依赖，完成模版库模版对象抽屉组件基本结构和样式的开发，期间导入tailwind依赖时发现tailwindcss不生效，原因是使用框架开发时想跳过创建css文件要安装postCss。
+1. 初始化报表中心项目，完成相关配置和依赖。完成模版库模版对象抽屉组件基本结构和样式的开发，期间导入tailwind依赖时发现tailwindcss不生效，原因是使用框架开发时想跳过创建css文件要安装PostCSS。
 1. 学习延迟数据，了解了Suspense、defer、Await组件和useAsyncValue方法。与目标路由页面promise异步实现loading，渲染后执行js条件渲染的区别是，使用defer等优化等待数据请求的方式并不是瀑布式的，loading的展示是在路由跳转后立刻显示。
 
 
@@ -49,6 +49,8 @@
 1.  暂无
 
 识别文件pr https://github.com/sj-distributor/AiRecognitionFile.Web/pull/12
+
+报表中心pr https://github.com/mindy0-0/ReportCenter/pull/2
 
 ## 三、每周总结
 
