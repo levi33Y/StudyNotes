@@ -303,6 +303,16 @@ CMD ["nginx", "-g", "daemon off;"]
 
 1. ci跑完后在CAEATE RELEASE
 
+2. ⚠️要知道和记住自己配置的集群、域名、地址。要询问团队怎么配置
+
+   |      | 位置                                  |
+   | ---- | ------------------------------------- |
+   | 集群 | process基本信息中的 “On Behalf Of“    |
+   | 域名 | 项目变量的IngressBaseDomainName变量值 |
+   | 地址 | 项目变量的url地址                     |
+
+   
+
 
 
 ## 🎉发布
