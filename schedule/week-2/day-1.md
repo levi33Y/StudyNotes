@@ -155,7 +155,7 @@ Hash结构 键值对
 
 卡位：暂无
 
-模版中心 模版获取 https://github.com/sj-distributor/AiRecognitionFile.Web/pull/12
+模版中心 模版获取https://github.com/sj-distributor/ReportCenter.Web/pull/11
 
 ## 三、每周总结
 
