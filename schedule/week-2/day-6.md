@@ -66,7 +66,7 @@
 
 ## Today
 
-1. [✅] 接口枚举
+1. 
 
 
 
@@ -79,13 +79,13 @@
 2024/6/21 UPDATE:
 今日总结：
 
-1. 处理模版中心pr comment。修改state与enum命名规范，模版获取是根据tab value条件渲染的，删除了在tab下渲染的三个form的方法，重新声明一个state来用一个form根据state条件渲染。数组at和[]区别，at返回索引对应的元素，不能用来修改数组值，括号表示法是对象的引用，即是数组的内存。
-1. 学习ts中keyof和in关键词，keyof能够索引目标的key，in能够遍历枚举类型。ts是一门静态类型系统，根据接口类型来过滤对象只能用硬代码指定属性。
+1. 开发模版架构对象自定义校验组件，完成树与选择框交互功能。根据checkedKeys父子联动的特性。select onchange时setFieldValue表单值，在自定义校验组件定义onChange提供选择节点时监听时机然后setFieldValue表单值。
+1. 处理模版获取pr。学习数组some方法，将保存逻辑独立的for与if逻辑判断写成some的一个测试，然后用flag接受结果来判断保存状态。
 
 
 
 
-明日计划：
+周一计划：
 
 1. 处理模版获取pr comments
 
