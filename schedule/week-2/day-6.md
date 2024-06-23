@@ -99,7 +99,18 @@
 
 ## 三、每周总结
 
+1. 学习form组件，了解FormItem name的路径规则，noStyle会移除FormItem包括labe的样式
+1. 了解Map的底层原理
+1. 完成日历多选选择器自定义校验组件开发
+1. 学习网格布局，了解grid基本用法
+1. 学习TS中keyof和in关键词
+1. 开发架构对象自定义校验组件完成组件联动功能
+1. 数组some方法，将独立的判断条件写成some的一个测试。
 
+
+
+1. 处理模版获取pr comments
+2. 学习busybee项目代码并了解项目需求
 
 
 ## 四、目录
@@ -132,7 +143,7 @@ getFieldValue
 
 setFieldValue
 
-ß
+
 
 #树数据结构
 
