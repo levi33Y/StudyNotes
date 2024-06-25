@@ -64,13 +64,11 @@
 
 23. [❓]继续学习react 以及 react Router V6的api和组件
 
-24. []iterator，可以使用for..of等方法
-
-25. []接口与类型
-
 ## Today
 
-1. 
+1. [✅] ant 组件
+2. [✅] 保存逻辑
+3. [❌] 接口枚举
 
 
 
@@ -80,19 +78,18 @@
 
 ## 二、每日总结
 
-2024/6/24 UPDATE:
+2024/6/18 UPDATE:
 今日总结：
 
-1. 处理模版中心 pr comments。ant中tab等选项key一般为字符串，枚举类型值默认是是0到n的整数。简化if逻辑，逻辑运算也返回boolean值直接传递给变量。
-2. 学习ts 索引签名和类型映射。keyof any表示string number symbols联合类型。索引签名定义为number类型约束数组每一项类型，string约束对象。类型映射可以基于旧类型创建新的类型，使用in关键字对联合类型所有键进行定义，keyof typeof能够对枚举类型转为普通对象定义一个将成员作为键值的映射类型
+1. 完成模版获取的保存逻辑开发。使用col对嵌套的表单项拆解，学习了noStyle会移除FormItem所有包括自定义样式和label等样式。使用required对嵌套字段label单独设置校验样式。
+1. 完善发送设置字段ui，完成”每个月“日历多选选择器自定义校验组件开发。在span中使用onClick触发onChange方法来更新value。使用flex-wrap实现日历的网格效果，使用flex居中解决第一和最后一列不对称的问题。学习Array.from静态方法，设置mapfn参数让数组从1开始循环渲染31天的日历dom。
 
 
 
 
 明日计划：
 
-1. 处理模版获取pr comments
-1. 继续学习ts Record等内置类型和Omit等工具类
+1. 优化模版获取表单逻辑，根据模版获取的需求和原型对部分ui进行调整。
 
 
 
@@ -100,16 +97,38 @@
 
 模版中心 模版获取 https://github.com/sj-distributor/ReportCenter.Web/pull/11
 
-
-
 ## 三、每周总结
 
-1. 处理模版获取pr comments
-2. 学习busybee项目代码并了解项目需求
 
-
+1. 继续学习react 以及 react Router V6的api和组件
 
 
 ## 四、目录
 
-iterator
+保存逻辑
+
+ant组件
+
+checkbox
+
+### 保存逻辑
+
+忽略了初始值。（不是formList的表单有undefine初始值）
+
+## ant组件
+
+并排效果；两个form->嵌套
+
+noStyle去除classname、noStyle
+
+直接复制ant * 的样式
+
+### checkbox
+
+![image-20240618153338249](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240618153338249.png)
+
+自定义校验组件
+
+grid布局
+
+Array.from

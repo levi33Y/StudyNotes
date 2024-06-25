@@ -64,10 +64,6 @@
 
 23. [❓]继续学习react 以及 react Router V6的api和组件
 
-24. []iterator，可以使用for..of等方法
-
-25. []接口与类型
-
 ## Today
 
 1. 
@@ -80,19 +76,18 @@
 
 ## 二、每日总结
 
-2024/6/24 UPDATE:
+2024/6/21 UPDATE:
 今日总结：
 
-1. 处理模版中心 pr comments。ant中tab等选项key一般为字符串，枚举类型值默认是是0到n的整数。简化if逻辑，逻辑运算也返回boolean值直接传递给变量。
-2. 学习ts 索引签名和类型映射。keyof any表示string number symbols联合类型。索引签名定义为number类型约束数组每一项类型，string约束对象。类型映射可以基于旧类型创建新的类型，使用in关键字对联合类型所有键进行定义，keyof typeof能够对枚举类型转为普通对象定义一个将成员作为键值的映射类型
+1. 开发模版架构对象自定义校验组件，完成树与选择框交互功能。根据checkedKeys父子联动的特性。select onchange时setFieldValue表单值，在自定义校验组件定义onChange提供选择节点时监听时机然后setFieldValue表单值。
+1. 处理模版获取pr。学习数组some方法，将保存逻辑独立的for与if逻辑判断写成some的一个测试，然后用flag接受结果来判断保存状态。
 
 
 
 
-明日计划：
+周一计划：
 
 1. 处理模版获取pr comments
-1. 继续学习ts Record等内置类型和Omit等工具类
 
 
 
@@ -104,12 +99,52 @@
 
 ## 三、每周总结
 
+1. 学习form组件，了解FormItem name的路径规则，noStyle会移除FormItem包括labe的样式
+1. 了解Map的底层原理
+1. 完成日历多选选择器自定义校验组件开发
+1. 学习网格布局，了解grid基本用法
+1. 学习TS中keyof和in关键词
+1. 开发架构对象自定义校验组件完成组件联动功能
+1. 数组some方法，将独立的判断条件写成some的一个测试。
+
+
+
 1. 处理模版获取pr comments
 2. 学习busybee项目代码并了解项目需求
 
 
-
-
 ## 四、目录
 
-iterator
+树组件
+
+
+
+### 树组件
+
+#Tree API
+
+fieldNames 树数据结构
+
+checkedKeys 存在复选框下、父子联动的属性
+
+checkStrictly 存在复选框下、父子联动的属性
+
+expandedKeys: 暂开节点
+
+selectedKeys：选中节点
+
+
+
+#Form API
+
+id value onchange
+
+getFieldValue
+
+setFieldValue
+
+
+
+#树数据结构
+
+扁平化

@@ -58,19 +58,13 @@
 
 20. [❓]img标签的src属性
 
-21. [❓]了解一下row的flex设置为什么会使table出现异常想象
-
-22. [❓]ai文件识别和报表相似的权限功能，特别与选择框或列表交互功能，尝试封装起来。
-
-23. [❓]继续学习react 以及 react Router V6的api和组件
-
-24. []iterator，可以使用for..of等方法
-
-25. []接口与类型
-
 ## Today
 
-1. 
+1. [❌] ai文件识别 tree
+2. [✅] 报表中心 dto and updateDto
+3. [❌] 报表中心 tree
+4. [✅] 报表中心 drawer and form
+5. [✅] 诉职报告
 
 
 
@@ -80,36 +74,46 @@
 
 ## 二、每日总结
 
-2024/6/24 UPDATE:
+2024/6/11 UPDATE:
 今日总结：
 
-1. 处理模版中心 pr comments。ant中tab等选项key一般为字符串，枚举类型值默认是是0到n的整数。简化if逻辑，逻辑运算也返回boolean值直接传递给变量。
-2. 学习ts 索引签名和类型映射。keyof any表示string number symbols联合类型。索引签名定义为number类型约束数组每一项类型，string约束对象。类型映射可以基于旧类型创建新的类型，使用in关键字对联合类型所有键进行定义，keyof typeof能够对枚举类型转为普通对象定义一个将成员作为键值的映射类型
+1. 处理模版中心 pr comments，根据团队命名规范修改了dto之类的state根据组件来区分，比如分页的信息应该单独写成一个paginationDto。在使用自定义的工具函数直接赋值onClick时内部this undefine,原因是onClick直接等于函数使this指向onclick的上下文，解决办事时onClick等于箭头函数传递工具函数的结果，或者使用bind手动指向自定义的工具实例。
+1. 完成模板获取呼叫设置ui。
 
 
 
 
 明日计划：
 
-1. 处理模版获取pr comments
-1. 继续学习ts Record等内置类型和Omit等工具类
+1. 继续处理和开发报表中心pr comments和模版获取。
 
 
 
 卡位：暂无
 
-模版中心 模版获取 https://github.com/sj-distributor/ReportCenter.Web/pull/11
-
-
+模版中心pr  https://github.com/sj-distributor/ReportCenter.Web/pull/6
 
 ## 三、每周总结
 
-1. 处理模版获取pr comments
-2. 学习busybee项目代码并了解项目需求
+1. 继续处理和开发报表中心pr comment和模版获取。
 
+2. 了解一下row的flex设置为什么会使table出现异常想象
+
+3. ai文件识别和报表相似的权限功能，特别与选择框或列表交互功能，尝试封装起来。
+
+4. 继续学习react 以及 react Router V6的api和组件
+
+   
 
 
 
 ## 四、目录
 
-iterator
+state命名规范
+
+onclick(()=>fun())与onclick(fun)
+
+form的使用
+
+### state命名规范
+

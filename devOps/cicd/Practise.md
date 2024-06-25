@@ -129,11 +129,17 @@ CMD ["nginx", "-g", "daemon off;"]
 
    
 
-8. 添加agent，输入基本信息并选择设备
+8. 添加tiggers，选择然后点击确认即可。
+
+   ![image-20240529084233675](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240529084233675.png)
+
+   
+
+9. 添加agent，输入基本信息并选择设备
 
    ![image-20240524171919801](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524171919801.png)
 
-9. 配置好后，选择配置好docker脚本的分支尝试run一下
+10. 配置好后，选择配置好docker脚本的分支尝试run一下
 
    ![image-20240524172201515](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524172201515.png)
 
@@ -251,10 +257,11 @@ CMD ["nginx", "-g", "daemon off;"]
 
 1. On Behalf Of
 2. Kubernetes Object Status Check
-3. Ingress Annotations
-4. Ingress Host Rules
-5. Ingress TLS
-6. Namespace
+3. Ingress Name
+4. Ingress Annotations
+5. Ingress Host Rules
+6. Ingress TLS
+7. Namespace
 
 
 
@@ -295,6 +302,16 @@ CMD ["nginx", "-g", "daemon off;"]
 ### 🔧日志
 
 1. ci跑完后在CAEATE RELEASE
+
+2. ⚠️要知道和记住自己配置的集群、域名、地址。要询问团队怎么配置
+
+   |      | 位置                                  |
+   | ---- | ------------------------------------- |
+   | 集群 | process基本信息中的 “On Behalf Of“    |
+   | 域名 | 项目变量的IngressBaseDomainName变量值 |
+   | 地址 | 项目变量的url地址                     |
+
+   
 
 
 

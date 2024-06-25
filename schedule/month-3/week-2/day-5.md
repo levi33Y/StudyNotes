@@ -64,13 +64,9 @@
 
 23. [❓]继续学习react 以及 react Router V6的api和组件
 
-24. []iterator，可以使用for..of等方法
-
-25. []接口与类型
-
 ## Today
 
-1. 
+1. [✅] 接口枚举
 
 
 
@@ -80,11 +76,11 @@
 
 ## 二、每日总结
 
-2024/6/24 UPDATE:
+2024/6/21 UPDATE:
 今日总结：
 
-1. 处理模版中心 pr comments。ant中tab等选项key一般为字符串，枚举类型值默认是是0到n的整数。简化if逻辑，逻辑运算也返回boolean值直接传递给变量。
-2. 学习ts 索引签名和类型映射。keyof any表示string number symbols联合类型。索引签名定义为number类型约束数组每一项类型，string约束对象。类型映射可以基于旧类型创建新的类型，使用in关键字对联合类型所有键进行定义，keyof typeof能够对枚举类型转为普通对象定义一个将成员作为键值的映射类型
+1. 处理模版中心pr comment。修改state与enum命名规范，模版获取是根据tab value条件渲染的，删除了在tab下渲染的三个form的方法，重新声明一个state来用一个form根据state条件渲染。数组at和[]区别，at返回索引对应的元素，不能用来修改数组值，括号表示法是对象的引用，即是数组的内存。
+1. 学习ts中keyof和in关键词，keyof能够索引目标的key，in能够遍历枚举类型。ts是一门静态类型系统，根据接口类型来过滤对象只能用硬代码指定属性。
 
 
 
@@ -92,7 +88,6 @@
 明日计划：
 
 1. 处理模版获取pr comments
-1. 继续学习ts Record等内置类型和Omit等工具类
 
 
 
@@ -104,12 +99,15 @@
 
 ## 三、每周总结
 
-1. 处理模版获取pr comments
-2. 学习busybee项目代码并了解项目需求
-
 
 
 
 ## 四、目录
 
-iterator
+數組操作
+
+
+
+### 數組操作
+
+at与[]

@@ -2,13 +2,13 @@
 
 2024/5/7
 
-## todo
+## Todo
 
 1. [✅] xxx
 2. [❌] xxx
 3. [❓] xxx
 
-## yesterday
+## Yesterday
 
 1. [❓] 考核项目 - 笔记
 2. [❓]useState、useEffect、useRef、useImperaiveHandle 等 hook 笔记
@@ -24,27 +24,27 @@
 12. [❓]scroll總結
 13. [❓]useReduer解析
 
-## today
+## Today
 
-1. []step 1
-1. []本地docker部署
+1. [❌]总结考核项目每一个pr并写开发笔记。
+1. [❌]学习tailwindcss并尝试在考核项目中应用。
 
 ## 一、发掘
 
-1. step
-2. 
-
 ## 二、每日总结
 
-2024/5/24 UPDATE:
+2024/5/28 UPDATE:
 今日总结：
 
-1. 
+1. 完成智慧模版库审批中心审批内容UI。使用状态值计算文件上传列表的数量来设置Upload组件的高度，移除文件时发现高度并没有收缩，原因是这样实现高度的逻辑太过于复杂，改为用height: auto来让组件高度随内容变化，实现起来逻辑也清晰。
+1. 看了报表中心需求和团队项目的开发的项目。
 
 
 明日计划：
 
-1. 跟进AI 识别文件。
+1. 跟进报表中心。
+1. 跟进AI 识别文件 权限模块UI。
+1. 跟进智慧模版库审批中心审批内容UI
 
 卡位：
 
@@ -54,15 +54,7 @@
 
 ## 三、每周总结
 
-1. 学习项目开发中学习react开发中使用时间分片和虚拟列表处理长列表的方式。
-1. 学习了浏览器GUI与事件循环概念。
-1. 处理考核项目 pr comment并引入使用ahook、编写全局hook组件为grocery页面做位置缓存、approve pr。
-1. 学习flexbox并深入理解了flex-basis、flex-grow和flex-shrink变化原理。
-1. 学习本地测试和ci配置并发布自己的考核项目tag版本包。
 
-
-
-1. 跟进AI 识别文件。
 
 ## 四、目录
 

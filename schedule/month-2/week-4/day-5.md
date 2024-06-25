@@ -1,6 +1,6 @@
 # 学习笔记
 
-2024/6/11
+2024/5/7
 
 ## Todo
 
@@ -58,19 +58,16 @@
 
 20. [❓]img标签的src属性
 
-21. [❓]了解一下row的flex设置为什么会使table出现异常想象
-
-22. [❓]ai文件识别和报表相似的权限功能，特别与选择框或列表交互功能，尝试封装起来。
-
-23. [❓]继续学习react 以及 react Router V6的api和组件
-
-24. []iterator，可以使用for..of等方法
-
-25. []接口与类型
-
 ## Today
 
-1. 
+1. [] ai 文件识别comment
+2. [] ai文件识别 dto and updateDto
+3. [] ai文件识别 tree
+4. [] 报表中心 comment
+5. [] 报表中心 dto and updateDto
+6. [] 报表中心 tree
+7. [] 报表中心 drawer and form
+8. [] 诉职报告
 
 
 
@@ -80,36 +77,39 @@
 
 ## 二、每日总结
 
-2024/6/24 UPDATE:
+2024/6/7 UPDATE:
 今日总结：
 
-1. 处理模版中心 pr comments。ant中tab等选项key一般为字符串，枚举类型值默认是是0到n的整数。简化if逻辑，逻辑运算也返回boolean值直接传递给变量。
-2. 学习ts 索引签名和类型映射。keyof any表示string number symbols联合类型。索引签名定义为number类型约束数组每一项类型，string约束对象。类型映射可以基于旧类型创建新的类型，使用in关键字对联合类型所有键进行定义，keyof typeof能够对枚举类型转为普通对象定义一个将成员作为键值的映射类型
+1. 处理ai文件识别comment。在通过CSSProperties修改Modal的close时发现样式不生效，查看了modal style的接口发现并没有close属性，解决办法是通过修改modal的底层。
+1. 处理报表中心pr comment。
+1. 学习了node中package.json版本号。通常开发的插件和依赖通常是XYZ规则，分别是主、次和修订版号。版本号前 `^` `~`是npm i时拉取最新的Z版和Y版。依赖工具对package和packge-lock有差异，以后开发的时候注意忽略package-lock和对要锁的版本去掉`^`或`~`。
 
 
 
 
 明日计划：
 
-1. 处理模版获取pr comments
-1. 继续学习ts Record等内置类型和Omit等工具类
+1. 继续处理和开发报表中心pr comment和模版获取。
 
 
 
 卡位：暂无
 
-模版中心 模版获取 https://github.com/sj-distributor/ReportCenter.Web/pull/11
+模版中心pr  https://github.com/sj-distributor/ReportCenter.Web/pull/6
 
-
+Ai文件识别pr https://github.com/sj-distributor/AiRecognitionFile.Web/pull/12
 
 ## 三、每周总结
 
-1. 处理模版获取pr comments
-2. 学习busybee项目代码并了解项目需求
-
+1. 
 
 
 
 ## 四、目录
 
-iterator
+package-lock、版本号、～ `^`
+
+style 属性 与react css
+
+
+
