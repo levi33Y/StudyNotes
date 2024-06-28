@@ -40,15 +40,15 @@ const {ba,bb} = {bb:2, ba:1}
 
 
 
-## [] = {}
+## expect [] = {} toBe a=1,b=2
 
-`expect toBe a=1,b=2`
+有等式
 
 ~~~js
 const [a,b] = {a:1,b:2}
 ~~~
 
-但上面代码运行时报错，因为数据的解构依赖于变量是否存在迭代器
+上面代码运行时报错，因为数据的解构依赖于变量是否存在迭代器
 
 报错：`TS2488: Type { aa: number; bb: number; } must have a [Symbol.iterator]() method that returns an iterator.`
 

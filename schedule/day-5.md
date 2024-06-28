@@ -93,6 +93,7 @@
 2024/6/26 UPDATE:
 今日总结：
 
+1. 继续开发busybee 分配任务需求，完成分配任务页面的国际化语言配置。了解busybee项目数据请求模式。
 1. 学习属性枚举与对象iterable。Object.defineProperty可以修改属性描述对象enumerable修改对象属性的可枚举性，对象的iterable表示对象能够循序访问每次返回变量键值数组，Object类型没有默认迭代行为。学习了数组和对象解构
 
 
