@@ -77,6 +77,7 @@
 ## Today
 
 1. 
+1. 完成ai 文件识别cicd基本配置。在本地打包测试时出现插件ts语法错误，tsconfig配置skipLibCheck为true跳过ts语法校验，注意docker脚本COPY脚手架设置生成的打包文件名。配置项目目ci和cd的资源变量等基本信息。
 
 
 

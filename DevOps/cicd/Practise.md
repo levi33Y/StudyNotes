@@ -43,7 +43,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 1. 报错：ERROR: invalid tag "practiveLevi": repository name must be lowercase
 
-   打开控制台输入`docker images `查看本地镜像，发现镜像文件名输入错了，把practiveLevi改为practivelevi。注意镜像命名全小写。
+   打开控制台输入 `查看本地镜像，发现镜像文件名输入错了，把practiveLevi改为practivelevi。注意镜像命名全小写。
 
 2. 本地打开`http://localhost:8188/`发现接口请求跨域
 
@@ -193,8 +193,8 @@ CMD ["nginx", "-g", "daemon off;"]
 
   **Process 基本信息**
 
-  1. Step Name
-  2. On Behalf Of
+    1. Step Name 输入项目名
+    2. On Behalf Of 选择资源
 
 
 
@@ -204,20 +204,20 @@ CMD ["nginx", "-g", "daemon off;"]
   >
   >一个 Deployment 为 [Pod](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/) 和 [ReplicaSet](https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/replicaset/) 提供声明式的更新能力。
 
-  1. Deployment
-  2. Kubernetes Object Status Check
-  3. Volumes
-  4. Container
-     - Image Details
-     - Volume Mounts
+  1. Deployment 输入 deploy-名称-web
+  2. Kubernetes Object Status Check 选项
+  3. Volumes 新建键值信息
+  4. Container 
+     - Image Details 填写信息
+     - Volume Mounts 添加键值
   5. Namespace
 
 
 
-  **Service**：default
+  **Service**：
 
-  1. Service Name
-  2. Service Ports
+  1. Service Name 输入名称	
+  2. Service Ports 增加键值
 
 
 
@@ -227,7 +227,9 @@ CMD ["nginx", "-g", "daemon off;"]
 
   **Config Map**
 
-  1. Config Map Items
+1. Config Map Name 输入名称
+
+  1. Config Map Items 添加键值
 
 
 
@@ -255,13 +257,15 @@ CMD ["nginx", "-g", "daemon off;"]
 
 **ingress基本信息**
 
-1. On Behalf Of
-2. Kubernetes Object Status Check
-3. Ingress Name
-4. Ingress Annotations
-5. Ingress Host Rules
-6. Ingress TLS
-7. Namespace
+1. Step Name 输入名称
+
+1. On Behalf Of 选择资源
+2. Kubernetes Object Status Check ？ 
+3. Ingress Name 输入名称
+4. Ingress Annotations 增加键值
+5. Ingress Host Rules 增加键值
+6. Ingress TLS 增加键值
+7. Namespace 输入名称
 
 
 
@@ -282,6 +286,7 @@ CMD ["nginx", "-g", "daemon off;"]
    5. serverUrl 服务器
    6. sourceSyste 资源系统
    7. tlsSecret 证书
+   8. CPULimits 等等...
 
 
 
