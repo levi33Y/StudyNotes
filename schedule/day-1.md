@@ -33,30 +33,36 @@
 
 ## 二、每日总结
 
-2024/7/1 UPDATE:
+1. any类型约束
+2. modal 要用子组件
+3. form modal组件以及类型
+4. 路由组件开发 实现动态路由删除清空船只
+
+
+
+
+
+
+
+2024/7/8 UPDATE:
 今日总结：
 
-1. 学习fetch。fetch 是浏览器内置对象，input可以额获取静态配置文件，init初始化请求头等配置，fetch返回Promise对象。静态方法Object.entries接受对象返回以键值对为值的数组，数组的顺序为for of的迭代循序，这使让Object可以实现for...of遍历，避免for...in遍历对象原型。
-1. 配置ai文件识别 cicd。完成项目ci和cd资源变量等配置。在本地打包测试时，发现第三方插件抛出ts语法错误异常，解决办法是tsconfig 配置skipLibCheck为true跳过ts语法检测。注意项目打包静态包名与docker COPY路径名一致。
+1. 处理ai货品质量检测pr comments，继续开发素材列表 ui。修改使用useMemoizedFn的state更新函数类型校验，声明IKeysOfType 返回接口属性的联合类型，定义IValuesOfType通过[]返回属性值联合类型。使用form validateFields方法触发表单校验控制确定按钮状态，onValuesChange触发validateFields会改变outofDate，使用useUpdateEffect手动添加依赖触发逻辑。hook创建modal是接受app上下文的并不是页面子组件，当前页面依赖刷新时创建的modal并不会触发react刷新重新渲染，因此modal使用组件形式然后在页面中应用。
 
 
+明日计划：
 
-
-周一计划：
-
-1. 跟进busybee 分配任务开发需
-1. 跟进ai文件识别cicd 测试跑通
+1. 继续开发素材列表 ui
 
 
 
 卡位：暂无
 
-ai文件识别 cicdhttps://github.com/sj-distributor/AiRecognitionFile.Web/pull/16
-
-
+ai货品质量检测 数据来源ui pr https://github.com/sj-distributor/AiQualityCheck.Web/pull/8
 
 ## 三、每周总结
 
+1. 
 
 
 
