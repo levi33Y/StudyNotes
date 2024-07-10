@@ -326,7 +326,7 @@ Process 基本信息
 | ------------------------------ | --------------------------------------------------------- |
 | Deployment                     | 输入 deploy-名称-web                                      |
 | Kubernetes Object Status Check | 选项                                                      |
-| Volumes                        | 新建键值信息                                              |
+| Volumes                        | 新建键值信息？xxx.web->xxxweb                             |
 | Container                      | 1. Image Details 填写信息 <br />2. Volume Mounts 添加键值 |
 | Namespace                      |                                                           |
 
@@ -347,12 +347,14 @@ Process 基本信息
 
   **Config Map**
 
-|                  |          |
-| ---------------- | -------- |
-| Config Map Name  | 输入名称 |
-| Config Map Items | 添加键值 |
+|                  |                                                              |
+| ---------------- | ------------------------------------------------------------ |
+| Config Map Name  | 输入名称                                                     |
+| Config Map Items | 🔔添加键值，Key一般为appsetting.json，既是项目public的appsetting.json文件，值为里面对象的属性名格式如下图所示 |
 
-  
+
+
+
 
 **Secret**：default
 
