@@ -2,15 +2,11 @@
 
 2024/6/25
 
-
-
 ## Todo
 
 1. [✅] xxx
 2. [❌] xxx
 3. [❓] xxx
-
-
 
 ## Yesterday
 
@@ -72,40 +68,40 @@
 
 25. []接口与类型
 
-
-
 ## Today
 
-1. 
+1. 处理模版中心 pr comments
+1. 在修改文件并push到仓库时，发现github远程仓库小写文件共存，拉取到本地时大小写文件合并，原因是github更新了更改的大写文件，但git提交时大小写的删除等修改不会记录。在不修改git默认配置下修改文件名然后push，然后改回文件再提交。
+1. 学习ts 。学习了Record，Record能够返回key为键Type为值对象类型。Pick返回Type里面被选定键名的对象类型
 
 
 
-## 一、掘
-
-jest ts测试插件
-
-迭代器 之 对象
+## 一、发掘
 
 
 
 ## 二、每日总结
 
-2024/6/26 UPDATE:
+2024/6/25 UPDATE:
 今日总结：
 
-1. 继续开发分配任务需求，完成ui页面开发。学习了ant嵌套子列表，ant中expandedRowRender传递新的table组件实现表格嵌套子列表。使用margin实现Category在第一列的视觉效果
-1. 学习forwardRef api。组件接受父组件ref并传递给子组件，子组件内使用ref，父组件可以接受组件属性，useImperativeHandle hook能够限制dom信息来指定返回值给ref
+1. 处理模版中心 pr comments
+2. 在修改文件并push到仓库时，发现github远程仓库大小写文件夹共存，拉取到本地时大小写文件夹合并，原因是github更新了大写文件更改记录，但git提交时大小写的删除等修改不会记录。在不修改git默认配置下修改文件名然后push，然后改回文件再提交。
+3. 学习ts 。学习了Record，Record能够返回key为键Type为值对象类型。Pick返回Type里面被选定键名的对象类型。
 
 
 
 
 明日计划：
 
-1. 继续开发busybee 分配任务需求
+1. 处理模版获取pr comments
+1. 继续学习ts
 
 
 
 卡位：暂无
+
+模版中心 模版获取 https://github.com/sj-distributor/ReportCenter.Web/pull/11
 
 
 
@@ -119,48 +115,3 @@ jest ts测试插件
 
 ## 四、目录
 
-Warning: Favicon: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.
-
-bsb编辑页面设计
-
-
-
-#### bsb team-reception
-
-#router/ 业务 组件
-
-#弹窗 ModalBox
-
-条件条件：handle ref  父组件调用ModalBox的ref？
-
-所以ref并不是父组件传递给modalBox然后modalBox转发给modalBox的子组件，来达到父组件控制ModalBox里面的简单控件的？
-
-ModalBox并没有向父组件船体起子组件content的信息
-
---结果：舍弃 / 项目
-
-
-
-子组件：通过props content属性 
-
---结果：舍弃
-
-
-
-content 子组件/req-edit
-
-条件渲染：与传递的ref无关，子组件useEffect 逻辑
-
-ref传递给子组件，ref与modalBox一致，此时ref管理req-edit下的子组件，req-edit转发了父组件的ref
-
-req-edit子组件 team-edit，ref只用来关闭弹窗
-
-最总，ref只是 父组件-ModalBox-子组件/req-edit-子组件 team-edit， team-edit传递close方法 关闭ModalBox弹窗
-
---结果：
-
-
-
-#### ant 嵌套表格
-
-通过expandable传递expandable对象

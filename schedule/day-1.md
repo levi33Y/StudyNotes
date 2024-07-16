@@ -1,6 +1,8 @@
 # 学习笔记
 
-2024/6/11
+2024/7/15
+
+
 
 ## Todo
 
@@ -8,108 +10,77 @@
 2. [❌] xxx
 3. [❓] xxx
 
+
+
 ## Yesterday
-
-1. [❓] 考核项目 - 笔记
-
-2. [❓]useState、useEffect、useRef、useImperaiveHandle 等 hook 笔记
-
-3. [❓]reouter 6 笔记
-
-4. [❓]react 事件处理、react-dom 笔记
-
-5. [❓] recoil 笔记
-
-6. [❓] html body 标签
-
-7. [❓] 需求：解决 rem 和适口单位的混乱
-
-8. [❓] 滚动条开发笔记
-
-9. [❓]ts 笔记
-
-10. [❓]css module
-
-11. [❓]学习router V6 与 状态保存，并写文章
-
-12. [❓]scroll總結
-
-13. [❓]useReduer解析
-
-14. [❓]css 溢出场景；溢出、BFC、流内流外、边距折叠
-
-15. [❓]css 设置边框
-
-    ~~~css
-    .dotted-line{    
-    border: 1px dashed transparent;    
-    background: linear-gradient(white,white) padding-box, repeating-linear-gradient(-45deg,#ccc 0, #ccc .25em,white 0,white .75em);
-    }
-    
-    ~~~
-
-16. [❓]flex；浏览器紫色区域、flex:
-
-17. [❓]display 与 background颜色
-
-18. [❓] [html空格](https://blog.csdn.net/wuzhiyue2/article/details/117990898)
-
-19. [❓]vite 项目配置
-
-20. [❓]img标签的src属性
-
-21. [❓]了解一下row的flex设置为什么会使table出现异常想象
-
-22. [❓]ai文件识别和报表相似的权限功能，特别与选择框或列表交互功能，尝试封装起来。
-
-23. [❓]继续学习react 以及 react Router V6的api和组件
-
-24. []iterator，可以使用for..of等方法
-
-25. []接口与类型
-
-## Today
 
 1. 
 
 
 
-## 一、发掘
+
+## Today
+
+1. ai报表中心 新增模版ui调整
+2. ai检测货品
+
+
+
+## 一、掘
+
+
 
 
 
 ## 二、每日总结
 
-2024/6/24 UPDATE:
+2024/7/15 UPDATE:
 今日总结：
 
-1. 处理模版中心 pr comments。ant中tab等选项key一般为字符串，枚举类型值默认是是0到n的整数。简化if逻辑，逻辑运算也返回boolean值直接传递给变量。
-2. 学习ts 索引签名和类型映射。keyof any表示string number symbols联合类型。索引签名定义为number类型约束数组每一项类型，string约束对象。类型映射可以基于旧类型创建新的类型，使用in关键字对联合类型所有键进行定义，keyof typeof能够对枚举类型转为普通对象定义一个将成员作为键值的映射类型
+1. 处理ai识别文件pr并approved。修复列表改变页书后输入搜索内容搜索失败的问题。删除、新增后分页信息和搜索框未重置问题
+1. 学习js，undefined===null为true，null指示变量未指向任何对象，而undefine为window的只读属性变量，开发中不应该显性直接去使用undefined。
 
 
 
 
 明日计划：
 
-1. 处理模版获取pr comments
-1. 继续学习ts Record等内置类型和Omit等工具类
+1. 跟进ai识别文件开发
+1. 跟进报表中心开发
 
 
 
 卡位：暂无
 
-模版中心 模版获取 https://github.com/sj-distributor/ReportCenter.Web/pull/11
+ai识别文件
 
+搜索pr：https://github.com/sj-distributor/AiRecognitionFile.Web/pull/54
 
+页面重置pr：https://github.com/sj-distributor/AiRecognitionFile.Web/pull/60
 
 ## 三、每周总结
 
-1. 处理模版获取pr comments
-2. 学习busybee项目代码并了解项目需求
+1. 跟进ai识别文件开发
+2. 继续开发ai检测货品素材列表ui，处理数据来源uipr
+3. 学习ant ，upload开发文件上传
+4. 学习react语法知识
 
 
 
 
 ## 四、目录
 
-iterator
+null undefined
+
+
+
+### null undefined
+
+全局属性
+
+![image-20240715134348167](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240715134348167.png)
+
+
+
+在任何作用于下，window.undefined为undefined
+

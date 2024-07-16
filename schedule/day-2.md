@@ -1,6 +1,8 @@
 # 学习笔记
 
-2024/6/25
+2024/7/15
+
+
 
 ## Todo
 
@@ -8,110 +10,73 @@
 2. [❌] xxx
 3. [❓] xxx
 
+
+
 ## Yesterday
 
-1. [❓] 考核项目 - 笔记
+1. 
 
-2. [❓]useState、useEffect、useRef、useImperaiveHandle 等 hook 笔记
 
-3. [❓]reouter 6 笔记
 
-4. [❓]react 事件处理、react-dom 笔记
-
-5. [❓] recoil 笔记
-
-6. [❓] html body 标签
-
-7. [❓] 需求：解决 rem 和适口单位的混乱
-
-8. [❓] 滚动条开发笔记
-
-9. [❓]ts 笔记
-
-10. [❓]css module
-
-11. [❓]学习router V6 与 状态保存，并写文章
-
-12. [❓]scroll總結
-
-13. [❓]useReduer解析
-
-14. [❓]css 溢出场景；溢出、BFC、流内流外、边距折叠
-
-15. [❓]css 设置边框
-
-    ~~~css
-    .dotted-line{    
-    border: 1px dashed transparent;    
-    background: linear-gradient(white,white) padding-box, repeating-linear-gradient(-45deg,#ccc 0, #ccc .25em,white 0,white .75em);
-    }
-    
-    ~~~
-
-16. [❓]flex；浏览器紫色区域、flex:
-
-17. [❓]display 与 background颜色
-
-18. [❓] [html空格](https://blog.csdn.net/wuzhiyue2/article/details/117990898)
-
-19. [❓]vite 项目配置
-
-20. [❓]img标签的src属性
-
-21. [❓]了解一下row的flex设置为什么会使table出现异常想象
-
-22. [❓]ai文件识别和报表相似的权限功能，特别与选择框或列表交互功能，尝试封装起来。
-
-23. [❓]继续学习react 以及 react Router V6的api和组件
-
-24. []iterator，可以使用for..of等方法
-
-25. []接口与类型
 
 ## Today
 
-1. 处理模版中心 pr comments
-1. 在修改文件并push到仓库时，发现github远程仓库小写文件共存，拉取到本地时大小写文件合并，原因是github更新了更改的大写文件，但git提交时大小写的删除等修改不会记录。在不修改git默认配置下修改文件名然后push，然后改回文件再提交。
-1. 学习ts 。学习了Record，Record能够返回key为键Type为值对象类型。Pick返回Type里面被选定键名的对象类型
+1. ai报表中心 新增模版ui调整
+2. ai检测货品
 
 
 
-## 一、发掘
+## 一、掘
+
+
 
 
 
 ## 二、每日总结
 
-2024/6/25 UPDATE:
+2024/7/16 UPDATE:
 今日总结：
 
-1. 处理模版中心 pr comments
-2. 在修改文件并push到仓库时，发现github远程仓库大小写文件夹共存，拉取到本地时大小写文件夹合并，原因是github更新了大写文件更改记录，但git提交时大小写的删除等修改不会记录。在不修改git默认配置下修改文件名然后push，然后改回文件再提交。
-3. 学习ts 。学习了Record，Record能够返回key为键Type为值对象类型。Pick返回Type里面被选定键名的对象类型。
+1. 学习ahook，了解所有hook使用对象。学习useAntdTable，与form联动，自动管理分页合条件查询状态，有对应的api直接重置表单。学习useRequest，能够直接获取loading，data，error结果和异常，有默认执行轮训等配置项。
+1. 处理ai识别文件pr。修改权限列表逻辑、调整删除操作进行后刷新用户认证逻辑，解决子节点disable父节点选择不了的问题，使用断言解决 tree的onCheck api回调联合类型的问题。
 
 
 
 
 明日计划：
 
-1. 处理模版获取pr comments
-1. 继续学习ts
+1. 跟进ai检测货品质量开发
 
 
 
 卡位：暂无
 
-模版中心 模版获取 https://github.com/sj-distributor/ReportCenter.Web/pull/11
+https://github.com/sj-distributor/AiRecognitionFile.Web/pull/62
 
 
 
 ## 三、每周总结
 
-1. 处理模版获取pr comments
-2. 学习busybee项目代码并了解项目需求
-
+1. 跟进ai识别文件开发
+2. 继续开发ai检测货品素材列表ui，处理数据来源uipr
+3. 学习ant ，upload开发文件上传
+4. 学习react语法知识
 
 
 
 ## 四、目录
+
+
+
+### 如何高效生产页面
+
+管理平台就uload form table 三个组件
+
+
+
+### 如何高效测试功能
+
+了解是列表、还是其他
+
+
 

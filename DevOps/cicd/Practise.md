@@ -6,26 +6,124 @@
 
 ## 📌本地测试
 
-### 🎯配置文件
+### 🎯一、配置文件
 
-1. 根目录下新建Dockerfile脚本
+1. 修改你的脚手架打包配置，以ts.config.ts@2.8为例
 
-~~~dockerfile
-#Dockerfile
-FROM nginx:stable-alpine
-COPY /build /usr/share/nginx/html
+   ~~~json
+   import * as path from "path";
+   import react from "@vitejs/plugin-react";
+   import { defineConfig } from "vite";
+   
+   export default defineConfig({
+     plugins: [react()],
+     resolve: {
+       alias: {
+         "@": path.resolve(__dirname, "./src"),
+       },
+     },
+     server: { port: 3000 },
+     //修改静态包输出文件名
+     build: { outDir: "build" },
+   });
+   
+   ~~~
 
-RUN  sed -i '12a error_page 404 /index.html;' /etc/nginx/conf.d/default.conf
+   此外别忘了在.gitgnoro追加你的静态包
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-~~~
+   ~~~shell
+   # Logs
+   logs
+   *.log
+   npm-debug.log*
+   yarn-debug.log*
+   yarn-error.log*
+   pnpm-debug.log*
+   lerna-debug.log*
+   
+   node_modules
+   dist
+   dist-ssr
+   #追加 “build”
+   build
+   yarn.lock
+   *.local
+   
+   # Editor directories and files
+   .vscode/*
+   !.vscode/extensions.json
+   .idea
+   .DS_Store
+   *.suo
+   *.ntvs*
+   *.njsproj
+   *.sln
+   *.sw?
+   
+   ~~~
 
-2. 打包项目`npm build`
+   
+
+2. 根目录下新建Dockerfile脚本
+
+    ~~~dockerfile
+    #Dockerfile
+    FROM nginx:stable-alpine
+    
+    #注意的配置的outfile，如果没配置会因脚手架或版本存在差异。
+    COPY /build /usr/share/nginx/html
+    
+    RUN  sed -i '12a error_page 404 /index.html;' /etc/nginx/conf.d/default.conf
+    
+    EXPOSE 80
+    CMD ["nginx", "-g", "daemon off;"]
+    ~~~
 
 
 
-### 🎯构建项目
+3. 打包项目`npm build`
+
+
+
+4. 或者将build的阶段放到dockfile中
+
+   ~~~dockerfile
+   FROM node:16-alpine AS build#构建过程
+   
+   #工作目录
+   WORKDIR /web
+   
+   COPY package.json ./
+   
+   RUN yarn install
+   
+   COPY . .
+   
+   RUN yarn build
+   
+   FROM nginx:stable-alpine
+   
+   #注意构建过程
+   COPY --from=build /web/build /usr/share/nginx/html
+   
+   RUN  sed -i '12a error_page 404 /index.html;' /etc/nginx/conf.d/default.conf
+   
+   RUN sed -i '/^http {/a \
+       gzip on;\n\
+       gzip_static on;' /etc/nginx/nginx.conf
+   
+   EXPOSE 80
+   
+   CMD ["nginx", "-g", "daemon off;"]
+   ~~~
+
+   
+
+### 🎯三、构建项目
+
+以打包文件practivelevi为例
+
+
 
 1. 打包镜像`docker build -f Dockerfile -t practivelevi .`
 
@@ -43,11 +141,11 @@ CMD ["nginx", "-g", "daemon off;"]
 
 1. 报错：ERROR: invalid tag "practiveLevi": repository name must be lowercase
 
-   打开控制台输入`docker images `查看本地镜像，发现镜像文件名输入错了，把practiveLevi改为practivelevi。注意镜像命名全小写。
+   🥚：打开控制台输入 `查看本地镜像，发现镜像文件名输入错了，把practiveLevi改为practivelevi。注意镜像命名全小写。
 
 2. 本地打开`http://localhost:8188/`发现接口请求跨域
 
-   不用管
+   🥚：不用管
 
 ​	
 
@@ -55,7 +153,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ## 📌ci
 
-### 🎯创建你的项目
+### 🎯一、创建你的项目
 
 1. 进入组织，点击步骤如下：
 
@@ -69,7 +167,9 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ![image-20240524080745889](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524080745889.png)
 
-### 🎯添加配置
+
+
+### 🎯二、添加配置
 
 1. 打开并在你的项目添加Build配置，步骤如下：
 
@@ -89,37 +189,39 @@ CMD ["nginx", "-g", "daemon off;"]
 
 5. 在Version Control Setting中配置你的gitlab仓库，填写完信息后点击保存。
 
+#### ✏️配置清单：
+
+| 项目（从上往下）        | 备注                                             |
+| ----------------------- | ------------------------------------------------ |
+| VCS Root                | 填写你配置信息，命名规范为 PractiseFor(你的名字) |
+| General Settings        | 填写你仓库的信息                                 |
+| Authentication Settings | 填写你的账号信息                                 |
+
+
+
 ![image-20240524082145292](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524082145292.png)
 
 ![](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524082629610.png)
 
-✏️配置清单：
-
-- VCS Root 填写你配置信息，命名规范为 PractiseFor(你的名字)
-- General Settings 填写你仓库的信息
-- Authentication Settings 填写你的账号信息
-
 6. 在Build Steps 中配置你的管道流
+
+#### ✏️配置清单：
+
+| Build Step（从上往下）  | Parameters Description                                     |
+| ----------------------- | ---------------------------------------------------------- |
+| 1. GitVersion           | git                                                        |
+| 2. Install Dependencies | 前端项目安装依赖                                           |
+| 3. Build                | 打包                                                       |
+| 4. Docker Login         | docker                                                     |
+| 5. Docker Build Image   | 编译打包镜像。⚠️镜像文件命名规范：practise4（你的名字小写） |
+| 6. Docker Push Image    | 推送镜像。⚠️镜像文件命名规范：practise4（你的名字小写）     |
+| 7. Docker Remove        | 删除镜像。⚠️镜像文件命名规范：practise4（你的名字小写）     |
 
    ![image-20240524165822379](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524165822379.png)
 
-   ✏️配置清单：
+严格按照1-7步骤排序，点击更多可以复制步骤
 
-   | Build Step              | Parameters Description                                     |
-   | ----------------------- | ---------------------------------------------------------- |
-   | 1. GitVersion           | git                                                        |
-   | 2. Install Dependencies | 前端项目安装依赖                                           |
-   | 3. Build                | 打包                                                       |
-   | 4. Docker Login         | docker                                                     |
-   | 5. Docker Build Image   | 编译打包镜像。⚠️镜像文件命名规范：practise4（你的名字小写） |
-   | 6. Docker Push Image    | 推送镜像。⚠️镜像文件命名规范：practise4（你的名字小写）     |
-   | 7. Docker Remove        | 删除镜像。⚠️镜像文件命名规范：practise4（你的名字小写）     |
-
-   - 严格按照1-7步骤排序
-
-   - 点击更多可以复制步骤
-
-     ![image-20240524170527297](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524170527297.png)
+![image-20240524170527297](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524170527297.png)
 
 
 
@@ -143,7 +245,15 @@ CMD ["nginx", "-g", "daemon off;"]
 
    ![image-20240524172201515](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524172201515.png)
 
-### 🔧日志
+
+
+### ⚠️你需要注意的
+
+你已经很完美了
+
+
+
+### 🔧三、日志
 
 1. 报错：Process exited with code 1 (Step: GitVersion (Command Line))
 
@@ -159,13 +269,12 @@ CMD ["nginx", "-g", "daemon off;"]
 
    ![image-20240524153027286](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524153027286.png)
 
-   
 
 
 
 ## 📌cd
 
-### 🎯创建你的项目
+### 🎯一、创建你的项目
 
 1. 在项目页中新建你的项目，项目命名规范为`PractiseFor（你的名字大写开头）`。
 
@@ -174,8 +283,13 @@ CMD ["nginx", "-g", "daemon off;"]
 2. 打开你的项目
 
    ![image-20240524172922239](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524172922239.png)
+   
+   
 
-### 🎯 kubernetes containers 容器部署
+### 🎯 二、Deloy web
+
+kubernetes containers 容器部署
+
 
 1. 新增步骤
 
@@ -189,12 +303,16 @@ CMD ["nginx", "-g", "daemon off;"]
 
    ![image-20240524174503744](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524174503744.png)
 
-**✏️配置清单（default的项目就不用手动配置，默认就好）**
+#### ✏️配置清单
 
-  **Process 基本信息**
+（default的项目就不用手动配置，默认就好）
 
-  1. Step Name
-  2. On Behalf Of
+Process 基本信息
+
+|              |            |
+| ------------ | ---------- |
+| Step Name    | 输入项目名 |
+| On Behalf Of | 选择资源   |
 
 
 
@@ -204,20 +322,22 @@ CMD ["nginx", "-g", "daemon off;"]
   >
   >一个 Deployment 为 [Pod](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/) 和 [ReplicaSet](https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/replicaset/) 提供声明式的更新能力。
 
-  1. Deployment
-  2. Kubernetes Object Status Check
-  3. Volumes
-  4. Container
-     - Image Details
-     - Volume Mounts
-  5. Namespace
+|                                |                                                           |
+| ------------------------------ | --------------------------------------------------------- |
+| Deployment                     | 输入 deploy-名称-web                                      |
+| Kubernetes Object Status Check | 选项                                                      |
+| Volumes                        | 新建键值信息？xxx.web->xxxweb                             |
+| Container                      | 1. Image Details 填写信息 <br />2. Volume Mounts 添加键值 |
+| Namespace                      |                                                           |
 
 
 
-  **Service**：default
+  **Service**：
 
-  1. Service Name
-  2. Service Ports
+|               |          |
+| ------------- | -------- |
+| Service Name  | 输入名称 |
+| Service Ports | 增加键值 |
 
 
 
@@ -227,13 +347,23 @@ CMD ["nginx", "-g", "daemon off;"]
 
   **Config Map**
 
-  1. Config Map Items
+|                  |                                                              |
+| ---------------- | ------------------------------------------------------------ |
+| Config Map Name  | 输入名称                                                     |
+| Config Map Items | 🔔添加键值，Key一般为appsetting.json，既是项目public的appsetting.json文件，值为里面对象的属性名格式如下图所示 |
 
 
 
-  **Secret**：default
 
-### 🎯Kubernetes Ingress 资源
+
+**Secret**：default
+
+
+
+
+### 🎯三、Deloy ingress
+
+Kubernetes Ingress 资源
 
 1. 新增步骤
 
@@ -251,29 +381,39 @@ CMD ["nginx", "-g", "daemon off;"]
 
    ![image-20240524175150081](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524175150081.png)
 
-**✏️配置清单（default的项目就不用手动配置，默认就好）**
+#### **✏️配置清单**
+
+**（default的项目就不用手动配置，默认就好）**
 
 **ingress基本信息**
 
-1. On Behalf Of
-2. Kubernetes Object Status Check
-3. Ingress Name
-4. Ingress Annotations
-5. Ingress Host Rules
-6. Ingress TLS
-7. Namespace
+1. Step Name 输入名称
+
+1. On Behalf Of 选择资源
+2. Kubernetes Object Status Check ？ 
+3. Ingress Name 输入名称
+4. Ingress Annotations 增加键值
+5. Ingress Host Rules 增加键值
+6. Ingress TLS 增加键值
+7. Namespace 输入名称
 
 
 
 **Conditions**：defalut
 
-### 🎯配置参数
+
+
+### 🎯四、配置参数
 
 1. 打开项目变量页，然后**参考团队的配置完成你的容器部署**，然后点击保存
 
    ​	![image-20240524175716997](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524175716997.png)
 
-   ✏️配置清单（default的项目就不用手动配置，默认就好）
+   
+
+#### ✏️配置清单
+
+   （default的项目就不用手动配置，默认就好）
 
    1. ngressBaseDomainName 域名
    2. jsVersion JavaScript 版本
@@ -282,12 +422,13 @@ CMD ["nginx", "-g", "daemon off;"]
    5. serverUrl 服务器
    6. sourceSyste 资源系统
    7. tlsSecret 证书
+   8. CPULimits 等等...
 
 
 
 ​	
 
-### 🎯CAEATE RELEASE
+### 🎯五、CAEATE RELEASE
 
 1. 点击CAEATE RELEASE，版本号写Build number,`+`号要改为`-`号
 
