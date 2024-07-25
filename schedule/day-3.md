@@ -21,8 +21,7 @@
 
 ## Today
 
-1. ai报表中心 新增模版ui调整
-2. ai检测货品
+1. 
 
 
 
@@ -34,44 +33,31 @@
 
 ## 二、每日总结
 
-2024/7/17 UPDATE:
+2024/7/23 UPDATE:
 今日总结：
 
-1. 完成ai检测货品质量 导入ui，使用useDebounceEffect优化了素材列表和批次列表的条件查询。对form表单自定义校验规则vaildator使用pop操作value，pop会修改数组的值，导致表单值被修改了，改用slice返回新的数组。过程中遇到了上传文件时第一个上传的文件没有成功地发起请求上传，在调试时控制台也没有接收到异常。原因是upload的beforeUpload回调函数里面捕获了异常直接停止上传了，浏览器捕获不到异常，最后在逻辑里面trycatch调试找到是因为表单初始化时字段为undefine，访问了不存在的属性的错误，调整逻辑使用?.让逻辑返回undefined不要向beforeUpload抛出异常继续上传。
+1. 学习项目轮询。学习ai文件识别检测功能中等每一条请求数据状态为成功或失败时停止的实现，在轮询方法中发起请求后，在finally用setTimeout调用请求，continueExecution保存轮询状态当请求成功或失败时置为null，如果为null直接return退出轮询。ea实时获取音色列表的实现：选择音色后将音色信息传至clickToneDto中，调用轮询方法，使用setInterval创建定时器获取音色的列表并保存定时器id至cycleloadRef中。当离开页面时将清除计时器并将cycleloadRef置为null，此外在定义定时器之前判断cycleloadRef来清除已经存在的定时器。
+2. 处理ai检测货品质量pr comments。调整素材管理modal样式，补充导入文件校验逻辑，修改路由层级。学习radma库使用isNil和isEmpty，isNil接收空数组返回false，接受undefine返回ture。
 
 
 
 
 明日计划：
 
-1. 开发ai检测货品质量开发批次详情列表ui
+1. 处理ai检测货品质量pr comments
 
 
 
 卡位：暂无
 
-
+ai检测货品后台路由菜单：https://github.com/sj-distributor/AiQualityCheck.Web/pull/22
 
 ## 三、每周总结
 
-1. 跟进ai识别文件开发
-2. 继续开发ai检测货品素材列表ui，处理数据来源uipr
-3. 学习ant ，upload开发文件上传
-4. 学习react语法知识
+1. 
 
 
 
 ## 四、目录
 
-uload
-
-
-
-### upload
-
-vaildator 返回的value為表單值引用，注意不要直接改變value
-
-
-
-beforeUpload 捕获异常，使控制台并没有提示且代码继续运行
-
+## 

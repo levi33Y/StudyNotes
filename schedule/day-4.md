@@ -33,51 +33,28 @@
 
 ## 二、每日总结
 
-2024/7/18 UPDATE:
+2024/7/24 UPDATE:
 今日总结：
 
-1. 完成ai检测货品质量素材列表ui并发pr，合并数据来源pr。完成批次详情ui开发，调整了素材管理的列表条件查询和接口。使用navigate跳转到新的详情页后然后使用window.location.reload()来刷新页面实现清洗详情中数据集批次超链接跳转批次详情。ant table的key只是为react提供key，定义dataIndex使用render自定义行数据时，render回调数据为dataIndex路径的数据项。
-
+1. 处理ai检测货品prcomment并approved，修改属性命名规范，规范页面标签的闭合，将单独在页面中配置的dayjs依赖改为在main中配置，对项目中的存在服用的常量用枚举优化。优化mock数据方便测试，优化了tabs页面删除了单独开出来用来条件渲染的state直接用tabs的items结构来写。学习使用useResponsive给菜单页面添加响应式，根据页面模型来自动收缩菜单，处理后台所有页面路由添加路由元信息，对齐所有页面的间距和内容滚动高度。
+1. 使用react+vite搭建了electron应用，成功在桌面上运行。https://github.com/levi33Y/levi33Y
 
 
 
 明日计划：
 
-1. 继续跟进ai货品识别开发
+1. 处理ai检测货品质量pr comments
 
 
 
 卡位：暂无
 
-ai检测货品质量：
+ai检测货品菜单：https://github.com/sj-distributor/AiQualityCheck.Web/pull/22
 
-素材列表：https://github.com/sj-distributor/AiQualityCheck.Web/pull/12
+approved:
 
-数据来源：https://github.com/sj-distributor/AiQualityCheck.Web/pull/8
+https://github.com/sj-distributor/AiQualityCheck.Web/pull/12
+
+https://github.com/sj-distributor/AiQualityCheck.Web/pull/16
 
 ## 三、每周总结
-
-1. 
-
-
-
-## 四、目录
-
-table
-
-router V6
-
-
-
-### Table
-
-render 與 key
-
-Error: Objects are not valid as a React child (found: object with keys {。。。}). If you meant to render a collection of children, use an array instead.‘
-
-
-
-### router
-
-改变动态参数
-
