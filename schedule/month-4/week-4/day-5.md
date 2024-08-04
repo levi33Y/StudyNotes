@@ -57,5 +57,20 @@ approved：https://github.com/sj-distributor/AiQualityCheck.Web/pull/22
 
 ## 三、每周总结
 
+1. 优化ai檢測貨品質量項目路由逻辑，规范命名和语法，处理comments并approved
+
+2. 完成投資激管理系统首頁开发
+
+3. 学习electron并应用了原声api编写菜单等应用ui功能
+
+4. 学习WebRTC和websocket基本知识
+
+5. 学习qiankun框架的基本应用，了解对vite项目的配置
 
 
+
+
+
+1.  跟进投資激管理系统ui开发
+
+2. 对接项目ai检测货品质量登录接口
