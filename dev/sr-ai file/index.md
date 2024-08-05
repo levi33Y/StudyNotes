@@ -1,5 +1,7 @@
 ## admin
 
+https://identifyfile.wiltechs.com/frontDesk/upload
+
 
 
 smarties账号密码：

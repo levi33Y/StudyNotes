@@ -36,8 +36,7 @@
 2024/8/2 UPDATE:
 今日总结：
 
-1. 跟进ai识别货品质量开发，合并pr并测试，处理根目录重定向和页面ui边距。
-2. 跟进投資激管理系统首页的ui开发。使用grap开发代辦中心，实现自动换行自适应宽度。对ant table用绝对定位设置百分比宽度解决table宽度会无限放大的问题，使用list和Skeleton实现交易记录。
+1. 完成ui 登录接口对接。编写appsetting配置项目baseurl等全局变量，编写http-client配置请求拦截器，编写login请求接口和接口类型，编写auth模块，提供页面鉴权和为应用提供全局上下文。
 
 
 
@@ -74,3 +73,15 @@ approved：https://github.com/sj-distributor/AiQualityCheck.Web/pull/22
 1.  跟进投資激管理系统ui开发
 
 2.  对接项目ai检测货品质量登录接口
+
+
+
+## 四、目录
+
+JSX.Element
+
+React.FC
+
+JSX.IntrinsicElements
+
+T
