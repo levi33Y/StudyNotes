@@ -35,7 +35,19 @@
 
 2024/8/8 UPDATE: 今日总结：
 
-1. 
+1. 开发Echo Avatar文本翻译ui并发pr。完成了默认设置、复制、清除等逻辑开发，补充了按钮toopTip和页面加载。使用navigator接口编写了onCopy方法来复制输入的文本。编写了loading模块，使用import.meta.glob函数导入多模块，编写了skeletonType ts类型用于约束模块与组件类型的映射关系，使用radma编写了camelCase方法实现camelCase功能。使用 window.userInfo.setStoreValue在electron中缓存数据信息。
+
+
+
+
+
+明日计划：
+
+1. 完成Echo Avatar文本翻译ui逻辑开发。
+
+卡位：暂无
+
+Echo Avatar文本翻译：https://github.com/sj-distributor/EchoAvatar/pull/193
 
 
 
