@@ -413,3 +413,84 @@ export const Grocery = () => {
    };
    ```
 
+## 手写useReducer
+
+~~~js
+export function useReducer<S, I, A>(
+  reducer: (S, A) => S,
+  initialArg: I,
+  init?: I => S,
+): [S, Dispatch<A>] {
+  if (__DEV__) {
+    if (reducer !== basicStateReducer) {
+      currentHookNameInDev = 'useReducer';
+    }
+  }
+  currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
+  workInProgressHook = createWorkInProgressHook();
+  if (isReRender) {
+    // This is a re-render. Apply the new render phase updates to the previous
+    // current hook.
+    const queue: UpdateQueue<A> = (workInProgressHook.queue: any);
+    const dispatch: Dispatch<A> = (queue.dispatch: any);
+    if (renderPhaseUpdates !== null) {
+      // Render phase updates are stored in a map of queue -> linked list
+      const firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);
+      if (firstRenderPhaseUpdate !== undefined) {
+        renderPhaseUpdates.delete(queue);
+        let newState = workInProgressHook.memoizedState;
+        let update = firstRenderPhaseUpdate;
+        do {
+          // Process this render phase update. We don't have to check the
+          // priority because it will always be the same as the current
+          // render's.
+          const action = update.action;
+          if (__DEV__) {
+            isInHookUserCodeInDev = true;
+          }
+          newState = reducer(newState, action);
+          if (__DEV__) {
+            isInHookUserCodeInDev = false;
+          }
+          update = update.next;
+        } while (update !== null);
+
+        workInProgressHook.memoizedState = newState;
+
+        return [newState, dispatch];
+      }
+    }
+    return [workInProgressHook.memoizedState, dispatch];
+  } else {
+    if (__DEV__) {
+      isInHookUserCodeInDev = true;
+    }
+    let initialState;
+    if (reducer === basicStateReducer) {
+      // Special case for `useState`.
+      initialState =
+        typeof initialArg === 'function'
+          ? ((initialArg: any): () => S)()
+          : ((initialArg: any): S);
+    } else {
+      initialState =
+        init !== undefined ? init(initialArg) : ((initialArg: any): S);
+    }
+    if (__DEV__) {
+      isInHookUserCodeInDev = false;
+    }
+    workInProgressHook.memoizedState = initialState;
+    const queue: UpdateQueue<A> = (workInProgressHook.queue = {
+      last: null,
+      dispatch: null,
+    });
+    const dispatch: Dispatch<A> = (queue.dispatch = (dispatchAction.bind(
+      null,
+      currentlyRenderingComponent,
+      queue,
+    ): any));
+    return [workInProgressHook.memoizedState, dispatch];
+  }
+}
+~~~
+

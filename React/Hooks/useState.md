@@ -174,3 +174,22 @@ export const Grocery = () => {
 
 ### `#`
 
+## 手写useState
+
+## reader
+
+~~~ts
+export function useState<S>(
+  initialState: (() => S) | S,
+): [S, Dispatch<BasicStateAction<S>>] {
+  if (__DEV__) {
+    currentHookNameInDev = 'useState';
+  }
+  return useReducer(
+    basicStateReducer,
+    // useReducer has a special case to support lazy useState initializers
+    (initialState: any),
+  );
+}
+~~~
+
