@@ -33,27 +33,39 @@
 
 ## 二、每日总结
 
-2024/8/5 UPDATE: 今日总结：
-1. 完成投資激管理系统首页开发并发pr。调整了页面的加载ui，规范项目结构和命名。
-2. 调整ai识别文件上传文件大小并发pr。上传时过滤不符合规则的文件然后继续上传，调整提示信息。
-3. 完成ai检测货品质量登录接口对接并发pr。编写appsetting文件配置项目的全局变量，在service编写登录相关的接口逻辑和接口类型。调整路由结构用auth-status包裹"/" 下所有路由，编写auth模块对页面鉴权和提供应用上下文或方法。补充login页面form表单结构和添加登录逻辑，完善前后台登录登出，前后台相互跳转。
+2024/8/8 UPDATE: 今日总结：
 
-明日计划：
-1. 继续跟进投資激管理系统、ai检测货品质量ui、ai识别文件开发。
+1. 尝试实现react-dom和useState简单功能。编写render方法接受虚拟dom和通过document.getElementById获取的真实dom，编写createElement方法返回dom对象，通过递归为所有children绑定props值，然后将处理的虚拟dom通过appendChild添加到真实dom中。编写mayUseState方法形参为初始值，然后返回state和setState方法，setState方法接受新的值并改变state，然后调用render方法重新渲染dom
 
-卡位：暂无
-投資激管理系统首页https://github.com/mindy0-0/EquityManagement.Web/pull/2
-ai识别文件https://github.com/sj-distributor/AiRecognitionFile.Web/pull/84
-ai检测货品质量https://github.com/sj-distributor/AiQualityCheck.Web/pull/30
+周一计划：
+
+1. 继续跟进投資激管理系统、ai检测货品质量、Echo Avatar开发。
+
+   卡位：暂无
 
 
 
 ## 三、每周总结
 
-1. 
+1. 调整ai识别文件上传文件大小并发pr，合并并在cicd发测试测试功能。
+1. 完成ai检测货品质量登录接口对接并发pr
+1. 完成投資激管理系统首页开发并发pr
+1. 使用WebRTC编写answer完成直播效果
+1. 编写了Echo Avatar项目1.1文本翻译ui并发pr
+1. 手写实现react-dom和useState简单功能
+
+
+
+1. 继续跟进投資激管理系统开发
+
+2. 继续跟进ai检测货品质量开发
+
+3. 继续学习react语法以及hook的实现
 
 
 
 
 ## 四、目录
 
+1. Uncaught ReferenceError: React is not defined。
+2. 
