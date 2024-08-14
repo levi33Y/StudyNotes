@@ -33,15 +33,21 @@
 
 ## 二、每日总结
 
-2024/8/8 UPDATE: 今日总结：
+2024/8/12 UPDATE:
 
-1. 尝试实现react-dom和useState简单功能。编写render方法接受虚拟dom和通过document.getElementById获取的真实dom，编写createElement方法返回dom对象，通过递归为所有children绑定props值，然后将处理的虚拟dom通过appendChild添加到真实dom中。编写mayUseState方法形参为初始值，然后返回state和setState方法，setState方法接受新的值并改变state，然后调用render方法重新渲染dom
+ 今日总结：
 
-周一计划：
+1. 看受傷平台需求并跟进开发。看PR5-8和21需求，调整PR5中的标题样式，分析需求的dom结构，编写ticket-form，为tk页面中的表单和安全记录情况等三种不同的表单编写组件。编写SubProject组件，封装页面上所有子项目共同的卡片样式和dom结构，接受自定义的children。
 
-1. 继续跟进投資激管理系统、ai检测货品质量、Echo Avatar开发。
+明日计划：
 
-   卡位：暂无
+1. 继续开发受傷平台PR5-8、PR21需求。
+
+
+
+卡位：暂无
+
+开发受傷平台：https://gitlab.sjfood.us/php-team/injured-platform-web/-/merge_requests/116
 
 
 
