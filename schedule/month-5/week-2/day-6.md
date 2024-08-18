@@ -53,7 +53,17 @@
 
 ## 三、每周总结
 
-1. 
+1. 完成受伤平台需求FR5-7、FR21-22 ui。
+1. 编写表单组件。支持在编辑和文本切换。
+1. 编写动态表格组件。学习Table组件的components属性，可以编辑行和添加删除行。
+1. 学习React.createElement方法，尝试使用React.createElement对antd组件二次封装。
+
+
+
+1. 对接受伤平台接口。
+2. 处理ai检测货品质量 pr comments。
+3. 跟进报表中心开发。
+4. 继续学习react hook及相关语法。
 
 
 
