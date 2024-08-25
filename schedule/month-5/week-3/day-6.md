@@ -44,7 +44,7 @@
 
 周一计划：
 
-1. 继续跟进开发Hi200Go项目开发。
+1. 继续跟进Hi200Go项目开发。
 
    
 
@@ -56,7 +56,16 @@ Hi200Go：https://github.com/sj-distributor/Hi200Go.Web/pull/8
 
 ## 三、每周总结
 
-1. 
+1. 处理受傷平台pr comments并approved。
+1. 处理ai检测货品质量pr comments，对login登录路由做token校验。
+1. 学习Record的用法，使用es6箭头函数代替this局部保存写法。
+1. 跟进Hi200Go项目管理后台首页开发并，完成入口中的Workbench ui。
+
+
+
+1. 继续跟进Hi200Go项目开发。
+2. 学习planka项目。
+3. 继续学习react hook及相关语法。
 
 
 
