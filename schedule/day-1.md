@@ -1,6 +1,6 @@
 # 学习笔记
 
-2024/7/15
+2024/8/26
 
 
 
@@ -33,25 +33,54 @@
 
 ## 二、每日总结
 
-2024/7/29 UPDATE:
+2024/8/26 UPDATE: 
+
 今日总结：
 
-1. 优化ai识别货品质量菜单，review项目pr。将冗余的三元表达式赋值改为直接使用逻辑运算的结果，处理可优化的useEffect依赖项，内联多余的变量声明，根据原型优化了route数组的结构，引入对应的接口优化多余余的if类型断言。
-1. 为electron项目添加了窗口菜单、Dock菜单，使用toggleDevTools和openDevTools控制控制台，了解剪切板、图像等原生api。
+1. 继续跟进Hi200GO开发，合并管理后台首页pr，完成workbench ui并发pr 。调整管理后台首页ui，调整最小宽度，在最外层嵌套div显示滚动条。完成workbench ui，使用boder绘制三角形条件渲染账号绑定状态 ui。修改Checkbox组件底层类，编写ConfigProvider theme主题颜色完成绑定账号 ui。修改Progress组件底层类，使用repeating-linear-gradient实现原型的进度条 ui。
 
 
 
 明日计划：
 
-1. 继续跟进ai识别货品质量开发
+1. 继续跟进Hi200GO开发
 
-
+   
 
 卡位：暂无
 
-ai检测货品菜单：https://github.com/sj-distributor/AiQualityCheck.Web/pull/22
+approve：https://github.com/sj-distributor/Hi200Go.Web/pull/8
+
+Hi200Go workbench ui：https://github.com/sj-distributor/Hi200Go.Web/pull/12
 
 ## 三、每周总结
+
+1. 处理受傷平台pr comments并approved。
+1. 处理ai检测货品质量pr comments，对login登录路由做token校验。
+1. 学习Record的用法，使用es6箭头函数代替this局部保存写法。
+1. 跟进Hi200Go项目管理后台首页开发并，完成入口中的Workbench ui。
+
+
+
+1. 继续跟进Hi200Go项目开发。
+2. 学习planka项目。
+3. 继续学习react hook及相关语法。
+
+
+
+1. 计划
+2. argent体
+3. 项目需求：hi200
+4. planka
+
+
+
+
+## 四、目录
+
+
+
+
 
 
 
