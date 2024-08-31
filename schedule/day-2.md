@@ -21,7 +21,11 @@
 
 ## Today
 
-1. 
+1. [✅] practise
+2. [❓] py
+3. [✅]]argent体
+4. [✅] 项目需求：hi200
+5. planka
 
 
 
@@ -33,30 +37,26 @@
 
 ## 二、每日总结
 
-2024/8/26 UPDATE: 
+2024/8/27 UPDATE: 
 
 今日总结：
 
-1. 继续跟进Hi200GO开发，合并管理后台首页pr，完成workbench ui并发pr 。调整管理后台首页ui，调整最小宽度，在最外层嵌套div显示滚动条。完成workbench ui，使用boder绘制三角形条件渲染账号绑定状态 ui。修改Checkbox组件底层类，编写ConfigProvider theme主题颜色完成绑定账号 ui。修改Progress组件底层类，使用repeating-linear-gradient实现原型的进度条 ui。
+1. 处理Hi200GO项目 pr comments并approved。抽象重复的dom结构，使用数组配置每个账号端的信息，然后使用map渲染。简化打开登录等其他modal的逻辑，修改变量命名，调整文件目录结构。
+1. 尝试在扣子使用大模型和插件创建了视频和图片的文案分析工作流，了解prompt、zero-shot和few-shot等概念。
 
 
 
 明日计划：
 
-1. 继续跟进Hi200GO开发
+1. 学习planka
 
    
 
 卡位：暂无
 
-Hi200Go workbench ui：https://github.com/sj-distributor/Hi200Go.Web/pull/12
+approved：https://github.com/sj-distributor/Hi200Go.Web/pull/12
 
 ## 三、每周总结
-
-1. 计划
-2. argent体
-3. 项目需求：hi200
-4. planka
 
 
 
