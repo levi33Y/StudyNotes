@@ -1,8 +1,6 @@
 # 学习笔记
 
-2024/8/26
-
-
+2024/9/9
 
 ## Todo
 
@@ -10,14 +8,9 @@
 2. [❌] xxx
 3. [❓] xxx
 
-
-
 ## Yesterday
 
-1. 
-
-
-
+1.
 
 ## Today
 
@@ -26,37 +19,26 @@
 3. [❓] agent content
 4. [❓] planka
 
-
-
 ## 一、掘
-
-
-
-
 
 ## 二、每日总结
 
-2024/9/2 UPDATE: 
+2024/9/9 UPDATE:
 今日总结：
 
-1. 对接报表中心接口，完成模版列表、模版对象和删除接口对接。封装axios，定义模版列表和模版对象相关接口方法。定义模版、渠道和端口枚举，根据页面名称修改变量命名。完成列表字段模糊搜索逻辑， 使用useDebounceEffect实现分页搜索逻辑。调整模版对象页面表单，使用form管理表单，删除冗余的status声明。
-
-
+1. 对接报表中心接口。发模版列表与模版对象接口pr并处理comments。为所有请求方法添加catch操作，sendSetting和sendPort换行显示对应的列表信息。添加添加rawData属性传递当前模版值给模版获取。修改对接发送设置和呼叫设置接口。修改disableSaveButton定义为元组，callForm和sendForm使用onFormChange修改状态按钮。
 
 明日计划：
 
-1. 继续对接报表中心模版对象新增、模版获取接口。
-
-
+1. 继续对接报表中心发送设置和发送记录接口。
 
 卡位：暂无
 报表中心 模版库：https://github.com/sj-distributor/ReportCenter.Web/pull/20
 
 ## 三、每周总结
 
+1.
 
 
 
 ## 四、目录
-
-![image-20240902142301423](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240902142301423.png)
