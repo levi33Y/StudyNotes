@@ -58,9 +58,15 @@ LLM 根据接收到的上下文和问题生成回答，RAG将检索器、聊天�
 
 
 
+## 训练流程
+
+![1481724800477_.pic](https://raw.githubusercontent.com/levi33Y/Pictures/main/1481724800477_.pic.jpg)
+
 
 
 ## 应用
+
+![39a0eb38d7f8ec11d7b4f6f67fd8eac4](https://raw.githubusercontent.com/levi33Y/Pictures/main/39a0eb38d7f8ec11d7b4f6f67fd8eac4.png)
 
 
 

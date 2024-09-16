@@ -23,16 +23,17 @@
 
 ## 二、每日总结
 
-2024/9/14 UPDATE:
+2024/9/16 UPDATE:
 今日总结：
 
-1. 
+1. 了解ReactLegacy模式，使用useTransition赋予concurrent模式特性，将控制条件渲染的state用startTransition包裹，当tab切换时，优先变化tab的切换状态，然后渲染时间长的FormList。
+1. 与后端沟通，继续对接发送设置接口。
 
 
 
-明日计划：
+周三计划：
 
-1. 
+1. 继续跟进报表中心开发。
 
 
 
