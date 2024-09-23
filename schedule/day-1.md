@@ -1,8 +1,6 @@
 # 学习笔记
 
-2024/8/26
-
-
+2024/9/9
 
 ## Todo
 
@@ -10,77 +8,86 @@
 2. [❌] xxx
 3. [❓] xxx
 
-
-
 ## Yesterday
 
-1. 
-
-
-
+1.
 
 ## Today
 
-1. 
-
-
+1. [❓] py
+2. [❓] llm
+3. [❓] agent content
+4. [❓] planka
 
 ## 一、掘
 
-
-
-
-
 ## 二、每日总结
 
-2024/8/26 UPDATE: 
-
+2024/9/16 UPDATE:
 今日总结：
 
-1. 继续跟进Hi200GO开发，合并管理后台首页pr，完成workbench ui并发pr 。调整管理后台首页ui，调整最小宽度，在最外层嵌套div显示滚动条。完成workbench ui，使用boder绘制三角形条件渲染账号绑定状态 ui。修改Checkbox组件底层类，编写ConfigProvider theme主题颜色完成绑定账号 ui。修改Progress组件底层类，使用repeating-linear-gradient实现原型的进度条 ui。
+1. 了解ReactLegacy模式，使用useTransition赋予concurrent模式特性，将控制条件渲染的state用startTransition包裹，当tab切换时，优先变化tab的切换状态，然后渲染时间长的FormList。
+1. 与后端沟通，继续对接发送设置接口。
 
 
 
-明日计划：
+周三计划：
 
-1. 继续跟进Hi200GO开发
+1. 继续跟进报表中心开发。
 
-   
+
 
 卡位：暂无
 
-approve：https://github.com/sj-distributor/Hi200Go.Web/pull/8
-
-Hi200Go workbench ui：https://github.com/sj-distributor/Hi200Go.Web/pull/12
+报表中心 模版库：https://github.com/sj-distributor/ReportCenter.Web/pull/23
 
 ## 三、每周总结
 
-1. 处理受傷平台pr comments并approved。
-1. 处理ai检测货品质量pr comments，对login登录路由做token校验。
-1. 学习Record的用法，使用es6箭头函数代替this局部保存写法。
-1. 跟进Hi200Go项目管理后台首页开发并，完成入口中的Workbench ui。
+last last
+
+对接报表中心接口，完成模版列表、模版对象和删除接口对接。封装axios
+
+新建tree自定义组件
+
+模版下载和导入接口对接
 
 
 
-1. 继续跟进Hi200Go项目开发。
-2. 学习planka项目。
-3. 继续学习react hook及相关语法。
+完成模版列表和模版对象接口对接。
+
+调整模版对象ui。使用Form管理表单，调整模版列表分页逻辑，调整每个抽屉关闭打开逻辑。
+
+修改文件导入和下载逻辑，将Upload上传逻辑改为手动上传，定义downloadFilesByALink方法下载url。
+
+新建自定义Tree组件，用做Select的拓展菜单，与Select搜索框和Value进行联动。
 
 
 
-1. 计划
-2. argent体
-3. 项目需求：hi200
-4. planka
+继续对接报表中心模版获取接口。
+
+继续学习antd组件使用。
 
 
 
+last
+
+完成呼叫设置，发送记录接口对接。
+
+与后端沟通，对接发送设置逻辑，调整前端传参逻辑。
+
+调整模版获取ui，调整每个抽屉关闭打开逻辑。
+
+调整发送设置和发送设置单独的保存和校验逻辑，使用Form name约束不同表单，使用 JSON.stringify完成表单校验和监听表单修改逻辑。
+
+学习大语言模型概念，了解LLM训练一般流程。
+
+
+
+跟进发送设置接口对接。
+
+继续学习大语言模型概念。
 
 ## 四、目录
-
-
-
-
 
 
 
