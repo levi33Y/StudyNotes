@@ -1,14 +1,5 @@
 # 运行时
 
-有以下几个知识点：
-
-1. ReactDOM.render
-2. React Fiber
-3. 函数式组件
-4. 任务体系
-5. 应用从创建到第一次内容呈现经历流程（首次渲染）
-6. 初始化结束，第一次更新State如何更新（更新渲染）
-
 React运行时大概流程是：
 
 1. 从ReactDOM.render开始，形成一个FiberTree挂载到App上，在渲染成真是Dom
@@ -16,6 +7,17 @@ React运行时大概流程是：
 接收参数：element、真实DOM、callback回调
 
 2. 察觉更新后，执行scheduleUpdateOnFiber函数，然后开始处理filber并开始render和commit阶段。
+
+
+
+关键词：
+
+1. ReactDOM.render
+2. React Fiber
+3. 函数式组件
+4. 任务体系
+5. 应用从创建到第一次内容呈现经历流程（首次渲染）
+6. 初始化结束，第一次更新State如何更新（更新渲染）
 
 ## 基础
 
