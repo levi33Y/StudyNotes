@@ -4,7 +4,7 @@ fiber架构下，运行时操作被拆开为很多部分，并且是可以中断
 
 
 
-关键词：帧、空闲回调、effect副作用、current、workInProgress
+关键词：帧、空闲回调、effect副作用、current、workInProgress、UpdateQueue
 
 
 
@@ -13,6 +13,12 @@ fiber架构下，运行时操作被拆开为很多部分，并且是可以中断
 fiber是DOM树的节点，保存着对应元素的基本信息，还要保存一些用于任务调度的信息
 
 ![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/3/25/1625d95bc781908d~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png)
+
+
+
+### updateQueue
+
+链式队列（即使用链表实现的队列存储结构），存放Update
 
 
 
@@ -75,7 +81,13 @@ workInprogress：
 
 当用户输入值时，通过InPut方法获取输入值筛选列表数据并调用setList，此时进入**更新**渲染。
 
+react会把当前的更新送入list组件对应的update queue中
 
+fiber-tree:
+
+...
+
+workInprogress:
 
 
 
