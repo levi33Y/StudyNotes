@@ -20,19 +20,18 @@
 
 ## 二、每日总结
 
-2024/9/21 UPDATE:
+2024/9/22 UPDATE:
 今日总结：
 
-1. 
+1. 与后端沟通，继续对接报表中心接口，完成用户管理表格筛选和查询逻辑，完成权限管理获取角色接口对接。
 
 明日计划：
 
-1. 跟进报表中心模板库开发。
-2. 学习React Fiber架构
+1. 对接报表中心权限管理接口。
 
 卡位：暂无
 
-报表中心 模版库：https://github.com/sj-distributor/ReportCenter.Web/pull/23
+报表中心 用户管理：https://github.com/sj-distributor/ReportCenter.Web/pull/27
 
 ## 三、每周总结
 
