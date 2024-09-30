@@ -12,27 +12,27 @@
 
 ## Today
 
-1. [❓] py
-2. [❓] llm
-3. [❓] agent content
+1. [❓] react 运行时
+2. [❓] steup
+3. [❓] LLM
 
 ## 一、掘
 
 ## 二、每日总结
 
-2024/9/21 UPDATE:
+2024/9/30 UPDATE:
 今日总结：
 
-1. 了解React运行时总览，了解ReactDom.render和fiber，render和commit阶段。
+1. 测试报表中心权限管理相关接口，反馈问题。
+2. 处理识别文件feedback。调整上传文件UI，发pr并测试。
 
-明日计划：
+周五计划：
 
-1. 跟进报表中心模板库开发。
-2. 学习React Fiber架构
+1. 跟进报表中心接口对接。
 
 卡位：暂无
 
-报表中心 模版库：https://github.com/sj-distributor/ReportCenter.Web/pull/23
+识别文件（approved）：https://github.com/sj-distributor/AiRecognitionFile.Web/pull/98
 
 ## 三、每周总结
 
