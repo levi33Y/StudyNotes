@@ -1,18 +1,26 @@
 # Pyramid Flow
 
-pyramid-flow-sd3模型
+>pyramid-flow-sd3
+>
+>[github](https://github.com/jy0205/Pyramid-Flow?tab=readme-ov-file)
+>
+>[Hugging Face](https://huggingface.co/rain1011/pyramid-flow-sd3)
 
-**背景：** 10 月 10日，快手科技、北京大学和北京邮电大学联合组建的研究团队发布了 Pyramid Flow 文生视频模型。
+
+
+## **背景：** 
+
+10 月 10日，快手科技、北京大学和北京邮电大学联合组建的研究团队发布了 Pyramid Flow 文生视频模型。
 
 
 
-**介绍：**
+## **介绍：**
 
 Pyramid Flow 是一种基于流匹配（Flow Matching）的训练效率高的自回归视频生成方法
 
 
 
-**分析：**
+## **特性：**
 
 > Pyramid Flow, a training-efficient Autoregressive Video Generation method based on Flow Matching.
 
@@ -53,4 +61,6 @@ Pyramid Flow 使用流量匹配来改进视频生成。
 
 当模型创建视频时，它会使用 "流匹配 "来确保金字塔的每一步（或层）都能顺利过渡到下一步。 这意味着，从模糊版本到清晰版本，它都能保持一切看起来真实流畅。
 
-**demo：**
+
+
+## **demo：**
