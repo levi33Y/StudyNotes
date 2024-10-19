@@ -33,3 +33,10 @@
 报表中心：https://github.com/sj-distributor/ReportCenter.Web/pull/40
 
 ## 三、每周总结
+
+1. 完成报表中心鉴权和权限管理增强需求开发。
+2. review 货品质量 pr，测试功能
+3. 了解文生图、文生视频大模型大致推理过程。
+
+4. 学习 react 相关语法。
+5. 继续跟进报表中心开发。
