@@ -19,21 +19,14 @@
 
 ## 二、每日总结
 
-2024/10/26 UPDATE:
+2024/10/28 UPDATE:
 今日总结：
 
-1. 调整报表中心表单校验逻辑。
-2. 学习React 过渡更新任务，了解startTransition、useTransition和useDeferredValue原理。
+1. 学习 LCP、CLS、INP 性能指标，学习 React 海量数据处理渲染切片。
 
-
-
-周一计划：
+明日计划：
 
 1. 跟进报表中心开发。
-
-
-
-卡位：暂无
-报表中心：https://github.com/sj-distributor/ReportCenter.Web/pull/43
+2. 继续学习高性能 React 相关内容。
 
 ## 三、每周总结
