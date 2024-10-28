@@ -1,6 +1,6 @@
 # 学习笔记
 
-2024/10/19
+2024/10/26
 
 ## Todo
 
@@ -12,7 +12,6 @@
 
 1. [❓] deep
 2. [❓] lllm
-3. [] steup - ai
 
 ## Today
 
@@ -20,22 +19,21 @@
 
 ## 二、每日总结
 
-2024/10/21 UPDATE:
+2024/10/26 UPDATE:
 今日总结：
 
-1. 配置aiplatform项目cicd。
-1. 学习React内部更新调优、diff实现过程和外部渲染控制。
+1. 调整报表中心表单校验逻辑。
+2. 学习React 过渡更新任务，了解startTransition、useTransition和useDeferredValue原理。
 
-明日计划：
+
+
+周一计划：
 
 1. 跟进报表中心开发。
-1. 继续学习高性能React相关内容。
+
+
+
+卡位：暂无
+报表中心：https://github.com/sj-distributor/ReportCenter.Web/pull/43
 
 ## 三、每周总结
-
-1. 完成报表中心鉴权和权限管理增强需求开发。
-2. review 货品质量 pr，测试功能
-3. 了解文生图、文生视频大模型大致推理过程。
-
-4. 学习 react 相关语法。
-5. 继续跟进报表中心开发。

@@ -26,10 +26,9 @@ React外部渲染控制 / 196
 
 
 异步组件和懒加载 / 218
-
 9.5.1 异步组件和 Suspense / 219
 9.5.2 Suspense 实现懒加载 / 220
-Suspense和 React.lazy 原理实现 / 2219.5.3
+9.5.3 Suspense和 React.lazy 原理实现 / 2219.5.3
 9.5.4 React V18 SuspenseList / 224
 9.5.5 hydrate 模式下的 Suspense 新特性 / 226
 9.5.6 Suspense 未来可期 / 227
