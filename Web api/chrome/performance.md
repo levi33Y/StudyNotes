@@ -38,7 +38,7 @@ demo：
 
 witness列表因为网络加载的原因，导致表格内容在http请求结束后渲染内容，导致原来屏幕（当前屏幕窗口）下的**Claim Information**（不稳定元素）发生位移。
 
-![未命名](/Users/levi/Desktop/未命名.gif)
+![cls](https://raw.githubusercontent.com/levi33Y/Pictures/main/cls.gif)
 
 ![image-20241028155830383](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20241028155830383.png)
 
@@ -50,8 +50,14 @@ witness列表因为网络加载的原因，导致表格内容在http请求结束
 
 含义：衡量*下一次*绘制被阻塞的时间
 
-值：主线程阻塞时间，在react中 宏更新任务所需要的时间
+值：主线程阻塞时间，在下一次操作， 宏更新任务所需要的时间
 
 
 
-demo：很常见。
+demo：
+
+首先点击了show然后点击Other，因为show是长任务，所以阻塞了Other的更新任务，可以看出最后INP的计算也是在点击Other上面计算的。
+
+![inp](https://raw.githubusercontent.com/levi33Y/Pictures/main/inp.gif)
+
+![image-20241029104044529](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20241029104044529.png)
