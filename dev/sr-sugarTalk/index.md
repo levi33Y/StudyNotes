@@ -15,7 +15,7 @@ sugar talk web
 项目地址
 https://gitlab.sjfood.us/oxygen/sugartalk-web
 
-CI
+CI11
 https://teamcity.sjfood.us/buildConfiguration/SugartalkWeb_BuildDocker?mode=builds
 
 CD
