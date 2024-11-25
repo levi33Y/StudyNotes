@@ -1,4 +1,4 @@
-# [RTCStatsReport](https://developer.mozilla.org/zh-CN/docs/Web/API/RTCStatsReport)
+# [ RTCStatsReport](https://developer.mozilla.org/zh-CN/docs/Web/API/RTCStatsReport)
 
 ## getStats方法
 
@@ -70,10 +70,10 @@ RTCStatsType是一个枚举类型，表明RTCStats对象代表的种类。
 - [transceiver](#RTCRtpTranSceiverStats)：与RTP收发器RTCRtpTransceiver相关的统计数据，对应RTCRtpTran-sceiverStats对象。
 - sender：与RTP发送器RTCRtpSender相关的统计数据。如果其关联的媒体轨道kind值为video，则对应[RTCVideoSenderStats](#RTCVideoSenderStats)对象；如果kind值为audio，则对应[RTCAudioSenderStats](#RTCAudioSenderStats)对象。
 - receiver：与RTP接收器RTCRtpReceiver相关的统计数据，对应的对象取决于与其关联的媒体轨道kind值。如果kind值为void，则对应的对象为[RTCVideoReceiverStats](#RTCVideoReceiverStats)；如果kind值为audio，则对应的对象为[RTCAudioReceiverStats](#RTCAudioReceiverStats)。
-- [transport](#RTCTransportStats)：与对等连接RTCPeerConnection关联的传输对象的统计数据，对应RTC-TransportStats对象。
+- transport：与对等连接RTCPeerConnection关联的传输对象的统计数据，对应[RTCTransportStats](#RTCTransportStats)对象。
 - [sctp-transport](#RTCSctpTransportStats)：与RTCSctpTransport对象关联的SCTP传输数据，对应RTCSctp-TransportStats对象。
-- [candidate-pair](#RTCIceCandidatePairStats)：与RTCIceTransport关联的ICE候选对统计数据，对应RTCIceCandidate-PairStats对象。
-- [local-candidate](#RTCIceCandidateStats)：与RTCIceTransport关联的本地ICE候选者配对数据，对应RTCIceCandidate-Stats对象。
+- candidate-pair：与RTCIceTransport关联的ICE候选对统计数据，对应[RTCIceCandidatePairStats](#RTCIceCandidatePairStats)对象。
+- local-candidate：与RTCIceTransport关联的本地ICE候选者配对数据，对应[RTCIceCandidateStats](#RTCIceCandidateStats)对象。
 - [remote-candidate](#RTCIceCandidateStats)：与RTCIceTransport关联的远端ICE候选者配对数据，对应RTCIce-CandidateStats对象。
 - [certificate](#RTCCertificateStats)：RTCIceTransport使用的证书信息，对应RTCCertificateStats对象。
 - [ice-server](#RTCIceServerStats)：当前连接使用的STUN和TURN服务器信息，对应RTCIceServerStats对象。
