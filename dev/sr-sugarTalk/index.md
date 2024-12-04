@@ -38,4 +38,20 @@ https://teamcity.sjfood.us/project/SugarTalk_SugartalkApp?mode=builds
 1. 找获取屏幕 推流 源码
 2. update
 3. 影评
-4. 
+
+
+
+
+
+打包
+
+
+
+测试包
+
+export CSC_KEY_PASSWORD=123456
+
+node ./scripts/changeBuild.js productName="SugarTalkTest"
+
+make build-test
+
