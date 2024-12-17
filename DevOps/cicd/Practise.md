@@ -454,6 +454,18 @@ Kubernetes Ingress 资源
 
    
 
+## 📌cd-2
+
+### 🎯一、创建你的项目
+
+### 🎯二、deployments 配置 process
+
+1、添加
+
+![image-20241021150301023](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20241021150301023.png)
+
+2、Edit YAML ccv上线。
+
 
 
 ## 🎉发布
