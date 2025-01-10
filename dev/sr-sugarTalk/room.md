@@ -1,41 +1,59 @@
 # 会议
 
-新ui位置
+
+
+## **新ui位置**
+
+
+
+一、ui切换
 
 当共享屏幕时，通过eletron窗口和条件渲染隐藏原来存在的ui（旧ui，显示录制ui（新增ui。这样做的目的是保留原来逻辑，防止多过change和避免更多成本
 
 
 
-1. ui切换
-
-
-
 思路：
 
-三个状态，通过改变窗口来实现
+三个状态，通过改变窗口尺寸来实现room/option/sharing
 
 
 
-pb：
+**pb：**
 
 `win.setBackgroundMaterial`api切换透明度失败
 
 ```ts
-// 为1时切换失败
+// 为1/0时切换失败
 if(isFixed) {
   win.setBackgroundColor("rgba(255,255,255,0.99)")
 } else {
-  win.setBackgroundColor("rgba(255,255,255,0)")
+  win.setBackgroundColor("rgba(255,255,255,0.025)")
 }
 ```
 
 
 
-2. hook状态
+二、窗口的权限
+
+1. 拖拽
+2. 手动改变尺寸大小
+3. 聚焦
+4. 阴影
+5. 窗口顶置运行
+6. 窗口交通灯（mac
+7. 聚焦
 
 
 
-3. eletron窗口
+## hook状态
+
+**原来的逻辑**
+
+1. 开始/结束共享
+
+
+
+## eletron窗口
 
 ```
 window.electronAPI
@@ -45,7 +63,7 @@ window.electronAPI
 
 
 
-4. “过滤”窗口
+## “过滤”窗口
 
 #### `win.setContentProtection(enable)` *macOS* *Windows*
 
