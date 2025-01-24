@@ -1,7 +1,7 @@
-2025/1/15 UPDATE:
+2025/1/22 UPDATE:
 今日总结：
 
-1. 跟进sugartalk项目需求。开发共享时查看livekit文档，修改本地获取媒体流逻辑监听ScreenShareAudio轨道信息。
+1. 跟进sugartalk项目需求。处理1.1 phase2反馈。看Docxtemplater文档，重构导出word文档和转写处理逻辑。
 
 
 
@@ -12,3 +12,4 @@
 
 
 卡位：暂无
+

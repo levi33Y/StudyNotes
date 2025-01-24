@@ -20,17 +20,64 @@ event.sender.send("download-complete", url)
 
 ## word
 
-file-saver本地下载
+[docxtemplater](https://docxtemplater.com/docs/tag-types/)+file-saver本地下载
 
 ```ts
-import { saveAs } from "file-saver";
+//在项目本地资源存放.docx作为模版，模版内容通过docxtemplater语法编辑
+{#list}{content}
 
-const blob = new Blob([data], {
-  type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-});
 
-saveAs(blob, `${state.title}-${type}.docx`);
+{#list}
+
+//
+import {saveAs} from "file-saver";
+import PizZip from "pizzip";
+import Docxtemplater from "docxtemplater";
+
+const _exportByWord = async (data: string[], type?: string) => {
+  try {
+    const response = await fetch('Doc.docx');
+
+    const blob = await response.blob();
+
+    const arrayBuffer = await blob.arrayBuffer();
+
+    const zip = new PizZip(arrayBuffer);
+
+    const doc = new Docxtemplater().loadZip(zip);
+
+    doc.setOptions({
+      nullGetter: function () {
+        return "";
+      }
+    });
+
+    doc.setData({
+      list:data.map((item) => ({
+        content: item,
+      })),
+    });
+
+    doc.render();
+
+    const out = doc.getZip().generate({
+      type: "blob",
+      mimeType:
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    });
+
+    saveAs(out, `${state.title}-${type}.docx`);
+  } catch (e){
+    ElMessage({
+      message: "導出失敗",
+      type: "error",
+    });
+  }
+};
 ```
+
+- word 是一种压缩格式
+- 通过fetch方式，读取模版文件二进制文件信息
 
 
 

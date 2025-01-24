@@ -1,7 +1,7 @@
-2025/1/16 UPDATE:
+2025/1/23 UPDATE:
 今日总结：
 
-1. 跟进sugartalk项目需求。完成录制模块需求并发测试。完成导出功能开发，调整导出语言逻辑。调整录制内容的持续时间计算逻辑，
+1. 跟进sugartalk项目需求。处理1.1 phase2反馈。调整录制详情UI与纪要UI，完成点击发言跳转对应时间节点功能。
 
 
 
@@ -13,4 +13,3 @@
 
 卡位：暂无
 
-录制模块：https://gitlab.sjfood.us/oxygen/sugartalk/-/merge_requests/18
