@@ -93,3 +93,8 @@ appcenter distribute release ... --build-version ${VERSION//+/-} ...
 ## app center
 
 https://install.appcenter.ms/orgs/proton-technology/apps/sugartalk-test/distribution_groups/open
+
+
+
+
+

@@ -1,7 +1,7 @@
-2025/2/12 UPDATE:
+2025/2/19 UPDATE:
 今日总结：
 
-1. 跟进sugartalk项目需求。开发预约会议ui。优化打开对话框弹窗ui交互逻辑，完成参会人选择弹窗选择参会人逻辑开发。
+1. 跟进sugartalk项目需求。处理预约会议pr comments，调整预约会议参会人字段ui自适应以及会议设置密码字段ui交互逻辑。编写安装与卸载虚拟音频逻辑。
 
 
 
@@ -13,3 +13,4 @@
 
 卡位：暂无
 
+预约会议：https://gitlab.sjfood.us/oxygen/sugartalk/-/merge_requests/25

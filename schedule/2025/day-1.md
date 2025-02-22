@@ -1,7 +1,7 @@
-2025/2/10 UPDATE:
+2025/2/17 UPDATE:
 今日总结：
 
-1. 跟进sugartalk项目需求。开发预约会议ui。看Channel Messaging相关文档，尝试实现了两个窗口间相互通信。
+1. 跟进sugartalk项目需求。调整成员模块并发pr，解决修改名称用户面板没变化和打开成员标签页窗口闪烁问题，补充移除会议提示ui。
 
 
 
@@ -12,3 +12,5 @@
 
 
 卡位：暂无
+
+sugartalk：https://gitlab.sjfood.us/oxygen/sugartalk/-/merge_requests/23

@@ -37,7 +37,7 @@ https://teamcity.sjfood.us/project/SugarTalk_SugartalkApp?mode=builds
 
 
 
-## phase 3 分支
+## sugartalk v1.1
 
 1. enhance-share-ui
    - 共享桌面菜单UI
@@ -51,6 +51,7 @@ https://teamcity.sjfood.us/project/SugarTalk_SugartalkApp?mode=builds
    - 会议列表
    - 会议详情
 4. enhance-schedule-metting-ui
+   - 共享会议ui
 
 
 
@@ -238,8 +239,23 @@ FR-16-1
 
 
 
-### 参会人选择框
+#### 参会人选择框
 
 
 
-### 日程会议设置界面
+#### 日程会议设置界面
+
+
+
+v1.2
+
+预订会议-周期优化 7
+
+会议-锁定会议 7
+
+会议-管理成员-未入会 7
+
+会议-主持人会议中等候室操作 / 会议-主持人等候室操作 / 会议-成员等候室界面 / 会议设置-开放等候室选项 30
+
+
+
