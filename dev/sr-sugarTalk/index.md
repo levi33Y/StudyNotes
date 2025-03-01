@@ -1,3 +1,7 @@
+# livekit 1.15.8
+
+
+
 ## test
 
 MINDY.L
@@ -259,13 +263,13 @@ v1.2
 
 
 
-### v1.1修复
+### v1.1 ui修复
 
 win room边框 ?
 
 
 
-初始化/结束共享room窗口位置 x
+初始化/结束共享room窗口位置 ,窗口菜单，快捷键x
 
 
 
@@ -283,10 +287,263 @@ win room边框 ?
 
 共享时
 
-左上角分別為網絡狀態、會議時長、會議名稱。x
+左上角分別為網絡狀態、會議時長、會議名稱。v
 
 下方功能依次為： 音頻開關、視頻開關、 v
 
-共享屏幕（不再顯示結束共享，點擊即打開共享畫面選擇窗口）  x
+共享屏幕（不再顯示結束共享，點擊即打開共享畫面選擇窗口）  v
 
-邀請、成員、錄製（原來的名字為智能轉寫）、EA、設置、結束共享（原來為結束會議，改為僅結束共享屏幕）v
+邀請、v
+
+成員、v
+
+錄製（原來的名字為智能轉寫）、v
+
+EA、v
+
+設置、v
+
+結束共享（原來為結束會議，改為僅結束共享屏幕）v
+
+
+
+共享画板 x
+
+
+
+共享声音本地参会人麦克疯v
+
+
+
+### v1.1流订阅
+
+TrackSubscribed b加入,原a获取到流
+
+TrackUnsubscribed 直接退出房间或者
+
+```
+.setScreenShareEnabled(false, {
+  audio: false,
+})
+```
+
+之类操作，其他人就触发
+
+
+
+前两者均有本地事件对应本地人的流事件
+
+
+
+TrackSubscriptionFailed
+
+https://docs.livekit.io/reference/internals/livekit-sfu/#livekit-sfu-architecture
+
+房间节点流的丢失，尝试重新订阅，
+
+false取消订阅流进入un
+
+两秒之后重新订阅流，如果流成功订阅就会触发TrackSubscribed更新这个远程用户的信息
+
+```ts
+const remoteTrackPublication = participant.tracks.get(trackSid)
+
+remoteTrackPublication?.setSubscribed(false)
+
+setTimeout(() => {
+  remoteTrackPublication?.setSubscribed(true)
+}, 2000)
+```
+
+
+
+
+
+### v.1.1黑屏
+
+同时共享，结束显示的那个：
+
+非显示共享用户：卡住
+
+显示共享用户：黑屏
+
+
+
+房间更新逻辑
+
+麦克风
+
+共享屏幕
+
+摄像头
+
+
+
+shareStream 共享屏幕
+
+1、房间ready
+
+订阅流，共享流-更新本地状态
+
+2、屏幕共享
+
+推送流*
+
+订阅流，阻塞共享行为
+
+3、会议中，
+
+订阅流，共享流-更新本地状态
+
+
+
+一个共享人：资源锁x
+
+
+
+```ts
+    if (room.value.state !== ConnectionState.Connected) return
+
+    const sharePreId = Array.from(room.value.participants.values()).find((p)=>{
+      const pub = p.getTrack(Track.Source.ScreenShare)
+
+      const audioPub = p.getTrack(Track.Source.ScreenShareAudio)
+
+      return pub?.isSubscribed || audioPub?.isSubscribed
+    })?.sid
+
+    let participant= sharePreId ? room.value.participants.get(sharePreId) : room.value.localParticipant
+
+    let videoTrack  = participant?.getTrack(Track.Source.ScreenShare)?.videoTrack?.mediaStreamTrack
+
+    let audioTrack = participant?.getTrack(Track.Source.ScreenShareAudio)?.audioTrack?.mediaStreamTrack
+
+    if(!videoTrack && !audioTrack) {
+      shareState.shareStream = undefined
+    } else {
+      const shareStream = new MediaStream()
+
+      videoTrack && shareStream.addTrack(videoTrack)
+
+      audioTrack && shareStream.addTrack(audioTrack)
+
+      state.shareStream = shareStream
+    }
+```
+
+
+
+### v.1.1共享屏幕
+
+mac共享屏幕使用虚拟设备，因此视频流和音流单独获取
+
+win可以获取桌面音频，视频和音频同一获取，推的时候单独推
+
+
+
+
+
+### v1.1 livekitreconnection
+
+https://docs.livekit.io/home/client/connect/#network-changes-and-reconnection
+
+```
+RTCEngine.ts
+```
+
+```ts
+      .on(RoomEvent.Reconnecting,()=>{
+        state.disConnectedSetTimeout = setTimeout(()=> {
+          stopShare()
+
+          shareScreenState.shareStream = undefined
+
+          appStore.isMeeting = false
+
+          room.value?.disconnect()
+
+          ElMessageBox.alert('網絡異常，已斷開連接', {
+            confirmButtonText: '確認',
+            callback: () => {
+              navigation.destroy("/room")
+            },
+          })
+        },20000)
+      })
+      .on(RoomEvent.Reconnected,()=>{
+        clearTimeout(state.disConnectedSetTimeout)
+      })
+```
+
+
+
+### v1.1噪音
+
+```
+if (
+  trackPublication.source === Track.Source.Microphone &&
+  trackPublication.track instanceof LocalAudioTrack &&
+  isKrispNoiseFilterSupported()
+) {
+   {
+    const krispProcessor = KrispNoiseFilter();
+
+    await trackPublication.track.setProcessor(krispProcessor);
+
+    await krispProcessor.setEnabled(true);
+  }
+}
+```
+
+### docking-member-api
+
+进入会议 ：获取权限，其他人权限
+
+onMounted get
+
+别人进入会议：更新权限
+
+roomEvent get
+
+别人操作你的权限：更新
+
+roomEvent get
+
+别人操作别人
+
+roomEvent get
+
+
+
+你需改权限
+
+post ddata get
+
+
+
+主持人退出
+
+pDis get
+
+
+
+断网，重连后操作
+
+red get
+
+
+
+获取信息《- 更新信息 《- onMounted、roomEvent、pDis、red
+
+
+
+主持人设置联合主持人
+
+主持人离开会议
+
+主持人重回
+
+主持人重回后收回主持人
+
+
+
