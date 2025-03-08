@@ -261,6 +261,77 @@ v1.2
 
 会议-主持人会议中等候室操作 / 会议-主持人等候室操作 / 会议-成员等候室界面 / 会议设置-开放等候室选项 30
 
+### docking-member-api
+
+进入会议 ：获取权限，其他人权限
+
+onMounted get
+
+别人进入会议：更新权限
+
+roomEvent get
+
+别人操作你的权限：更新
+
+roomEvent get
+
+别人操作别人
+
+roomEvent get
+
+
+
+你需改权限
+
+post ddata get
+
+
+
+主持人退出
+
+pDis get
+
+
+
+断网，重连后操作
+
+red get
+
+
+
+获取信息《- 更新信息 《- onMounted、roomEvent、pDis、red
+
+
+
+主持人设置联合主持人
+
+主持人离开会议
+
+主持人重回
+
+主持人重回后收回主持人
+
+
+
+```
+(isCreator && participant.role === MeetingPermissionEnum.Host) ||
+(participant.role === MeetingPermissionEnum.CoHost) &&
+localRole === MeetingPermissionEnum.Host &&
+isCreator ||
+isNil(participant.role)||
+(localRole && participant.role !== MeetingPermissionEnum.Host)
+```
+
+xxx
+
+```
+onFocus: (callback) => ipcRenderer.on("win-focus", (_) => callback()),
+onBlur: (callback) => ipcRenderer.on("win-blur", (_) => callback()),
+onLoad: (callback) => ipcRenderer.on("win-load", (_, body) => callback(body)),
+```
+
+
+
 
 
 ### v1.1 ui修复
@@ -495,55 +566,19 @@ if (
 }
 ```
 
-### docking-member-api
+v1.1流更新 共享遮照卡住
 
-进入会议 ：获取权限，其他人权限
-
-onMounted get
-
-别人进入会议：更新权限
-
-roomEvent get
-
-别人操作你的权限：更新
-
-roomEvent get
-
-别人操作别人
-
-roomEvent get
+v.1.1 共享遮照鼠标事件
 
 
 
-你需改权限
-
-post ddata get
 
 
+### phase3 feedback
 
-主持人退出
+连接状态消息提示
 
-pDis get
+会议权限-主持人录制等权限
 
-
-
-断网，重连后操作
-
-red get
-
-
-
-获取信息《- 更新信息 《- onMounted、roomEvent、pDis、red
-
-
-
-主持人设置联合主持人
-
-主持人离开会议
-
-主持人重回
-
-主持人重回后收回主持人
-
-
+会议列表状态修改 ？
 
