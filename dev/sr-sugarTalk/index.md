@@ -4,21 +4,15 @@
 
 ## test
 
-MINDY.L
+MINDY.L aE8#urf~
 
-aE8#urf~
+TED.F #zjobKL0
 
-TED.F
+MONESY.H JN6OhDz2
 
-#zjobKL0
+WINNIE.X bEQbphuf
 
-MONESY.H
-
-JN6OhDz2
-
-WINNIE.X
-
-bEQbphuf
+Open.G  zmzAsKyo
 
 ## 项目
 
@@ -606,3 +600,47 @@ v.1.1 共享遮照鼠标事件
 
 #### 过滤窗口
 
+
+
+### v1.1 互动批注
+
+共享桌面
+
+```
+    <template #canvas>
+      <DrawingBoard
+          ref="drawingBoardRef"
+          @drawing="sendDrawing"
+          :share-user-name="shareParticipant?.name ?? ''"
+          :moderator="moderator"
+      />
+    </template>
+    
+        drawingBoardRef.value?.resize({
+      width: currentDisplay.size.width,
+      height: currentDisplay.size.height,
+      videoWidth: currentDisplay.size.width,
+      videoHeight: currentDisplay.size.height,
+      currentVideoWidth: currentDisplay.size.width,
+      currentVideoHeight: currentDisplay.size.height,
+      ratio: 1,
+    });
+```
+
+
+
+update-1.1-phase3-feedback-partial
+
+
+
+
+
+## vuex livekitRoom
+
+### useRoomStore
+
+room
+
+room Event
+
+customize room state
