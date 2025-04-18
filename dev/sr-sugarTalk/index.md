@@ -644,3 +644,15 @@ room
 room Event
 
 customize room state
+
+
+
+
+
+大佬们，有人知道electron应用如何跨应用获取应用窗口信息吗
+
+desktopCapturer获取桌面媒体流，并没有位置大小信息
+
+screen模块只能获取屏幕的位置大小信息
+
+尝试node-window-manager版本不兼容，

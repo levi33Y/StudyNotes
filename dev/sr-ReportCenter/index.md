@@ -47,7 +47,7 @@ TEMPLATE_URL=https://smartiestest.oss-cn-hongkong.aliyuncs.com/20240906/b61f9b95
 
 Open.G zmzAsKyo
 
-Ted.F yEHps#4j
+Ted.F #zjobKL0
 
 MINDY.L aE8#urf~
 
