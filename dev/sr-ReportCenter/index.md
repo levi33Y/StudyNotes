@@ -52,3 +52,33 @@ Ted.F #zjobKL0
 MINDY.L aE8#urf~
 
 MONESY.H JN6OhDz2
+
+
+
+test
+
+REDIRECTURL=https://reportcenter.wiltechs.com/callback
+POST_LOGOUT_REDIRECTURL=https://reportcenter.wiltechs.com
+AUTHORITY=https://ome-account.wiltechs.com
+CLIENT_ID=38612e4d-8df8-4bcf-972a-64b8ab9aca89
+SCOPE=createdway openid offline_access phone email report_center fullname avatar birthday account
+SERVER=https://testsmarties.yamimeal.ca
+APP_ID=sZow!s43xMkl5
+TEMPLATE_URL=https://smartiestest.oss-cn-hongkong.aliyuncs.com/20240906/b61f9b95-5700-4813-b545-cc9f4e43221c.xlsx?Expires=253402300799&OSSAccessKeyId=LTAI5tEYyDT8YqJBSXaFDtyk&Signature=ZmaCtb2TDXgSWleTWInfKn1Ly3c%3D
+SECRET_KEY=5sy^u(z4&m@df$a_=k3@^$s--5md9*i(x$jq_ffw18b(3oz7i
+CHAT_BI_URL=https://chatbi-omebi.wiltechs.com/
+
+
+
+prd
+
+REDIRECTURL=https://omebidata.omenow.com/callback
+POST_LOGOUT_REDIRECTURL=https://omebidata.omenow.com
+AUTHORITY=https://ome-account.omenow.com
+CLIENT_ID=e29a9132-fb86-49fc-9490-a89a19d43f77
+SCOPE=email phone openid offline_access report_center_api createdway fullname avatar birthday account
+SERVER=https://smarties.yamimeal.ca
+APP_ID=JPU0ScwrNE
+TEMPLATE_URL=https://smartiesprd.oss-cn-hongkong.aliyuncs.com/20250124/34378766-2b90-4c89-a56c-0deec1b623c8.xlsx?Expires=253402300799&OSSAccessKeyId=LTAI5tEYyDT8YqJBSXaFDtyk&Signature=wEw%2BawKhgk9GZ3Sxq9zOKcxnA9c%3D
+SECRET_KEY=5sy^u(z4&m@df$a_=k3@^$s--5md9*i(x$jq_ffw18b(3oz7i
+CHAT_BI_URL=
