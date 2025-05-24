@@ -10,9 +10,15 @@
 
 export CSC_KEY_PASSWORD=123456
 
+export VITE_ARMS_PID=hccokn11qx@cc45921292807a8
+
 node ./scripts/changeBuild.js <!--[version(bash)]--> productName="SugarTalkTest"
 
 make build-test
+
+
+
+
 
 
 
