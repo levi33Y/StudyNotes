@@ -27,3 +27,21 @@ level
 
 
 roundedCorners 、 frame
+
+
+
+鼠标抖动
+
+
+
+窗口置顶
+
+
+
+窗口边框
+
+
+
+H262
+
+bitsrate：屏幕分辨X2（倍数） 
