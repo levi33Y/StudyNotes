@@ -197,7 +197,9 @@
 | General Settings        | 填写你仓库的信息                                 |
 | Authentication Settings | 填写你的账号信息                                 |
 
+1.2.0.1
 
+1.2.0
 
 ![image-20240524082145292](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524082145292.png)
 
