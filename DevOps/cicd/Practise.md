@@ -479,6 +479,8 @@ Kubernetes Ingress 资源
 2. **打tag包**，提前打开 New Tag页面，在分支merged后确保下一步点击Create Tag创建Tag
 
    ![image-20240524182233325](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524182233325.png)
+   
+   ![image-20250610102128705](/Users/levi/Library/Application Support/typora-user-images/image-20250610102128705.png)
 
 ​	
 

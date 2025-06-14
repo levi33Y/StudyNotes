@@ -272,3 +272,67 @@ anser
 菜单开关无效，还是可以画
 
 对方显示器分辨率变了（全屏），画图定位错位。（可以画到黑色区域了）
+
+
+
+## 鼠标重影
+
+window navigator->livekit push->livekitServer sub->vedio
+
+
+
+使用RecordRTC录制本地stream
+
+```
+    yarn add recordrtc @types/recordrtc
+    //
+    <video
+            ref="videoRef"
+            class="video-container"
+            controls
+        />
+ //
+ const recordingFun = (strem?: MediaStream)=>{
+    if(!isNil(record.value)) {
+      record.value.stopRecording()
+
+      const url = record.value.toURL()
+
+      videoRef.value.src = url
+
+      record.value = null
+    } else if(strem) {
+      record.value = new RecordRTC(strem,{
+        type: 'video',
+        mimeType: 'video/webm;codecs=vp9',
+      })
+
+      record.value.startRecording()
+    }
+  }
+```
+
+livekit engress看视频存储是否是push流后livekit编码问题。
+
+
+
+### 本地stream已经出现重影
+
+点击共享后，本地窗口聚焦鼠标异常，移动时失去焦点。不懂则重新获取焦点
+
+
+
+打开windows显示鼠标轨迹设置，不会出现了
+
+
+
+
+
+## 切换窗口
+
+切换窗口大小发现dom元素和挂载事件载变化后就完成了
+
+1. 问题，在f12录制每一帧分析问题
+2. 优先度。重构罗姐还是调整逻辑
+3. 测试列表。功能修复以及关联功能在开发后列入带测试列表，防止发布后再出错
+4. 变化用css，其他透明隐藏背景，让背景变化看不到
