@@ -673,3 +673,87 @@ desktopCapturer获取桌面媒体流，并没有位置大小信息
 screen模块只能获取屏幕的位置大小信息
 
 尝试node-window-manager版本不兼容，
+
+
+
+
+
+1. **视图层 (View Layer):**
+
+   - **Electron BrowserWindow:** 替换了原图的浏览器，代表 Electron 应用的窗口。 每个窗口加载独立的 HTML/JS/CSS。
+
+   - 业务模块:
+
+      
+
+     不同的窗口对应不同的业务模块。
+
+     - **主窗口:** 用于预定会议、查看录制列表等。
+     - **会议窗口:** 用于 Livekit 音视频通信。
+     - **设置窗口:** 用于配置应用设置。
+
+2. **编译层 (Build Layer):**
+
+   - **编译模块:** 使用 Webpack、Node.js 和 Electron Builder 等工具进行编译和打包。
+
+3. **代码层 (Code Layer - Renderer Process):**
+
+   - **页面容器:** Vue 组件的容器。
+
+   - Vue Component:
+
+      
+
+     Vue 组件，包括公共组件和页面组件。
+
+     - **公共组件:** 可复用的 UI 组件。
+     - **页面组件:** 特定页面的 UI 组件 (主窗口, 会议窗口, 设置窗口)。
+
+   - **Vue Router:** 用于管理主窗口和设置窗口的路由。 会议窗口可能使用简单的路由或直接组件，因为它通常只有一个页面。
+
+   - **Vuex/Pinia 状态管理:** 用于管理 UI 状态、会议状态、用户状态和录制状态。
+
+   - **Util:** 工具类，包括配置信息、工具函数和公共组件辅助函数。
+
+4. **数据层 (Data Layer):**
+
+   - **Service:** 封装数据请求的 Service 层。
+
+   - **Data Filter:** 用于数据过滤和转换。
+
+   - **数据缓存:** 使用 Local Storage 或 IndexedDB 进行数据缓存。
+
+   - **中间件:** 使用 Axios Interceptors 等中间件处理请求和响应。
+
+   - **Network:** 处理网络请求和响应，包括异常处理、缓存机制和超时重试。
+
+   - API:
+
+      
+
+     API 接口。
+
+     - **Livekit Server API:** 与 Livekit 服务器交互的 API (例如，获取房间 token)。
+     - **后端接口:** 与后端服务器交互的 API (例如，获取会议数据、用户信息、录制数据)。
+
+5. **主进程 (Main Process):**
+
+   - **Main Process Logic:** 主进程的逻辑，包括窗口管理和 IPC 处理。
+   - **Window Management:** 创建、销毁和管理 BrowserWindow 实例。
+   - **IPC Handler:** 处理来自渲染进程的 IPC 消息。
+   - **File System:** 访问文件系统，用于保存录制文件。
+   - **Database:** 访问数据库，用于存储会议信息、用户信息等。
+
+**关键差异和补充：**
+
+- **多窗口支持：** 架构图明确区分了不同的窗口及其对应的业务模块和页面组件。
+- **主进程逻辑：** 增加了主进程的模块，包括窗口管理、IPC 处理、文件系统访问和数据库访问。
+- **状态管理：** 更详细地描述了状态管理的内容，包括 UI 状态、会议状态、用户状态和录制状态。
+- **Livekit 集成：** 明确区分了 Livekit Server API 和后端接口。
+
+这个架构图更清晰地展示了你的 Electron + Vue 3 + Livekit 多窗口应用的结构和组件之间的关系。 你可以根据你的实际情况进行调整和完善。
+
+
+
+
+
