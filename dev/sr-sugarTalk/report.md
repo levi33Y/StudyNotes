@@ -1,98 +1,61 @@
-![image-20241113135727650](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20241113135727650.png)
+2025/3/20
+
+主题：sugartalk反馈
+
+要点：
+
+共享电脑音频：
+
+windows系统在实现共享电脑音频时，使用web api难以隔离sugartalk自身应用部分的音频，导致其他参会人出现回声现象（存在也把其他参会人说话的声音也共享出去的情况）。所以想要使用这个功能就需要额外去安装音频驱动，windows和mac系统的音频驱动是不一样的，这个在使用的过程中会指引用户去安装不同系统的音频驱动。现在用户提出window会有一个问题就是在安装去使用这个驱动的时候需要管理员权限，但是有些同事是没有这个管理账号密码的。
+
+目前想到的一种解决方案是：现在想到的就是op统一给windows的用户安装那个windows的音频驱动，应该就可以解决到这个问题
 
 
 
-![image-20241113135733343](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20241113135733343.png)
+过滤窗口：
+
+用户想要实现跟腾讯会议那一种共享屏幕后除了共享的人外其他参会人看不到腾讯会议的窗口，但是web api在获取桌面媒体流的时候时没有配置支持去过滤某个应用的窗口包括自己本应用的窗口。
+
+总结：所以这个功能目前是实现不到的
+
+
+
+批注功能：
+因为换了新ui后，批注功能的逻辑需要重新调整。如果用户在共享桌面是共享整个屏幕的话，只需要将批注的画板覆盖在整个屏幕上，就可以实现共享端显示批注内容；但是如果是共享某个窗口的话，因为目前暂时也没有什么可用的第三方可以去定位到其他窗口应用在显示屏上面的位置，所以在共享端中，将批注画板覆盖在其他窗口上显示批注内容这个也是比较难实现的。
+
+总结：共享整个屏幕可以实现，但是共享某个应用的窗口暂时无法实现
 
 
 
 
-
-## 共享屏幕
-
-获取视频流
 
 ```
-  let interval: NodeJS.Timeout | null = null;
-
-  let lastTimestamp: number | null = null;
-
-  function analyzeVideoQuality(trackInfo) {
-    console.log(trackInfo)
-
-    const prevStats = trackInfo.track.prevStats;
-    const packetsLost = prevStats.packetsLost;
-    const packetsReceived = prevStats.packetsReceived;
-    const framesReceived = prevStats.framesReceived;
-    const frameWidth = prevStats.frameWidth;
-    const frameHeight = prevStats.frameHeight;
-    const currentBitrate = trackInfo.track._currentBitrate;
-    const jitter = prevStats.jitter;
-    const mimeType = trackInfo.mimeType;
-    const nackCount = prevStats.nackCount;
-    const pliCount = prevStats.pliCount;
-    const firCount = prevStats.firCount;
-
-    // 1. 计算丢包率
-    const packetLossRate = (packetsLost / packetsReceived) * 100;
-
-    // 2. 计算帧率 (需要记录上一次的时间戳)
-    const currentTime = Date.now(); // 或者 trackInfo.track.prevStats.timestamp
-    const frameRate = lastTimestamp && ( framesReceived / ((currentTime - lastTimestamp) / 1000))
-    lastTimestamp = currentTime;
-
-    // 3. 判断视频质量
-    let quality = "良好";
-    let suggestions = [];
-
-    if (packetLossRate > 5) {
-      quality = "较差";
-      suggestions.push("丢包率较高，请检查网络连接。");
-    } else if (packetLossRate > 2) {
-      quality = "一般";
-      suggestions.push("丢包率较高，可能影响视频质量。");
-    }
-
-    // ... 其他质量判断逻辑
-
-    // 4. 构造弹窗内容
-    const qualityReport = {
-      "视频质量": quality,
-      "帧率": frameRate,
-      "丢包率": packetLossRate.toFixed(2) + "%",
-      "视频宽度": frameWidth,
-      "视频高度": frameHeight,
-      "当前码率": currentBitrate + '/' + (currentBitrate / 1000).toFixed(2) + " kbps",
-      "抖动": jitter.toFixed(2) + " ms",
-      "编解码器": mimeType,
-      "NACK计数": nackCount,
-      "PLI计数": pliCount,
-      "FIR计数": firCount,
-      "建议": suggestions,
-    };
-
-    console.log(qualityReport)
-
-    return qualityReport;
-  }
-
-  watch(()=>state.shareStream,(val)=>{
-    console.log(room.value.participants)
-
-    if(isNil(val)) {
-      interval && clearInterval(interval)
-      interval = null
-      return
-    }
-
-    if(!isNil(interval)) return
-
-    interval = setInterval(()=>{
-      const info = room.value.participants.get("PA_bv8TzqdjW7zU").videoTracks.get("TR_VSc7JiJPuuG4T7")
-
-      // const info = room.value.participants.values()[0].videoTracks.values()[0]
-
-      info && analyzeVideoQuality({...info})
-    },1000)
-  })
+120.230.118.206
 ```
+
+file:///Applications/SugarTalk.app/Contents/Resources/app.asar/dist/index.html#/room
+
+file:///Applications/SugarTalk.app/Contents/Resources/app.asar/dist/index.html#/room?autoAudio=true&microphone=false&enableCamera=false&userName=Jessica.F&isDropdownVisible=false&meetingNumber=58652&isMuted=true&meetingStreamMode=1
+
+k1mqkcX91XplLnl7nwF5o9690tm6
+
+
+
+服务器部署环境：mindy的mac
+測試人員:20
+测试时常：5分钟
+
+编码器1：vp9（目前用户使用的版本）
+测试情况1：不共享屏幕，20人同时开麦，声音正常
+测试情况2：共享屏幕，20人同时开麦，画面卡顿，共享人听到的声音杂音
+
+编码器2：vp8
+测试情况1：不共享屏幕，20人同时开麦，声音正常
+测试情况2：共享屏幕，20人同时开麦，画面播放较稳定，声音都正常
+
+编码器3：h264
+测试情况1：不共享屏幕，20人同时开麦，声音正常
+测试情况2：共享屏幕，20人同时开麦，画面卡顿，有点杂音
+
+测试下来感觉vp8的效果会比较稳定些
+

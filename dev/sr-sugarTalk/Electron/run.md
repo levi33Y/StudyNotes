@@ -13,77 +13,25 @@ sequenceDiagram
     participant RoomWindow as 房间窗口
     participant User as 用户
 
-    MainProcess->>MainProcess: 创建首页窗口 (BrowserWindow)
-    MainProcess->>HomeRenderer: 加载 HTML (home.html)
-    HomeRenderer->>HomeRenderer: 执行 JavaScript 代码
-    HomeRenderer->>HomeRenderer: 加载 CSS 样式
-    HomeRenderer->>HomeRenderer: 渲染首页界面
-    HomeRenderer-->>MainProcess: 通知窗口已准备好 (did-finish-load)
-    MainProcess->>HomeWindow: 显示首页窗口
+		MainProcess->>MainProcess: 初始化主进程
+    MainProcess->>HomeWindow: new BrowserWindow() 创建首页窗口
+    MainProcess->>HomeRenderer: win.loadFile() 加载（）资源
+    HomeRenderer-->>HomeRenderer: 解析（）资源
+    HomeRenderer-->>HomeRenderer: 路由解析
+    HomeRenderer-->>HomeWindow: 渲染页面
 
-    User->>HomeWindow: 点击 "加入会议" 按钮
-    HomeWindow-->>HomeRenderer: 用户操作传递给渲染进程
-    HomeRenderer->>HomeRenderer: 处理用户交互
-    HomeRenderer->>MainProcess: 发送 "加入会议" 请求 (IPC)
-
-    MainProcess->>MainProcess: 收到 "加入会议" 请求
-    MainProcess->>MainProcess: 创建房间窗口 (BrowserWindow)
-    MainProcess->>RoomRenderer: 加载 HTML (room.html)
-    RoomRenderer->>RoomRenderer: 执行 JavaScript 代码
-    RoomRenderer->>RoomRenderer: 加载 CSS 样式
-    RoomRenderer->>RoomRenderer: 渲染房间界面
-    RoomRenderer-->>MainProcess: 通知窗口已准备好 (did-finish-load)
-    MainProcess->>RoomWindow: 显示房间窗口
-
-    User->>RoomWindow: 与房间窗口交互
-    RoomWindow-->>RoomRenderer: 用户操作传递给渲染进程
-    RoomRenderer->>RoomRenderer: 处理用户交互
-    RoomRenderer->>MainProcess: 发送 IPC 消息 (可选)
-    MainProcess->>RoomRenderer: 发送 IPC 消息 (可选)
-    RoomRenderer->>RoomWindow: 更新用户界面
+    User->>HomeWindow: 加入会议
+    HomeWindow ->> HomeRenderer: window.api
+    HomeRenderer ->> MainProcess: ipc
+    MainProcess->>RoomWindow: new BrowserWindow() 创建首页窗口
+    MainProcess->>RoomRenderer: win.loadFile() 加载（）资源
+    RoomRenderer-->>RoomRenderer: 解析（）资源
+    RoomRenderer-->>RoomRenderer: 路由解析
+    RoomRenderer-->>RoomWindow: 渲染页面
          
 ~~~
 
 
-
-会议时序图
-
-~~~mermaid
-sequenceDiagram
-    participant UserA as Clinet A
-    participant UserB as Clinet B
-    participant UserC as Clinet C
-    participant LiveKit as LiveKitSever
-    participant Signaling as API
-
-    UserA->>Signaling: 加入房间请求 (roomid)
-    Signaling-->>UserA: 加入房间响应 (token)
-    UserA->>LiveKit: 连接 LiveKit
-
-    UserB->>Signaling: 加入房间请求 (roomid)
-    Signaling-->>UserB: 加入房间响应 (token)
-    UserB->>LiveKit: 连接 LiveKit
-
-    UserA->>LiveKit: 发布音频流
-    LiveKit->>UserB: 订阅 UserA 的音视频流
-    UserB->>UserB: 创建audio播放UserA音频流
-    UserB->>LiveKit: 发布音频流
-    LiveKit->>UserA: 订阅 UserB 的音视频流
-    UserA->>UserA: 创建audio播放UserB音频流
-
-    UserC->>Signaling: 加入房间请求 (roomid)
-    Signaling-->>UserC: 加入房间响应 (token)
-    UserC->>LiveKit: 连接 LiveKit
-    LiveKit->>UserC: 订阅 UserA 的音视频流
-    LiveKit->>UserC: 订阅 UserB 的音视频流
-
-    UserC->>LiveKit: 发布音频流
-    LiveKit->>UserA: 订阅 UserC 的音视频流
-    UserA->>UserA: 创建audio播放UserC音频流
-    LiveKit->>UserB: 订阅 UserC 的音视频流
-    UserB->>UserB: 创建audio播放UserC音频流
-
-~~~
 
 
 
