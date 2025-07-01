@@ -59,3 +59,134 @@ k1mqkcX91XplLnl7nwF5o9690tm6
 
 测试下来感觉vp8的效果会比较稳定些
 
+
+
+## 系统架构图
+
+### 打开应用
+
+~~~mermaid
+sequenceDiagram
+    participant MainProcess as 主进程
+    participant HomeRenderer as 首页渲染进程
+    participant HomeWindow as 首页窗口
+    participant RoomRenderer as 房间渲染进程
+    participant RoomWindow as 房间窗口
+    participant User as 用户
+
+		MainProcess->>MainProcess: 初始化主进程
+    MainProcess->>HomeWindow: new BrowserWindow() 创建首页窗口
+    MainProcess->>HomeRenderer: win.loadFile() 加载（）资源
+    HomeRenderer-->>HomeRenderer: 解析（）资源
+    HomeRenderer-->>HomeRenderer: 路由解析
+    HomeRenderer-->>HomeWindow: 渲染页面
+
+    User->>HomeWindow: 加入会议
+    HomeWindow ->> HomeRenderer: window.api
+    HomeRenderer ->> MainProcess: ipc
+    MainProcess->>RoomWindow: new BrowserWindow() 创建首页窗口
+    MainProcess->>RoomRenderer: win.loadFile() 加载（）资源
+    RoomRenderer-->>RoomRenderer: 解析（）资源
+    RoomRenderer-->>RoomRenderer: 路由解析
+    RoomRenderer-->>RoomWindow: 渲染页面
+~~~
+
+### 会议中
+
+~~~mermaid
+sequenceDiagram
+participant UserA as Clinet A
+participant UserB as Clinet B
+participant UserC as Clinet C
+participant LiveKit as LiveKitSever
+participant Signaling as API
+
+UserA->>Signaling: 加入房间请求 (roomid)
+Signaling-->>UserA: 加入房间响应 (token)
+UserA->>LiveKit: 连接 LiveKit
+
+UserB->>Signaling: 加入房间请求 (roomid)
+Signaling-->>UserB: 加入房间响应 (token)
+UserB->>LiveKit: 连接 LiveKit
+
+UserA->>LiveKit: 发布音轨
+LiveKit-->>UserB: 订阅 UserA 的音轨
+UserB->>UserB: 监听streamList变化，创建<audio>元素播放音频
+UserB->>LiveKit: 发布音轨
+LiveKit-->>UserA: 订阅 UserB 的音轨
+UserA->>UserA: 监听streamList变化，创建<audio>元素播放音频
+
+UserC->>Signaling: 加入房间请求 (roomid)
+Signaling-->>UserC: 加入房间响应 (token)
+UserC->>LiveKit: 连接 LiveKit
+LiveKit-->>UserC: 订阅 UserA 的音轨
+UserC->>UserC: 监听streamList变化，创建<audio>元素播放音频
+LiveKit-->>UserC: 订阅 UserB 的音轨
+UserC->>UserC: 监听streamList变化，创建<audio>元素播放音频
+
+UserC->>LiveKit: 发布音轨
+LiveKit-->>UserA: 订阅 UserC 的音轨
+UserA->>UserA: 监听streamList变化，创建<audio>元素播放音频
+LiveKit-->>UserB: 订阅 UserC 的音轨
+UserB->>UserB: 监听streamList变化，创建<audio>元素播放音频
+
+UserA->>LiveKit: 设置麦克风音频流静音
+LiveKit-->>UserB: 静音默认取消订阅流
+UserB->>UserB: 监听streamList变化，销毁对应的<audio>元素
+LiveKit-->>UserC: 静音默认取消订阅流
+UserC->>UserC: 监听streamList变化，销毁对应的<audio>元素
+
+UserA->>UserA: 获取本地屏幕视频流
+UserA->>LiveKit: 共享屏幕
+LiveKit-->>UserB: 订阅 UserA 的共享桌面视频流
+UserB->>UserB: 创建vedio播放视频
+LiveKit-->>UserC: 订阅 UserA 的共享桌面视频流
+UserC->>UserC: 创建vedio播放视频
+~~~
+
+
+
+### 桌面软件架构
+
+~~~mermaid
+graph LR
+    subgraph Electron 主进程
+        A[窗口管理] --> B[渲染进程通信]
+    end
+
+    subgraph Electron 渲染进程
+        C[Vue3 应用]
+    end
+
+    subgraph Vue3 应用
+        D[房间管理组件] --> E[LiveKit 客户端]
+        F[视频播放组件] <-- G[LiveKit 客户端]
+        H[用户界面组件] --> E
+    end
+
+    I[信令服务器] --> D
+    E --> J[LiveKit 服务器]
+    J --> G
+
+    B --> C
+    C --> I
+    C --> E
+
+~~~
+
+~~~mermaid
+block-beta
+  columns 3
+  a:3
+  block:group1:2
+    columns 2
+    h i j k
+  end
+  g
+  block:group2:3
+    %% columns auto (default)
+    l m n o p q r
+  end
+
+~~~
+
