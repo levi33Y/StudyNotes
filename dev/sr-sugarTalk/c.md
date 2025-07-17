@@ -1,6 +1,8 @@
-系统架构
+## 系统架构
 
-~~~
+### 系统框架
+
+~~~mermaid
 block-beta
 columns 1
 
@@ -38,11 +40,64 @@ end
 
 ~~~
 
+### 核心架构
 
-
-核心业务时序
-
+~~~mermaid
+mindmap
+  root((应用核心))
+    vue
+    	vue router
+    	vue components
+    	
+    vite
+    	构建静态html/css/js资源
+   	Electron
+    	fs
+    	electron builder
+    	electron api
+    livekit sdk js
+    	connect
+    	Room Event
+    	Participant Event
+    axios
+    	api
+    
 ~~~
+
+### 功能架构
+
+~~~mermaid
+mindmap
+  root((sugartalk))
+    登陆
+    	输入帐号<br/>密码
+    	点击登陆<br/>登陆应用
+    加入会议/快速会议
+    	快速会议<br/>创建房间并<br/>加入会议
+    	输入会议号加入会议
+    	选择预定会议加入会议
+    预定会议
+    	创建预定会议
+    	设置会议初始化设置
+    	指定会议参会人
+    	首页查看<br/>预定会议<br/>列表
+    	点击入会进入预定会议
+    历史会议
+    	查看历史会议
+    	查看会议详情
+    	重新选择入会
+    	打开会议录制
+    录制
+    	查看会中录制内容
+    	查看录制<br/>详情
+    设置
+    	设置本地<br/>应用设置
+~~~
+
+
+## 核心业务
+
+~~~mermaid
 sequenceDiagram
     participant MainProcess as 主进程
     participant HomeRenderer as 首页渲染进程
@@ -67,7 +122,8 @@ sequenceDiagram
 
 
 
-~~~
+
+~~~mermaid
 sequenceDiagram
 participant UserA as Clinet A
 participant UserB as Clinet B
@@ -119,70 +175,10 @@ UserC->>UserC: 创建vedio播放视频
 ~~~
 
 
-
-功能模块架构
-
-~~~mermaid
-mindmap
-  root((sugartalk))
-    登陆
-    	输入帐号<br/>密码
-    	点击登陆<br/>登陆应用
-    加入会议/快速会议
-    	快速会议<br/>创建房间并<br/>加入会议
-    	输入会议号加入会议
-    	选择预定会议加入会议
-    预定会议
-    	创建预定会议
-    	设置会议初始化设置
-    	指定会议参会人
-    	首页查看<br/>预定会议<br/>列表
-    	点击入会进入预定会议
-    历史会议
-    	查看历史会议
-    	查看会议详情
-    	重新选择入会
-    	打开会议录制
-    录制
-    	查看会中录制内容
-    	查看录制<br/>详情
-    设置
-    	设置本地<br/>应用设置
-~~~
-
-
-
 ## 模块详情
 
-核心架构
-
-~~~mermaid
-mindmap
-  root((应用核心))
-    vue
-    	vue router
-    	vue components
-    	
-    vite
-    	构建静态html/css/js资源
-   	Electron
-    	fs
-    	electron builder
-    	electron api
-    livekit sdk js
-    	connect
-    	Room Event
-    	Participant Event
-    axios
-    	api
-    
-~~~
-
-
-
-模块详情
-
 src/screens/room/
+
 - 连接房间
 - 使用麦克风
 - 使用摄像头
@@ -231,173 +227,7 @@ scr/screens/invite/
 
 - 查看会议信息和网页链接
 
-
-
-
-
-
-
-
-
-
-
-### 会议模块
-
-~~~
-├─ src
-│  ├─ screens
-│  │  ├─ room
-│  │  │  ├─ components
-│  │  │  │  ├─ action-btn
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ audio-manage
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ audio-player
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ echo-avatar
-│  │  │  │  │  ├─ components
-│  │  │  │  │  │  ├─ chat
-│  │  │  │  │  │  │  ├─ index.scss
-│  │  │  │  │  │  │  └─ index.vue
-│  │  │  │  │  │  └─ footer
-│  │  │  │  │  │     ├─ index.scss
-│  │  │  │  │  │     └─ index.vue
-│  │  │  │  │  ├─ hooks.ts
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  ├─ index.vue
-│  │  │  │  │  └─ props.ts
-│  │  │  │  ├─ echo-avatar-btn
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ footer
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ fullscreen
-│  │  │  │  │  ├─ hooks.ts
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ invite
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ leave-meeting
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ member
-│  │  │  │  │  ├─ components
-│  │  │  │  │  │  └─ user
-│  │  │  │  │  │     ├─ index.scss
-│  │  │  │  │  │     └─ index.vue
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ message-pop
-│  │  │  │  ├─ network
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ participate-duration
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ player
-│  │  │  │  │  ├─ hooks.ts
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ recording
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ room-tab
-│  │  │  │  │  ├─ hook.ts
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  ├─ index.vue
-│  │  │  │  │  └─ props.ts
-│  │  │  │  ├─ screen-share
-│  │  │  │  │  ├─ components
-│  │  │  │  │  │  ├─ footer
-│  │  │  │  │  │  │  ├─ index.scss
-│  │  │  │  │  │  │  └─ index.vue
-│  │  │  │  │  │  ├─ screen
-│  │  │  │  │  │  │  ├─ index.scss
-│  │  │  │  │  │  │  └─ index.vue
-│  │  │  │  │  │  └─ tabs
-│  │  │  │  │  │     ├─ index.scss
-│  │  │  │  │  │     └─ index.vue
-│  │  │  │  │  ├─ hooks.ts
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ screen-share-btn
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ screen-share-menu
-│  │  │  │  │  ├─ hooks.ts
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  ├─ index.vue
-│  │  │  │  │  └─ props.ts
-│  │  │  │  ├─ secure-btn
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ speaking
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ status-bar
-│  │  │  │  │  ├─ components
-│  │  │  │  │  │  └─ meeting-info
-│  │  │  │  │  │     ├─ index.scss
-│  │  │  │  │  │     └─ index.vue
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ tool-btn
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ user-list
-│  │  │  │  │  ├─ components
-│  │  │  │  │  │  └─ user
-│  │  │  │  │  │     ├─ index.scss
-│  │  │  │  │  │     └─ index.vue
-│  │  │  │  │  ├─ hooks.ts
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ user-list-wait
-│  │  │  │  ├─ user-panel
-│  │  │  │  │  ├─ components
-│  │  │  │  │  │  └─ user
-│  │  │  │  │  │     ├─ index.scss
-│  │  │  │  │  │     └─ index.vue
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  ├─ video-manage
-│  │  │  │  │  └─ index.vue
-│  │  │  │  └─ waiting-panel
-│  │  │  │     ├─ index.vue
-│  │  │  │     ├─ waiting-panel-audio.vue
-│  │  │  │     └─ waiting-panel-video.vue
-│  │  │  ├─ hooks.ts
-│  │  │  ├─ index.scss
-│  │  │  ├─ index.vue
-│  │  │  ├─ loading.vue
-│  │  │  ├─ props.ts
-│  │  │  └─ utils.ts
-│  │  ├─ room-member-list
-│  │  │  ├─ hook.ts
-│  │  │  ├─ index.scss
-│  │  │  └─ index.vue
-│  │  ├─ screen-share-canvas
-│  │  │  ├─ hook.ts
-│  │  │  ├─ index.scss
-│  │  │  ├─ index.vue
-│  │  │  └─ props.ts
-│  │  ├─ screen-share-dialog
-│  │  │  ├─ components
-│  │  │  │  ├─ app-screen
-│  │  │  │  │  ├─ index.scss
-│  │  │  │  │  └─ index.vue
-│  │  │  │  └─ screen-tabs
-│  │  │  │     ├─ index.scss
-│  │  │  │     └─ index.vue
-│  │  │  ├─ hook.ts
-│  │  │  ├─ index.scss
-│  │  │  └─ index.vue
-~~~
-
-src/screen/meeting
-
-scr/screen/room-leave-dialog
-
-scr/screen/screen-name
-
-scr/screen/screen-border
+## 完整目录结构
 
 ~~~shell
 sugartalk
@@ -1020,3 +850,162 @@ sugartalk
 
 
 
+
+
+### 房间模块
+
+~~~
+├─ src
+│  ├─ screens
+│  │  ├─ room
+│  │  │  ├─ components
+│  │  │  │  ├─ action-btn
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ audio-manage
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ audio-player
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ echo-avatar
+│  │  │  │  │  ├─ components
+│  │  │  │  │  │  ├─ chat
+│  │  │  │  │  │  │  ├─ index.scss
+│  │  │  │  │  │  │  └─ index.vue
+│  │  │  │  │  │  └─ footer
+│  │  │  │  │  │     ├─ index.scss
+│  │  │  │  │  │     └─ index.vue
+│  │  │  │  │  ├─ hooks.ts
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  ├─ index.vue
+│  │  │  │  │  └─ props.ts
+│  │  │  │  ├─ echo-avatar-btn
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ footer
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ fullscreen
+│  │  │  │  │  ├─ hooks.ts
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ invite
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ leave-meeting
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ member
+│  │  │  │  │  ├─ components
+│  │  │  │  │  │  └─ user
+│  │  │  │  │  │     ├─ index.scss
+│  │  │  │  │  │     └─ index.vue
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ message-pop
+│  │  │  │  ├─ network
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ participate-duration
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ player
+│  │  │  │  │  ├─ hooks.ts
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ recording
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ room-tab
+│  │  │  │  │  ├─ hook.ts
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  ├─ index.vue
+│  │  │  │  │  └─ props.ts
+│  │  │  │  ├─ screen-share
+│  │  │  │  │  ├─ components
+│  │  │  │  │  │  ├─ footer
+│  │  │  │  │  │  │  ├─ index.scss
+│  │  │  │  │  │  │  └─ index.vue
+│  │  │  │  │  │  ├─ screen
+│  │  │  │  │  │  │  ├─ index.scss
+│  │  │  │  │  │  │  └─ index.vue
+│  │  │  │  │  │  └─ tabs
+│  │  │  │  │  │     ├─ index.scss
+│  │  │  │  │  │     └─ index.vue
+│  │  │  │  │  ├─ hooks.ts
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ screen-share-btn
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ screen-share-menu
+│  │  │  │  │  ├─ hooks.ts
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  ├─ index.vue
+│  │  │  │  │  └─ props.ts
+│  │  │  │  ├─ secure-btn
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ speaking
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ status-bar
+│  │  │  │  │  ├─ components
+│  │  │  │  │  │  └─ meeting-info
+│  │  │  │  │  │     ├─ index.scss
+│  │  │  │  │  │     └─ index.vue
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ tool-btn
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ user-list
+│  │  │  │  │  ├─ components
+│  │  │  │  │  │  └─ user
+│  │  │  │  │  │     ├─ index.scss
+│  │  │  │  │  │     └─ index.vue
+│  │  │  │  │  ├─ hooks.ts
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ user-list-wait
+│  │  │  │  ├─ user-panel
+│  │  │  │  │  ├─ components
+│  │  │  │  │  │  └─ user
+│  │  │  │  │  │     ├─ index.scss
+│  │  │  │  │  │     └─ index.vue
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  ├─ video-manage
+│  │  │  │  │  └─ index.vue
+│  │  │  │  └─ waiting-panel
+│  │  │  │     ├─ index.vue
+│  │  │  │     ├─ waiting-panel-audio.vue
+│  │  │  │     └─ waiting-panel-video.vue
+│  │  │  ├─ hooks.ts
+│  │  │  ├─ index.scss
+│  │  │  ├─ index.vue
+│  │  │  ├─ loading.vue
+│  │  │  ├─ props.ts
+│  │  │  └─ utils.ts
+│  │  ├─ room-member-list
+│  │  │  ├─ hook.ts
+│  │  │  ├─ index.scss
+│  │  │  └─ index.vue
+│  │  ├─ screen-share-canvas
+│  │  │  ├─ hook.ts
+│  │  │  ├─ index.scss
+│  │  │  ├─ index.vue
+│  │  │  └─ props.ts
+│  │  ├─ screen-share-dialog
+│  │  │  ├─ components
+│  │  │  │  ├─ app-screen
+│  │  │  │  │  ├─ index.scss
+│  │  │  │  │  └─ index.vue
+│  │  │  │  └─ screen-tabs
+│  │  │  │     ├─ index.scss
+│  │  │  │     └─ index.vue
+│  │  │  ├─ hook.ts
+│  │  │  ├─ index.scss
+│  │  │  └─ index.vue
+~~~
+
+src/screen/meeting
+
+scr/screen/room-leave-dialog
+
+scr/screen/screen-name
+
+scr/screen/screen-border

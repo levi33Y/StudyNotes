@@ -492,9 +492,5 @@ Kubernetes Ingress 资源
 
    ![image-20240524182442740](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524182442740.png)
 
-
-
-
-
 流程结束👏
 

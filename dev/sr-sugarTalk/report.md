@@ -61,3 +61,324 @@ k1mqkcX91XplLnl7nwF5o9690tm6
 
 
 
+## 音频卡顿
+
+
+
+我是windows系统，当我使用audio播放远端媒体流时，随着我开会时间变长，我应用播放的声音就会有电流声，随着时间变长，声音就完全变成杂音了，即使我不同窗口（同一应用）播放视频或者项目本地保存时测试音频，都是卡的听不清的，当我把会议窗口关了，不同窗口（同一应用）播放视频或者项目本地保存时测试音频的声音立即就正常了。期间非应用内其他应用或系统的声音都正常
+
+
+
+
+
+我当时打开了我房间窗口的控制台，有一个警告【Violation】‘requestAnimationFrame’ handler took 55ms，打开我的设置窗口控制台，我设置窗口是可以加载扬声器和麦克风设备来进行切换的，有报错Uncaught（in promise）DOMException： AudioContext.setSinkId() failed: the request for device xxx is timed out 和警告【violation】forced reflow while excuting jacaScript took 30ms
+
+
+
+重新渲染livekit，情况还在。
+
+检查音频资源使用情况：
+
+```
+export class SoundMeterByMandatory {
+  context:AudioContext =  new AudioContext();
+
+  mic: MediaStreamAudioSourceNode;
+
+  analyser: AnalyserNode;
+
+  dataArray: Uint8Array = new Uint8Array();
+
+  constructor(stream: MediaStream) {
+    this.mic = this.context.createMediaStreamSource(stream);
+    this.analyser = this.context.createAnalyser();
+    this.mic.connect(this.analyser);
+    this.analyser.fftSize = 256;
+    this.analyser.minDecibels = -90;
+    this.analyser.maxDecibels = -10;
+    this.analyser.smoothingTimeConstant = 0.85;
+    this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+  }
+
+  getByteFrequencyData() {
+    this.analyser.getByteFrequencyData(this.dataArray);
+  }
+
+  close() {
+    this.context.close()
+  }
+}
+```
+
+
+
+
+
+
+
+node:electron/js2c/asar_bundle:2 Uncaught Error: \\?\C:\Users\LEVI\AppData\Local\Programs\SugarTalkTest\resources\app.asar.unpacked\node_modules\trtc-electron-sdk\build\Release\trtc_electron_sdk.node is not a valid Win32 application.
+\\?\C:\Users\LEVI\AppData\Local\Programs\SugarTalkTest\resources\app.asar.unpacked\node_modules\trtc-electron-sdk\build\Release\trtc_electron_sdk.node
+    at process.func [as dlopen] (node:electron/js2c/asar_bundle:2:1869)
+    at Module._extensions..node (node:internal/modules/cjs/loader:1354:18)
+    at Object.func [as .node] (node:electron/js2c/asar_bundle:2:2096)
+    at Module.load (node:internal/modules/cjs/loader:1124:32)
+    at Module._load (node:internal/modules/cjs/loader:965:12)
+    at f._load (node:electron/js2c/asar_bundle:2:13377)
+    at o._load (node:electron/js2c/renderer_init:2:3109)
+    at Module.require (node:internal/modules/cjs/loader:1148:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at Object.<anonymous> (C:\Users\LEVI\AppData\Local\Programs\SugarTalkTest\resources\app.asar\node_modules\trtc-electron-sdk\liteav\vod_player.js:12:24)
+
+
+
+1.1(master)
+
+
+
+1.2(test)
+
+
+
+trtc
+
+
+
+
+
+----	123	----
+
+prd 灰屏
+
+
+
+1.2 改成 1.1ui的时间
+
+
+
+trtc
+
+
+
+prd
+
+
+
+处理1.2反馈
+
+
+
+改成1.2
+
+
+
+prd
+
+
+
+```
+import { Participant, Track } from "livekit-client";
+import { SoundMeter } from "../webrtc/soundmeter";
+
+export class ParticipantStream {
+  id: string;
+
+  name: string = "";
+
+  participant: Participant;
+
+  isLocal: boolean;
+
+  cameraStream: MediaStream | undefined;
+
+  microphoneStream: MediaStream | undefined;
+
+  isMuted: boolean = false;
+
+  isSpeaking: boolean = false;
+
+  isEnableAudioLevel: boolean = false;
+
+  frequency: number = 0;
+
+  frame: number = 0;
+
+  soundMeter: SoundMeter | undefined;
+
+  static audioContext = new AudioContext();
+
+  private audioContextAnalysis: AudioContext | null = null;
+
+  // api properties
+
+  isActive: boolean = false;
+
+  constructor(participant: Participant, isLocal = false) {
+    this.id = participant.identity;
+
+    this.participant = participant;
+
+    this.isLocal = isLocal;
+
+    this.updata(participant);
+  }
+
+  updata(participant: Participant) {
+    this.participant = participant;
+
+    const cameraPub = this.participant?.getTrack(Track.Source.Camera);
+    const micPub = this.participant?.getTrack(Track.Source.Microphone);
+
+    const cameraEnabled =
+      cameraPub && cameraPub?.isSubscribed && !cameraPub.isMuted;
+    const micEnabled = micPub && micPub?.isSubscribed && !micPub.isMuted;
+
+    if (cameraEnabled && cameraPub.videoTrack?.mediaStream) {
+      this.cameraStream = cameraPub.videoTrack.mediaStream;
+    } else {
+      this.cameraStream = undefined;
+    }
+
+    if (micEnabled && micPub.audioTrack?.mediaStream) {
+      if (
+        this.microphoneStream?.getAudioTracks()[0]?.getSettings()?.deviceId !==
+        micPub?.audioTrack?.mediaStreamTrack?.getSettings()?.deviceId
+      ) {
+        this.microphoneStream = new MediaStream([
+          micPub.audioTrack.mediaStreamTrack,
+        ]);
+
+        this.setFrequency();
+      } else {
+        !this.audioContextAnalysis && this.setFrequency();
+      }
+    }
+
+    this.isMuted = !micEnabled;
+
+    this.isSpeaking = this.participant.isSpeaking;
+
+    this.name = this.participant.name ?? "";
+  }
+
+  awaken() {
+    this.isActive = true;
+  }
+
+  sleep() {
+    this.isActive = false;
+  }
+
+  getByteFrequency() {
+    if (!this.isEnableAudioLevel) return;
+    this.soundMeter?.getByteFrequencyData();
+    const dataArray = this.soundMeter!.dataArray;
+    let frequency = 0;
+    let count = 0;
+    for (let i = 0; i < dataArray.length; i++) {
+      const value = dataArray[i];
+      if (value > 0) {
+        frequency += value;
+        count += 1;
+      }
+    }
+    this.frequency = frequency === 0 ? 0 : frequency / count;
+    this.frame = requestAnimationFrame(() => this.getByteFrequency());
+  }
+
+  enableAudioLevel() {
+    this.soundMeter = new SoundMeter(
+      ParticipantStream.audioContext,
+      this.microphoneStream!,
+    );
+    this.getByteFrequency();
+  }
+
+  private setFrequency() {
+    if (this.audioContextAnalysis) {
+      this.cleanupAudioResources(this.audioContextAnalysis);
+    }
+
+    if (!this.microphoneStream) {
+      return;
+    }
+
+    const stream = this.microphoneStream;
+    const context = new AudioContext();
+    this.audioContextAnalysis = context;
+
+    let source: MediaStreamAudioSourceNode | undefined;
+    let analyser: AnalyserNode | undefined;
+
+    try {
+      source = context.createMediaStreamSource(stream);
+      analyser = context.createAnalyser();
+      source.connect(analyser);
+      analyser.fftSize = 256;
+
+      const frequencyBinCount = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(frequencyBinCount);
+
+      const loop = () => {
+        if (!this.audioContextAnalysis || !source || !analyser) {
+          this.audioContextAnalysis &&
+            this.cleanupAudioResources(
+              this.audioContextAnalysis,
+              source,
+              analyser,
+            );
+
+          return;
+        }
+
+        analyser?.getByteFrequencyData(dataArray);
+        const totalFrequency = dataArray.reduce((sum, value) => sum + value, 0);
+        this.frequency = totalFrequency / frequencyBinCount;
+
+        requestAnimationFrame(loop);
+      };
+
+      loop();
+    } catch (error) {
+      this.cleanupAudioResources(context, source, analyser);
+    }
+  }
+
+  private cleanupAudioResources(
+    context?: AudioContext | null,
+    source?: MediaStreamAudioSourceNode,
+    analyser?: AnalyserNode,
+  ) {
+    if (!context) return;
+
+    try {
+      if (source) {
+        source.disconnect();
+      }
+      if (analyser) {
+        analyser.disconnect();
+      }
+      context.close().catch(console.error);
+    } finally {
+      this.audioContextAnalysis = null;
+    }
+  }
+
+  disconnect() {
+    this.isEnableAudioLevel = false;
+    this.soundMeter?.stop();
+    cancelAnimationFrame(this.frame);
+    this.cleanupAudioResources(this.audioContextAnalysis);
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
