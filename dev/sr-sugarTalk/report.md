@@ -380,5 +380,46 @@ export class ParticipantStream {
 
 
 
+只有一个人在开会测试，使用CreateCloudRecording和DeleteCloudRecording进行云录制，当我掉用CreateCloudRecording后在调用DeleteCloudRecording，云录制并没有生成文件，当我此期间开麦或共享屏幕调用了ModifyCloudRecording接口，此时是能生成有录制文件。但我的需求是无论有没有媒体流都要生成录制文件，于是我设置了MixLayoutParams参数如下。此时我重复上面操作还是无法在控制台看我的录制文件，占位图相关配置好像没有效果。
+
+```
+roomIdType: 0,
+recordParams: {
+  recordMode: 2,
+  outputFormat: 3,
+},
+mixTranscodeParams: {
+  videoParams: {
+    width: 1920,
+    height: 1080,
+    fps: 60,
+    bitRate: 8192000,
+    gop: 10,
+  },
+},
+PlaceHolderMode: 1,
+MixLayoutParams: {
+  PlaceHolderMode:1,
+  BackgroundImageUrl:"https://www.anxinssl.com/wp-content/uploads/2023/09/640-9.jpg",
+  DefaultSubBackgroundImage:"https://www.anxinssl.com/wp-content/uploads/2023/09/640-9.jpg",
+  MixLayoutMode: 4,
+  MediaId: 0,
+  MixLayoutList: [
+    {
+      Top: 0,
+      Left: 0,
+      Width: 1920,
+      Height: 1080,
+      RenderMode: 0,
+    },
+  ],
+},
+```
 
 
+
+1。update
+
+
+
+2. record list
