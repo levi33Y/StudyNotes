@@ -189,31 +189,31 @@ sugartalk-v1.2-phase-1
 
 
 
-feat/v1.2-phase-1 开发v1.2-pahse-1功能
+feat/1.2-phase-1 开发v1.2-pahse-1功能
 
-feat/v1.2-phase-1-aaa 功能a
+feat/1.2-phase-1-aaa 功能a
 
 完成开发，测试可以，a合并到v1.2-phase1
 
-feat/v1.2-phase-1-bbb 功能b
+feat/1.2-phase-1-bbb 功能b
 
 功能b卡位等暂停开发
 
-feat/v1.2-phase-1-ccc 功能b
+feat/1.2-phase-1-ccc 功能b
 
 完成开发，测试可以，c合并到v1.2-phase1
 
-merge feat/v1.2-phase-1 到 b分支，继续开发b
+merge feat/1.2-phase-1 到 b分支，继续开发b
 
 完成开发，测试可以，b合并到v1.2-phase1
 
 完成phase1开发，发测试phase1，【合并到master】
 
-feat/v1.2-phase-2 开发v1.2-phse-2功能
+feat/1.2-phase-2 开发v1.2-phse-2功能
 
-feat/v1.2-phase-3 开发v1.2-phase-2-2a 2a功能
+feat/1.2-phase-3 开发v1.2-phase-2-2a 2a功能
 
-fix/v1.2-phase-1-fixa	 v1.2-pahse1有问题反馈，处理fixa功能反馈
+fix/1.2-phase-1-fixa	 v1.2-pahse1有问题反馈，处理fixa功能反馈
 
 完成修复，测试可以，合并到master
 
@@ -221,7 +221,7 @@ merge fixa到phase-2，phase-2到2a，继续开发2a
 
 【改框架等等】
 
-trtc/v1.2-trtc
+trtc/1.2-trtc
 
 
 
