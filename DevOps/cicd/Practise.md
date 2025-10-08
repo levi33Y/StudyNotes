@@ -197,7 +197,9 @@
 | General Settings        | 填写你仓库的信息                                 |
 | Authentication Settings | 填写你的账号信息                                 |
 
+1.2.0.1
 
+1.2.0
 
 ![image-20240524082145292](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524082145292.png)
 
@@ -477,6 +479,8 @@ Kubernetes Ingress 资源
 2. **打tag包**，提前打开 New Tag页面，在分支merged后确保下一步点击Create Tag创建Tag
 
    ![image-20240524182233325](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524182233325.png)
+   
+   ![image-20250610102128705](/Users/levi/Library/Application Support/typora-user-images/image-20250610102128705.png)
 
 ​	
 
@@ -487,10 +491,6 @@ Kubernetes Ingress 资源
 4. **cd CAEATE RELEASE**，test完后后续操作根据团队安排
 
    ![image-20240524182442740](https://raw.githubusercontent.com/levi33Y/Pictures/main/image-20240524182442740.png)
-
-
-
-
 
 流程结束👏
 
