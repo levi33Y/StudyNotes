@@ -1,0 +1,423 @@
+网页视频编辑
+
+## 图片雪碧图
+
+canvas生成
+
+
+
+video 作为源文件，使用canvas drawImage绘制图像，然后转为图片作为div背景图
+
+~~~ts
+// 生成视频帧时间轴
+  const generateVideoFrames = async () => {
+    if (!hiddenVideoRef.value || !videoFramesCanvas.value || !timelineRef.value)
+      return;
+    if (isLoadingFrames.value) return; // 防止重复加载
+
+    isLoadingFrames.value = true;
+    console.log("正在生成视频预览...");
+
+    try {
+      // 使用隐藏的 video 元素提取帧，不影响页面上显示的视频
+      const video = hiddenVideoRef.value;
+      const canvas = videoFramesCanvas.value;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      // 等待隐藏视频加载元数据
+      if (!video.videoWidth || !video.videoHeight || !video.duration) {
+        // 如果还没加载，等待加载完成
+        await new Promise<void>((resolve, reject) => {
+          const onLoaded = () => {
+            video.removeEventListener("loadedmetadata", onLoaded);
+            resolve();
+          };
+          video.addEventListener("loadedmetadata", onLoaded);
+
+          // 超时保护
+          setTimeout(() => {
+            video.removeEventListener("loadedmetadata", onLoaded);
+            reject(new Error("视频加载超时"));
+          }, 10000);
+        });
+      }
+
+      // 确保视频已经加载了元数据
+      if (!video.videoWidth || !video.videoHeight || !video.duration) {
+        console.error("视频元数据未加载完成，视频加载失败，请重试");
+        return;
+      }
+
+      // 获取时间轴的实际宽度
+      const timelineWidth = timelineRef.value.clientWidth;
+
+      // 设置画布高度和每帧的尺寸
+      const frameHeight = 80;
+      const aspectRatio = video.videoWidth / video.videoHeight;
+      const frameWidth = Math.floor(aspectRatio * frameHeight);
+
+      // 根据 FRAME_DENSITY 计算需要提取多少帧
+      // 基础帧数 = 时间轴宽度 / 单帧宽度
+      const baseFrameCount = Math.ceil(timelineWidth / frameWidth);
+      // 实际帧数 = 基础帧数 * 密度系数，最少 2 帧（第一帧 + 最后一帧）
+      const frameCount = Math.max(2, Math.ceil(baseFrameCount * FRAME_DENSITY));
+
+      // 设置画布尺寸为时间轴宽度
+      canvas.width = timelineWidth;
+      canvas.height = frameHeight;
+
+      // 提取视频帧
+      const duration = video.duration;
+
+      // 暂停视频
+      video.pause();
+
+      // 从第一帧到最后一帧采样
+      for (let i = 0; i < frameCount; i++) {
+        // 计算当前帧对应的视频时间点
+        let targetTime;
+        if (i === 0) {
+          // 第一帧：视频开始（0秒）
+          targetTime = 0;
+        } else if (i === frameCount - 1) {
+          // 最后一帧：视频结束前（避免黑屏）
+          targetTime = Math.max(duration - 0.1, 0);
+        } else {
+          // 中间帧：按比例均匀分布
+          const progress = i / (frameCount - 1);
+          targetTime = progress * duration;
+        }
+
+        video.currentTime = targetTime;
+
+        // 等待视频跳转完成
+        await new Promise<void>((resolve) => {
+          const onSeeked = () => {
+            video.removeEventListener("seeked", onSeeked);
+            // 添加小延迟确保帧渲染完成
+            setTimeout(resolve, 30);
+          };
+          video.addEventListener("seeked", onSeeked);
+
+          // 超时保护
+          setTimeout(() => {
+            video.removeEventListener("seeked", onSeeked);
+            resolve();
+          }, 1000);
+        });
+
+        // 计算当前帧在画布上的位置
+        let xPosition;
+        if (i === 0) {
+          // 第一帧：贴左边
+          xPosition = 0;
+        } else if (i === frameCount - 1) {
+          // 最后一帧：贴右边
+          xPosition = timelineWidth - frameWidth;
+        } else {
+          // 中间帧：均匀分布
+          const progress = i / (frameCount - 1);
+          xPosition = progress * (timelineWidth - frameWidth);
+        }
+
+        // 绘制当前帧
+        try {
+          ctx.drawImage(
+            video,
+            0,
+            0,
+            video.videoWidth,
+            video.videoHeight, // 源视频尺寸
+            xPosition,
+            0,
+            frameWidth,
+            frameHeight, // 目标画布位置和尺寸
+          );
+        } catch (error) {
+          console.error("绘制帧失败:", error);
+        }
+      }
+
+      // 转换为图片
+      try {
+        timelineBackgroundImage.value = canvas.toDataURL("image/jpeg", 0.85);
+        console.log("✅ 视频预览加载完成");
+      } catch (securityError: any) {
+        // CORS 错误处理
+        if (securityError.name === "SecurityError") {
+          console.warn(
+            "⚠️ 由于 CORS 限制，无法生成视频预览。时间轴将显示纯色背景。视频预览生成失败（跨域限制），但不影响编辑功能",
+          );
+          // 生成一个纯色背景作为备选
+          ctx.fillStyle = "#3a3a3a";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          // 尝试导出纯色背景
+          timelineBackgroundImage.value = "";
+        } else {
+          throw securityError;
+        }
+      }
+
+      // 重置视频播放位置
+      video.currentTime = 0;
+
+      // 视频预览加载完成后，默认选中第一个片段
+      selectFirstSegment();
+    } catch (error) {
+      console.error("❌ 生成视频帧失败:", error);
+    } finally {
+      isLoadingFrames.value = false;
+    }
+  };
+~~~
+
+
+
+ffmpeg
+
+~~~ts
+import { app, ipcMain } from "electron";
+import log from "electron-log";
+import ffmpeg from "fluent-ffmpeg";
+import fs from "node:fs";
+import path from "node:path";
+
+// 导入 ffmpeg-static 和 ffprobe-static（提供预编译的 ffmpeg 和 ffprobe 二进制文件）
+let ffmpegPath: string;
+
+let ffprobePath: string;
+
+try {
+  ffmpegPath = require("ffmpeg-static");
+
+  ffmpeg.setFfmpegPath(ffmpegPath);
+
+  log.info("✅ 使用打包的 ffmpeg:", ffmpegPath);
+} catch (error) {
+  ffmpegPath = "ffmpeg";
+
+  log.warn("⚠️ ffmpeg-static 未安装，将尝试使用系统 ffmpeg");
+}
+
+try {
+  ffprobePath = require("ffprobe-static").path;
+
+  ffmpeg.setFfprobePath(ffprobePath);
+
+  log.info("✅ 使用打包的 ffprobe:", ffprobePath);
+} catch (error) {
+  ffprobePath = "ffprobe";
+
+  log.warn("⚠️ ffprobe-static 未安装，将尝试使用系统 ffprobe");
+
+  try {
+    ffmpeg.setFfprobePath(ffprobePath);
+  } catch (setError) {
+    log.error("❌ 无法设置 ffprobe 路径:", setError);
+  }
+}
+
+interface VideoFrame {
+  index: number;
+  timestamp: number;
+  imageData: string;
+}
+
+ipcMain.handle(
+  "extract-video-keyframes",
+  async (
+    _,
+    videoPath: string,
+    frameCount: number,
+    frameWidth: number,
+    frameHeight: number,
+  ) => {
+    return new Promise<VideoFrame[]>((resolve, reject) => {
+      const tempDir = path.join(app.getPath("temp"), `frames-${Date.now()}`);
+
+      // 创建临时目录
+      try {
+        if (!fs.existsSync(tempDir)) {
+          fs.mkdirSync(tempDir, { recursive: true });
+        }
+      } catch (error: any) {
+        log.error("创建临时目录失败:", error);
+        return reject(new Error(`创建临时目录失败: ${error.message}`));
+      }
+
+      log.info("📹 开始提取视频关键帧");
+      log.info("  视频路径:", videoPath);
+      log.info("  输出目录:", tempDir);
+      log.info(`  参数: ${frameCount}帧, ${frameWidth}x${frameHeight}`);
+
+      const outputPattern = path.join(tempDir, "frame-%04d.jpg");
+
+      // 用于存储从 showinfo 日志中解析出的时间戳信息
+      const frameTimestamps = new Map<number, number>(); // key: 帧索引(n), value: pts_time
+
+      // 使用 fluent-ffmpeg 进行视频处理
+      ffmpeg(videoPath)
+        // 使用 -skip_frame nokey 跳过非关键帧（更高效）
+        .inputOptions(["-skip_frame", "nokey"])
+        // 输出选项：添加 showinfo 来获取准确时间戳，然后缩放
+        .outputOptions([
+          "-vf",
+          `showinfo,scale=${frameWidth}:${frameHeight}`,
+          "-vsync",
+          "vfr", // 使用可变帧率，保留原始时间戳
+          "-frames:v",
+          frameCount.toString(),
+          "-q:v",
+          "20", // JPEG 质量（1-31，数值越小质量越高）
+        ])
+        .output(outputPattern)
+        // 监听进度事件（可选）
+        .on("start", (commandLine) => {
+          log.info("🎬 执行 ffmpeg 命令:");
+          log.info("  ", commandLine);
+        })
+        .on("progress", (progress) => {
+          // 可以在这里添加进度条逻辑
+          if (progress.percent) {
+            log.info(`  进度: ${Math.round(progress.percent)}%`);
+          }
+        })
+        .on("stderr", (stderrLine) => {
+          // 解析 showinfo 输出，提取时间戳信息
+          // 格式示例: [Parsed_showinfo_0 @ 0x...] n:   0 pts:   1001 pts_time:0.0417083 ...
+          if (
+            stderrLine.includes("showinfo") &&
+            stderrLine.includes("pts_time")
+          ) {
+            try {
+              // 提取 n (帧索引)
+              const nMatch = stderrLine.match(/n:\s*(\d+)/);
+              // 提取 pts_time (时间戳)
+              const ptsTimeMatch = stderrLine.match(/pts_time:([\d.]+)/);
+
+              if (nMatch && ptsTimeMatch) {
+                const frameIndex = parseInt(nMatch[1], 10);
+                const timestamp = parseFloat(ptsTimeMatch[1]);
+                frameTimestamps.set(frameIndex, timestamp);
+                log.debug(`  📍 帧 ${frameIndex}: ${timestamp.toFixed(3)}s`);
+              }
+            } catch (parseError) {
+              log.debug("解析 showinfo 日志失败:", parseError);
+            }
+          }
+
+          // 保留详细日志用于调试
+          log.debug("  ffmpeg:", stderrLine);
+        })
+        .on("error", (error, stdout, stderr) => {
+          log.error("❌ ffmpeg 提取关键帧失败:", error.message);
+          log.error("  stderr:", stderr);
+
+          // 清理临时目录
+          try {
+            if (fs.existsSync(tempDir)) {
+              fs.rmSync(tempDir, { recursive: true, force: true });
+            }
+          } catch (cleanupError) {
+            log.error("清理临时目录失败:", cleanupError);
+          }
+
+          reject(new Error(`ffmpeg 执行失败: ${error.message}`));
+        })
+        .on("end", () => {
+          log.info("✅ ffmpeg 处理完成，开始读取生成的帧图片");
+
+          try {
+            // 读取生成的帧文件
+            const files = fs
+              .readdirSync(tempDir)
+              .filter((f) => f.endsWith(".jpg"))
+              .sort();
+
+            if (files.length === 0) {
+              throw new Error("未生成任何帧图片");
+            }
+
+            log.info(
+              `📸 找到 ${files.length} 个帧图片，转换为 base64 并使用真实时间戳...`,
+            );
+            log.info(`📍 从 showinfo 解析到 ${frameTimestamps.size} 个时间戳`);
+
+            // 读取所有图片并转换为包含时间戳的结构
+            const frames: VideoFrame[] = files.map((file, index) => {
+              const filePath = path.join(tempDir, file);
+              const buffer = fs.readFileSync(filePath);
+              const base64 = buffer.toString("base64");
+
+              // 使用从 showinfo 解析出的真实时间戳
+              // 如果没有解析到，使用备用方案（索引值）
+              const timestamp = frameTimestamps.get(index) ?? index;
+
+              if (!frameTimestamps.has(index)) {
+                log.warn(
+                  `⚠️ 帧 ${index} 未找到时间戳信息，使用索引值 ${index} 作为备用`,
+                );
+              }
+
+              log.debug(
+                `  [${index + 1}/${files.length}] ${file} - ${timestamp.toFixed(
+                  3,
+                )}s`,
+              );
+
+              return {
+                index,
+                timestamp,
+                imageData: `data:image/jpeg;base64,${base64}`,
+              };
+            });
+
+            log.info(`✅ 成功提取 ${frames.length} 个关键帧（使用真实时间戳）`);
+
+            // 清理临时目录
+            try {
+              fs.rmSync(tempDir, { recursive: true, force: true });
+              log.info("🧹 临时文件已清理");
+            } catch (cleanupError) {
+              log.warn("清理临时目录失败:", cleanupError);
+            }
+
+            resolve(frames);
+          } catch (readError: any) {
+            log.error("❌ 读取帧图片失败:", readError);
+
+            // 清理临时目录
+            try {
+              if (fs.existsSync(tempDir)) {
+                fs.rmSync(tempDir, { recursive: true, force: true });
+              }
+            } catch (cleanupError) {
+              log.error("清理临时目录失败:", cleanupError);
+            }
+
+            reject(new Error(`读取帧图片失败: ${readError.message}`));
+          }
+        })
+        .run();
+    });
+  },
+);
+
+~~~
+
+
+
+## 时间预览图
+
+v-for
+
+切割分段难以实现无感切割
+
+设计帧率重新分配
+
+
+
+background
+
+直接使用background，根据片段位置位移对应距离
