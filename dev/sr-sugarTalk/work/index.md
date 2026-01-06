@@ -253,3 +253,75 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyOTk0MDEyNjQxOSIsInN1YiI6ImFkbWl
 
 
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJUZW5jZW50IE1lZXRpbmciLCJleHAiOjE3NTg5NjAwODQsImlhdCI6MTc1NjI4MTY4NCwiaXNzIjoiMjk5NDAxMjY0MTkifQ.Mdfgr2Ko2FLDw-DsDoXi2AhfqcBvHViM2xmib_Pab0E
+
+
+
+我使用docker打包我的electron的安装包和nginx配置到我的镜像仓库，然后cd部署域名来拉取镜像，通过域名访问安装包并下载。
+
+现在遇到了问题，docker镜像包含着mac和windows的安装包导致镜像过大，push到仓库时容易超时或者失败。
+
+现在我想到了在打包镜像时，nginx 和 maczip 和 yml 等配置文件 、 mac 的 dmg，window 的 exe 三个不同镜像 push 三次来应对 push 容易失败或一次失败后，又要重试问题
+
+
+
+ci 安装依赖和打包完后的脚本如下
+
+rm -rf win-unpacked 2>/dev/null || true
+
+rm -rf mac-universal 2>/dev/null || true
+
+rm -f *.blockmap 2>/dev/null || true
+
+repository=`echo %build.number%|sed 's^+^-^g'`
+
+docker build --platform linux/amd64 -t %docker.tag%:$repository .
+
+docker push %docker.tag%:$repository
+
+
+
+cd k8s 配置如下
+
+帮我实现我的思路，并指出 ci 和 cd 我要怎么进行调整
+
+~~~
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-sugartalk
+  namespace: '#{namespace}'
+spec:
+  selector:
+    matchLabels:
+      octopusexport: OctopusExport
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        octopusexport: OctopusExport
+    spec:
+      volumes:
+        - name: sugartalk-release-notes
+          configMap:
+            name: configurations-sugartalk-#{Octopus.Deployment.Id | ToLower}
+      containers:
+        - name: sugartalk
+          image: index.docker.io/sjdistributor/sugartalk
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: sugartalk-release-notes
+              mountPath: /usr/share/nginx/html/release-notes.md
+              subPath: release-notes.md
+      tolerations:
+        - key: '#{Toleration-key}'
+          operator: ''
+          value: '#{Toleration-value}'
+          effect: '#{Toleration-effect}'
+
+~~~
+

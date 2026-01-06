@@ -1,3 +1,23 @@
+在网络下工作（共享屏幕）表现
+
+
+
+windows
+
+[clumsy](https://jagt.github.io/clumsy/cn/index.html)
+
+classwair
+
+
+
+mac
+
+littele snitch mini （付费
+
+
+
+
+
 ## RoomOptions 配置
 
 AdaptiveStreamSettings
@@ -31,7 +51,7 @@ AdaptiveStreamSettings: {
 
 
 
-## 获取report
+### 获取report
 
 ```
 const getReport = () => {
@@ -104,7 +124,7 @@ const getReport = () => {
 
 
 
-## 测试
+### 测试
 
 ```ts
 // 自动管理订阅的视频质量
